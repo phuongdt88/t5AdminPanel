@@ -1,0 +1,4 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/conf/application.conf,/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/target/scala-2.11/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/conf/logback.xml,/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/target/scala-2.11/classes/logback.xml)[0m
+[0m[[0mdebug[0m] [0m	(/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/conf/routes,/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/target/scala-2.11/classes/routes)[0m

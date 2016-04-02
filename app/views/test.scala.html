@@ -1,0 +1,17 @@
+@(arr: ArrayList[ArrayList[String]])
+<div class="dx-warning ng-scope">
+  <div>
+    <h2>User List</h2>
+    <div ng-init="users = @arr">
+      Have {{users.length}} users.
+      <ul class="example-animate-container">
+        <li class="animate-repeat" ng-repeat="user in users">
+          [{{$index + 1}}] {{user.name}}
+        </li>
+        <li class="animate-repeat" ng-if="results.length == 0">
+          <strong>No results found...</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

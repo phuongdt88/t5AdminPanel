@@ -1,0 +1,141 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+GET     /inprogress                 controllers.Application.inprogress()
+GET     /gamestate                  controllers.Application.gamestate()
+GET     /tribes                     controllers.Application.tribes()
+
+
+
+POST    /searchByUserId             controllers.GameStateController.getUserById()
+POST    /searchUserByName           controllers.GameStateController.getUserList()
+POST    /searchUserByEmail          controllers.GameStateController.getUserList()
+POST    /searchUserByDagger         controllers.GameStateController.getUserList()
+
+POST    /updateUserData             controllers.GameStateController.updateUserData()
+POST    /noteForUser                controllers.GameStateController.noteForUser()
+POST    /deleteUser                 controllers.GameStateController.deleteUser()
+POST    /fakeUser                   controllers.GameStateController.fakeUser()
+POST    /downloadBattleLog          controllers.GameStateController.downloadBattleLog()
+POST    /turnOffShield              controllers.GameStateController.turnOffShield()
+POST    /turnOnShield               controllers.GameStateController.turnOnShield()
+POST    /blockLeaderBoard           controllers.GameStateController.blockLeaderBoard()
+POST    /blockTribe                 controllers.GameStateController.blockTribe()
+POST    /blockSearching             controllers.GameStateController.blockSearching()
+POST    /blockGlobalChat            controllers.GameStateController.blockGlobalChat()
+POST    /blockAttack                controllers.GameStateController.blockAttack()
+
+POST    /getTribeList               controllers.TribeController.getAllTribes()
+POST    /getTribeDetails            controllers.TribeController.getTribeDetails()
+POST    /searchTribeById            controllers.TribeController.getTribeById()
+POST    /searchTribeByName          controllers.TribeController.getTribeByName()
+POST    /updateTribeName            controllers.TribeController.updateTribeName()
+
+POST    /downloadTribeMessage       controllers.TribeController.getTribeMessage()
+POST    /blockTribe                 controllers.TribeController.blockTribe()
+
+
+GET     /login                      controllers.LoginController.login()
+POST    /checklogin                 controllers.LoginController.checklogin()
+
+GET     /usersmanagement            controllers.UsersManagementController.getAdminUserList()
+POST    /addAdminAccount            controllers.UsersManagementController.addAdminAccount()
+POST    /updateusername             controllers.UsersManagementController.updateUsername()
+POST    /updateemail                controllers.UsersManagementController.updateEmail()
+POST    /updatepassword             controllers.UsersManagementController.updatePassword()
+POST    /updaterole                 controllers.UsersManagementController.updateRole()
+POST    /deleteadminacc             controllers.UsersManagementController.deleteAdminAcc()
+POST    /getuserdata                controllers.UsersManagementController.getUserData()
+POST    /sendEmail                  controllers.UsersManagementController.sendEmail()
+GET     /profile                    controllers.UsersManagementController.profile()
+POST    /getprofile                 controllers.UsersManagementController.getProfile()
+POST    /updateprofile              controllers.UsersManagementController.updateProfile()
+
+GET     /timezone                   controllers.TimeZoneController.getTimeZone()
+POST    /updatetimezone             controllers.TimeZoneController.updateTimeZone()
+
+GET     /textstring                 controllers.TextStringController.textString()
+POST    /getTextString              controllers.TextStringController.getTextString()
+POST    /exporttextstring           controllers.TextStringController.exportTextString()
+
+GET     /profanity                  controllers.ProfanityController.profanity()
+POST    /getprofanitytext           controllers.ProfanityController.getProfanityText()
+POST    /exportprofanity            controllers.ProfanityController.exportProfanity()
+
+GET     /news                       controllers.NewsController.getNews()
+POST    /addenglishnews             controllers.NewsController.addEnglishNews()
+POST    /addarabnews                controllers.NewsController.addArabNews()
+POST    /updateenglishnewstitle     controllers.NewsController.updateEnglishNewsTitle()
+POST    /updateenglishnewsimage     controllers.NewsController.updateEnglishNewsImage()
+POST    /updateenglishnewsvideo     controllers.NewsController.updateEnglishNewsVideo()
+POST    /updateenglishnewscontent   controllers.NewsController.updateEnglishNewsContent()
+POST    /deleteenglishnews          controllers.NewsController.deleteEnglishNews()
+POST    /updatearabnewstitle        controllers.NewsController.updateArabNewsTitle()
+POST    /updatearabnewsimage        controllers.NewsController.updateArabNewsImage()
+POST    /updatearabnewsvideo        controllers.NewsController.updateArabNewsVideo()
+POST    /updatearabnewscontent      controllers.NewsController.updateArabNewsContent()
+POST    /deletearabnews             controllers.NewsController.deleteArabNews()
+
+GET     /gamedata                   controllers.GameDataController.gameData()
+
+POST     /campaignreference          controllers.GameDataController.getCampaignReference()
+POST     /unitlevels                 controllers.GameDataController.getUnitLevel()
+POST     /combatunits                controllers.GameDataController.getCombatUnits()
+POST     /defensivebuildings         controllers.GameDataController.getDefensiveBuildings()
+POST     /defensivebuildinglevel     controllers.GameDataController.getDefensiveBuildingLevel()
+POST     /resourcebuildings          controllers.GameDataController.getResourceBuildings()
+POST     /armybuildings              controllers.GameDataController.getArmyBuildings()
+POST     /otherbuildings             controllers.GameDataController.getOtherBuildings()
+POST     /townhalllevel              controllers.GameDataController.getTownHallLevel()
+POST     /decorations                controllers.GameDataController.getDecorations()
+POST     /spells                     controllers.GameDataController.getSpells()
+POST     /spelllevels                controllers.GameDataController.getSpellLevels()
+POST     /obstacles                  controllers.GameDataController.getObstacles()
+POST     /trophy                     controllers.GameDataController.getTrophy()
+POST     /achievements               controllers.GameDataController.getAchievements()
+POST    /viewspreadsheetdata        controllers.GameDataController.getSpreadsheetData()
+POST    /publishspeadsheet          controllers.GameDataController.publishSpreadsheet()
+
+GET     /gamesettings               controllers.GameSettingsController.getGameSettings()
+POST     /settings                  controllers.GameSettingsController.getSettings()
+POST    /savesettingsdata           controllers.GameSettingsController.saveSettingsData()
+POST    /addversionsfs              controllers.GameSettingsController.addVersionSFS()
+POST    /deleteunuseversion         controllers.GameSettingsController.deleteUnuseVersion()
+POST    /changegamesubversion       controllers.GameSettingsController.changeGameSubVersion()
+
+
+GET     /gameversion                controllers.GameVersionController.getGameVersion()
+
+GET     /bundle                     controllers.BundleController.bundle()
+POST    /getbundle                  controllers.BundleController.getBundle()
+POST    /savebundledata             controllers.BundleController.saveBundle()
+
+GET     /iapdata                    controllers.iapController.iapData()
+POST    /iapios                     controllers.iapController.iapIOS()
+POST    /iapandroid                 controllers.iapController.iapAndroid()
+POST    /iapvalid                   controllers.iapController.iapValid()
+POST    /testdate                   controllers.iapController.testDate()
+POST    /uniquepayingusers          controllers.iapController.getUniquePayingUsers()
+POST    /newpayingusers             controllers.iapController.getNewPayingUsers()
+
+GET     /playersdata                controllers.PlayersDataController.playersData()
+POST    /dau                        controllers.PlayersDataController.getDAU()
+POST    /mau                        controllers.PlayersDataController.getMAU()
+POST    /newplayingusers            controllers.PlayersDataController.getNewPlayingUsers()
+POST    /getccu                     controllers.PlayersDataController.getCCU()
+POST    /globalchat                 controllers.PlayersDataController.getGlobalChat()
+POST    /tribechat                  controllers.PlayersDataController.getTribeChat()
+POST    /loginlogout                controllers.PlayersDataController.getLoginLogoutTime()
+POST    /uniqueusersnumber          controllers.PlayersDataController.getUniqueUsersNumber()
+
+GET     /adjustcallback             controllers.AdjustCallbackController.AdjustCallback()
+POST    /getalladjustcallbackdata   controllers.AdjustCallbackController.getAllAdjustCallbackData()
+POST    /getadjustcallbackdata      controllers.AdjustCallbackController.getAdjustCallbackData()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
