@@ -20,7 +20,8 @@ libraryDependencies ++= Seq(
   "com.google.apis"%"google-api-services-drive"%"v2-rev170-1.20.0",
   "com.google.http-client" % "google-http-client-jackson" % "1.19.0",
   "net.sf.opencsv" % "opencsv" % "2.3",
-  "com.typesafe.play" %% "play-mailer" % "3.0.1"
+  "com.typesafe.play" %% "play-mailer" % "3.0.1",
+  "mysql" % "mysql-connector-java" % "5.1.18"
 )
 
 

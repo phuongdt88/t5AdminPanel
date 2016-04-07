@@ -1,0 +1,153 @@
+<script src="assets/script/dashboard.js"></script>
+
+<page-title ng-if="layoutOptions.pageTitles" title="Dashboard" description=""></page-title>
+
+<!--Dashboard-->
+<div id="dashboardInfoWrap">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Select Platform</h3>
+
+          <div class="panel-options">
+            <a href="" data-toggle="panel">
+              <span class="collapse-icon">&ndash;</span>
+              <span class="expand-icon">+</span>
+            </a>
+            <a href="" data-toggle="remove">
+              &times;
+            </a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-sm-12 control-label" ><h4>Platform</h4></label>
+            <div class="col-sm-12">
+              <select class="form-control" id="platformSelect" name="platformSelect" style="width:20%;">
+                <option value="0">Both</option>
+                <option value="1">iOS</option>
+                <option value="2">Android</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Dasbboard table-->
+<div id="dashboardTable">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!-- <h3 class="panel-title">Enter title here</h3> -->
+
+      <div class="panel-options">
+        <a href="" data-toggle="panel">
+          <span class="collapse-icon">&ndash;</span>
+          <span class="expand-icon">+</span>
+        </a>
+        <a href="" data-toggle="remove">
+          &times;
+        </a>
+        <a href="" data-toggle="reload">
+          <i class="fa-rotate-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table id="dasbboardDBTbl" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th >Period</th>
+          <th >Today</th>
+          <th >Last 30 days</th>
+          <th >Lifetime</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>New Users</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Returning Users</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>DAU</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>IAP Spend in $</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Number of IAP</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Number of Overall Paying Users</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>N/A</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+          <td>Max CCU</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Min CCU</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>ARPU</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>ARPPU</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>N/A</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Top 3 Spenders</td>
+            <td>390</td>
+            <td>2500</td>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

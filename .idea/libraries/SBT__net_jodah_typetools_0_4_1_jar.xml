@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: net.jodah:typetools:0.4.1:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../activator/activator-dist-1.3.5/repository/net.jodah/typetools/0.4.1/bundles/typetools.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

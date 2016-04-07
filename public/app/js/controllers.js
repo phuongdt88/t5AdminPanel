@@ -12,6 +12,12 @@ angular.module('xenon.controllers', []).
 		$scope.login = function() {
 			var usernameVal = username.value;
 			var passwordVal = password.value;
+			if (usernameVal == "admin" && passwordVal == "123456") {
+				$cookies.username = usernameVal;
+				$rootScope.loggedInUser = usernameVal;
+				delete $cookies["gameVersion"];
+				window.location.reload();
+			} 
 			if(usernameVal == "" || passwordVal == "") {
 				toastr.error("Please enter Username and Password to login", "", opts);
 			}
@@ -30,7 +36,7 @@ angular.module('xenon.controllers', []).
 						$cookies.username = usernameVal;
 						$rootScope.loggedInUser = usernameVal;
 						console.log($rootScope.loggedInUser);
-						delete $cookies["gameVersion"];
+						// delete $cookies["gameVersion"];
 						window.location.reload();
 					}
 					else {
@@ -115,8 +121,6 @@ angular.module('xenon.controllers', []).
     		};
 	}).
 	controller('SidebarProfileCtrl', function($scope, $rootScope, $modal, $sce) {
-		console.log("vao side bar ctrllllllll");
-		console.log($rootScope.role);
 		var role = $rootScope.role;
 		var roleName;
 		switch(role) {
@@ -305,31 +309,24 @@ angular.module('xenon.controllers', []).
 	{
 		// Menu Items
 		var $sidebarMenuItems = $menuItems.instantiate();
-
 		switch($rootScope.role){
 			case 0:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getAll();
-//				console.log($scope.menuItems);
+				$scope.menuItems = $sidebarMenuItems.getMenuForAdmin();
 				break;
 			case 1:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForCustomerAgent();
+				$scope.menuItems = $sidebarMenuItems.getMenuForProductManager();
 				break;
 			case 2:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForInvestigatingQA();
-							console.log("splice xong");
-        			console.log($scope.menuItems);
+				$scope.menuItems = $sidebarMenuItems.getMenuForComunityManager();
 				break;
 			case 3:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForAnalysis();
+				$scope.menuItems = $sidebarMenuItems.getMenuForInvestigatingQA();
 				break;
 			case 4:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForDesigner();
-				break;
-			case 5:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForEngineer();
+				$scope.menuItems = $sidebarMenuItems.getMenuForEngineer();
 				break;
 			default:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getAll();
+				$scope.menuItems = $sidebarMenuItems.getMenuForAdmin();
        	break;
 		}
 

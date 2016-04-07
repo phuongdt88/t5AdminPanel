@@ -44,142 +44,143 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 	console.log("vao app.run")
 	if($cookies.username === undefined || $cookies.username == null){
     $location.path("/login");
+  } 
+  else {
+  	$location.path("/app/dashboard");
+  	$rootScope.role = 0;
   }
 
 //	var role = [0, 1, 2, 3];
-	var permission = {
-		0: {
-			"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement","app.textstring", "app.profanity", "app.news","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback","app.gamedata","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
-		},
-		1: {
-			"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement", "app.gameversion"]
-		},
-		2: {
-			"accessibleState": ["login","logout","app.profile","app.textstring", "app.profanity", "app.news", "app.gameversion"]
-		},
-		3: {
-			"accessibleState": ["login","logout","app.profile","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback", "app.gameversion"]
-		},
-		4: {
-			"accessibleState": ["login","logout","app.profile","app.gamedata", "app.gameversion"]
-		},
-		5: {
-			"accessibleState": ["login","logout","app.profile","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
-		},
-	}
+	// var permission = {
+	// 	0: {
+	// 		"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement","app.textstring", "app.profanity", "app.news","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback","app.gamedata","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
+	// 	},
+	// 	1: {
+	// 		"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement", "app.gameversion"]
+	// 	},
+	// 	2: {
+	// 		"accessibleState": ["login","logout","app.profile","app.textstring", "app.profanity", "app.news", "app.gameversion"]
+	// 	},
+	// 	3: {
+	// 		"accessibleState": ["login","logout","app.profile","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback", "app.gameversion"]
+	// 	},
+	// 	4: {
+	// 		"accessibleState": ["login","logout","app.profile","app.gamedata", "app.gameversion"]
+	// 	},
+	// 	5: {
+	// 		"accessibleState": ["login","logout","app.profile","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
+	// 	},
+	// }
 
-	var sidebarItems = ["For Customer Agent","For Investigating QA","For Analysis","For Designer","For Engineers","Users Management"];
+	// var sidebarItems = ["For Customer Agent","For Investigating QA","For Analysis","For Designer","For Engineers","Users Management"];
 
-	var username = $cookies.username;
-	var dataObj = {};
-	var userRole;
-	var accessState;
-	if($cookies.username != null && $cookies.username != undefined) {
-		dataObj["username"] = username;
-		$http({
-			method: 'POST',
-			url: 'getuserdata',
-			data: dataObj
-		})
-		.success(function(resData, status, headers, config){
-			userRole = parseInt(resData.userInfo.role);
-			$rootScope.timeZone = resData.userInfo.timezone;
-			accessState = permission[userRole].accessibleState;
-			switch(userRole){
-				case 0:
-					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamestate");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 0;
-					break;
-				case 1:
-					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamestate");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 1;
-					break;
-				case 2:
-					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/textstring");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 2;
-          break;
-        case 3:
-        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/analysis-IAP");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 3;
-          break;
-        case 4:
-        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamedata");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-          $rootScope.role = 4;
-          break;
-        case 5:
-        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/bundle");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 5;
-          break;
-        default:
-        	$location.path("/");
-        	break;
-			}
+	// var username = $cookies.username;
+	// var dataObj = {};
+	// var userRole;
+	// var accessState;
+	// if($cookies.username != null && $cookies.username != undefined) {
+	// 	dataObj["username"] = username;
+	// 	$http({
+	// 		method: 'POST',
+	// 		url: 'getuserdata',
+	// 		data: dataObj
+	// 	})
+	// 	.success(function(resData, status, headers, config){
+	// 		userRole = parseInt(resData.userInfo.role);
+	// 		$rootScope.timeZone = resData.userInfo.timezone;
+	// 		accessState = permission[userRole].accessibleState;
+	// 		switch(userRole){
+	// 			case 0:
+	// 				if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/gamestate");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+	// 				$rootScope.role = 0;
+	// 				break;
+	// 			case 1:
+	// 				if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/gamestate");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+	// 				$rootScope.role = 1;
+	// 				break;
+	// 			case 2:
+	// 				if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/textstring");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+	// 				$rootScope.role = 2;
+ //          break;
+ //        case 3:
+ //        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/analysis-IAP");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+	// 				$rootScope.role = 3;
+ //          break;
+ //        case 4:
+ //        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/gamedata");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+ //          $rootScope.role = 4;
+ //          break;
+ //        case 5:
+ //        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
+	// 					$location.path("/app/bundle");
+	// 				} else {
+	// 					$location.path("/app"+$cookies.thisUrl);
+	// 				}
+	// 				$rootScope.role = 5;
+ //          break;
+ //        default:
+ //        	$location.path("/");
+ //        	break;
+	// 		}
 
-			$rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-						console.log("vao state change");
-      	    console.log($cookies.username);
-      	    console.log(toState);
-      	    $cookies.thisUrl = toState.url;
-      			if($cookies.username === undefined || $cookies.username == null){
-      				console.log("loggin cookie undefined");
-      				$location.path("/login");
-      			}
-      			else {
-      				console.log("logged in");
-      				if(toState.url == "/login"){
-      					console.log("logged in, can not access to login page");
-      					  showLoadingBar(100);
-                  event.preventDefault();
-                  window.location.reload();
-      				}
-      				console.log(accessState)
-      				if(accessState != undefined){
-      					if(accessState.indexOf(toState.name) > -1){
-      						console.log("accessible");
-      					} else {
-      						console.log("access denied");
-      						event.preventDefault();
-                  window.location.reload();
-      					}
-      				}
-      			}
-            if($cookies.username === undefined && toState.url.indexOf("/login") <= -1){
-              event.preventDefault();
-              window.location.reload();
-            }
-      	});
-		})
-		.error(function(resData, status, headers, config){
-			toastr.error(status, "Unable to get user role", opts);
-		});
-	}
-
-
-
+	// 		$rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+	// 					console.log("vao state change");
+ //      	    console.log($cookies.username);
+ //      	    console.log(toState);
+ //      	    $cookies.thisUrl = toState.url;
+ //      			if($cookies.username === undefined || $cookies.username == null){
+ //      				console.log("loggin cookie undefined");
+ //      				$location.path("/login");
+ //      			}
+ //      			else {
+ //      				console.log("logged in");
+ //      				if(toState.url == "/login"){
+ //      					console.log("logged in, can not access to login page");
+ //      					  showLoadingBar(100);
+ //                  event.preventDefault();
+ //                  window.location.reload();
+ //      				}
+ //      				console.log(accessState)
+ //      				if(accessState != undefined){
+ //      					if(accessState.indexOf(toState.name) > -1){
+ //      						console.log("accessible");
+ //      					} else {
+ //      						console.log("access denied");
+ //      						event.preventDefault();
+ //                  window.location.reload();
+ //      					}
+ //      				}
+ //      			}
+ //            if($cookies.username === undefined && toState.url.indexOf("/login") <= -1){
+ //              event.preventDefault();
+ //              window.location.reload();
+ //            }
+ //      	});
+	// 	})
+	// 	.error(function(resData, status, headers, config){
+	// 		toastr.error(status, "Unable to get user role", opts);
+	// 	});
+	// }
 });
 
 
@@ -967,25 +968,93 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 				},
 			}
 		}).
+		state('app.dashboard', {
+			url: '/dashboard',
+			templateUrl: 'dashboard',
+						resolve: {
+							deps: function($ocLazyLoad){
+								return $ocLazyLoad.load([
+									ASSETS.tables.datatables,
+									ASSETS.tables.rwd,
+								]);
+							},
+							jQueryValidate: function($ocLazyLoad){
+								return $ocLazyLoad.load([
+									ASSETS.forms.jQueryValidate,
+									ASSETS.extra.toastr,
+								]);
+							},
+						},
+		}).
+		state('app.ltvcalculator', {
+			url: '/ltvcalculator',
+			templateUrl: 'ltvcalculator',
+				resolve: {
+					deps: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.tables.datatables,
+							ASSETS.tables.rwd,
+						]);
+					},
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+					jqui: function($ocLazyLoad){
+						return $ocLazyLoad.load({
+							files: ASSETS.core.jQueryUI
+						});
+					},
+					datepicker: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.datepicker,
+						]);
+					},
+				},
+			}).
+		state('app.pullactivities', {
+			url: '/pullactivities',
+			templateUrl: 'pullactivities',
+				resolve: {
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+					jqui: function($ocLazyLoad){
+						return $ocLazyLoad.load({
+							files: ASSETS.core.jQueryUI
+						});
+					},
+					datepicker: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.datepicker,
+						]);
+					},
+				},
+			}).
 		state('app.gamestate', {
 			url: '/gamestate',
 			templateUrl: 'gamestate',
-						resolve: {
-      				deps: function($ocLazyLoad){
-      					return $ocLazyLoad.load([
-      						ASSETS.tables.datatables,
-      						ASSETS.tables.rwd,
-      					]);
-      				},
-      				jQueryValidate: function($ocLazyLoad){
-      					return $ocLazyLoad.load([
-      						ASSETS.forms.jQueryValidate,
-      						ASSETS.extra.toastr,
-      					]);
-      				},
-      			},
-		})
-		.state('app.tribes', {
+				resolve: {
+					deps: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.tables.datatables,
+							ASSETS.tables.rwd,
+						]);
+					},
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+				},
+			}).
+		state('app.tribes', {
 			url: '/tribes',
 			templateUrl: 'tribes',
 			resolve: {

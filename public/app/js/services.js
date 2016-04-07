@@ -76,337 +76,85 @@ angular.module('xenon.services', []).
 			return item;
 		};
 
-		this.getAll = function()
+		this.getMenuForAdmin = function()
 		{
+			var category = this.addItem('All', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
+			this.menuItems[0].addItem('Dashboard', 		'/app/dashboard', 			'linecons-star');
+			this.menuItems[0].addItem('LTV Calculator', 		'/app/ltvcalculator', 			'linecons-star');
+			this.menuItems[0].addItem('Pull Activities', 		'/app/pullactivities', 			'linecons-star');
+			this.menuItems[0].addItem('Player Game State', 		'/app/gamestate', 			'linecons-database');
+			this.menuItems[0].addItem('Tribes', 		'/app/tribes', 			'linecons-shop');
+			this.menuItems[0].addItem('Time Zone', 		'/app/timezone', 			'linecons-clock');
+			this.menuItems[0].addItem('Text String', 		'/app/textstring', 			'linecons-globe');
+			this.menuItems[0].addItem('Profanity (Text)', 		'/app/profanity', 			'linecons-fire');
+			this.menuItems[0].addItem('Publish News', 		'/app/news', 			'linecons-note');
+			this.menuItems[0].addItem('IAP Data', '/app/analysis-IAP', 'linecons-database');
+			this.menuItems[0].addItem('Players Data', '/app/analysis-DAU', 'linecons-database');
+			this.menuItems[0].addItem('Adjust Callback Data', 'app/analysis-adjustcallback', 'linecons-database');
+			this.menuItems[0].addItem('Game Data (Static)', 		'/agamesettingspp/gamedata', 			'linecons-database');
+			this.menuItems[0].addItem('Game Settings', 		'/app/', 			'linecons-cog');
+			this.menuItems[0].addItem('Bundle', 		'/app/bundle', 			'linecons-photo');
 			return this.menuItems;
+			// return this.menuItems[0].menuItems.splice(0,1);
 		};
 
-		this.getMenuForCustomerAgent = function() {
-			return this.menuItems.splice(0,1);
+		this.getMenuForProductManager = function() {
+			var category = this.addItem('Product Manager', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
+			this.menuItems[0].addItem('Player Game State', 		'/app/gamestate', 			'linecons-star');
+			this.menuItems[0].addItem('Tribes', 		'/app/tribes', 			'linecons-shop');
+			this.menuItems[0].addItem('Time Zone', 		'/app/timezone', 			'linecons-clock');
+			this.menuItems[0].addItem('Text String', 		'/app/textstring', 			'linecons-globe');
+			this.menuItems[0].addItem('Profanity (Text)', 		'/app/profanity', 			'linecons-fire');
+			this.menuItems[0].addItem('Publish News', 		'/app/news', 			'linecons-note');
+			this.menuItems[0].addItem('IAP Data', '/app/analysis-IAP', 'linecons-database');
+			this.menuItems[0].addItem('Players Data', '/app/analysis-DAU', 'linecons-database');
+			this.menuItems[0].addItem('Adjust Callback Data', 'app/analysis-adjustcallback', 'linecons-database');
+			this.menuItems[0].addItem('Game Data (Static)', 		'/agamesettingspp/gamedata', 			'linecons-database');
+			return this.menuItems;
+		};
+		this.getMenuForComunityManager = function() {
+			var category = this.addItem('Comunity Manager', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
+			this.menuItems[0].addItem('Player Game State', 		'/app/gamestate', 			'linecons-star');
+			this.menuItems[0].addItem('Tribes', 		'/app/tribes', 			'linecons-shop');
+			this.menuItems[0].addItem('Time Zone', 		'/app/timezone', 			'linecons-clock');
+			return this.menuItems;
 		};
 		this.getMenuForInvestigatingQA = function() {
-			return this.menuItems.splice(1,1);
-		};
-		this.getMenuForAnalysis = function() {
-			return this.menuItems.splice(2,1);
-		};
-		this.getMenuForDesigner = function() {
-			return this.menuItems.splice(3,1);
+			var category = this.addItem('Investigating QA', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
+			this.menuItems[0].addItem('Text String', 		'/app/textstring', 			'linecons-globe');
+			this.menuItems[0].addItem('Profanity (Text)', 		'/app/profanity', 			'linecons-fire');
+			this.menuItems[0].addItem('Publish News', 		'/app/news', 			'linecons-note');
+			this.menuItems[0].addItem('Game Settings', 		'/app/', 			'linecons-cog');
+			return this.menuItems;
 		};
 		this.getMenuForEngineer = function() {
-			return this.menuItems.splice(4,1);
+			var category = this.addItem('Engineer', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
+			this.menuItems[0].addItem('Text String', 		'/app/textstring', 			'linecons-globe');
+			this.menuItems[0].addItem('Profanity (Text)', 		'/app/profanity', 			'linecons-fire');
+			this.menuItems[0].addItem('Publish News', 		'/app/news', 			'linecons-note');
+			this.menuItems[0].addItem('Bundle', 		'/app/bundle', 			'linecons-photo');
+			this.menuItems[0].addItem('Game Settings', 		'/app/', 			'linecons-cog');
+			return this.menuItems;
 		};
 
 		this.prepareSidebarMenu = function()
 		{
-//			var dashboard    = this.addItem('Dashboard', 		'/app/dashboard', 			'linecons-cog');
-//			var layouts      = this.addItem('Layout & Skins',	'/app/layout-and-skins',	'linecons-desktop');
-//			var ui_elements  = this.addItem('UI Elements', 		'/app/ui', 					'linecons-note');
-//			var widgets  	 = this.addItem('Widgets', 			'/app/widgets', 			'linecons-star');
-//			var mailbox  	 = this.addItem('Mailbox', 			'/app/mailbox', 			'linecons-mail').setLabel('5', 'secondary', false);
-//			var tables  	 = this.addItem('Tables', 			'/app/tables', 				'linecons-database');
-//			var forms  	 	 = this.addItem('Forms', 			'/app/forms', 				'linecons-params');
-//			var extra  	 	 = this.addItem('Extra', 			'/app/extra', 				'linecons-beaker').setLabel('New Items', 'purple');
-//			var charts  	 = this.addItem('Charts', 			'/app/charts', 				'linecons-globe');
-//			var menu_lvls  	 = this.addItem('Menu Levels', 		'', 						'linecons-cloud');
-			var customer_service = this.addItem('For Customer Agent', '/app/cs', 'linecons-star');
-			var investigate_qa = this.addItem('For Investigating QA', '/app/ia', 'linecons-star');
-			var analysis = this.addItem('For Analysis', '/app/analysis', 'linecons-star');
-			var designer = this.addItem('For Designer', '/app/gd', 'linecons-star');
-			var engineer = this.addItem('For Engineers', '/app/eng', 'linecons-star');
-			customer_service.isOpen = true;
-			investigate_qa.isOpen = true;
-			analysis.isOpen = true;
-			designer.isOpen = true;
-			engineer.isOpen = true;
-			customer_service.isActive = true;
-			investigate_qa.isActive = true;
-			analysis.isActive = true;
-			designer.isActive = true;
-			engineer.isActive = true;
-			customer_service.addItem('Player Game State', 		'/app/gamestate', 			'linecons-star');
-			customer_service.addItem('Tribes', 		'/app/tribes', 			'linecons-shop');
-			customer_service.addItem('Time Zone', 		'/app/timezone', 			'linecons-clock');
-			investigate_qa.addItem('Text String', 		'/app/textstring', 			'linecons-globe');
-			investigate_qa.addItem('Profanity (Text)', 		'/app/profanity', 			'linecons-fire');
-			investigate_qa.addItem('Publish News', 		'/app/news', 			'linecons-note');
-//			var download_data = analysis.addItem('Download Data', 		'/app/downloaddata', 			'linecons-note');
-			designer.addItem('Game Data (Static)', 		'/app/gamedata', 			'linecons-database');
-			engineer.addItem('Bundle', 		'/app/bundle', 			'linecons-photo');
-			engineer.addItem('Game Settings', 		'/app/gamesettings', 			'linecons-cog');
-//			engineer.addItem('Send Email', 		'/app/sendemail', 			'linecons-mail');
-//			engineer.addItem('Send Notification', 		'/app/notification', 			'linecons-comment');
-			var users_management    = this.addItem('Users Management', 		'/app/usersmanagement', 			'linecons-user');
-
-			// Subitems of Download data
-				analysis.addItem('IAP Data', '-/IAP', 'linecons-database');
-				analysis.addItem('Players Data', '-/DAU', 'linecons-database');
-				analysis.addItem('Adjust Callback Data', '-/adjustcallback', 'linecons-database');
-
-			// Subitems of Game Settings
-
-			// Subitems of Game Data
-//				game_data.addItem('Campaign', '-/campaign');
-//				game_data.addItem('Combat Units', '-/combatunits');
-//				game_data.addItem('Unit Levels', '-/unitlevel');
-//				game_data.addItem('Defensive Building', '-/defbuilding');
-//				game_data.addItem('Defensive Buildings level', '-/defbuildinglvl');
-//				game_data.addItem('Resources Building Variables', '-/resbuildingvariable');
-//				game_data.addItem('Army Buildings', '-/armybuilding');
-//				game_data.addItem('Other Buildings', '-/otherbuilding');
-//				game_data.addItem('Town Hall Level', '-/townhalllvl');
-//				game_data.addItem('Decoration', '-/decor');
-//				game_data.addItem('Spell', '-/spell');
-//				game_data.addItem('Spell Level', '-/spelllvl');
-//				game_data.addItem('Obstacles', '-/obstacle');
-//				game_data.addItem('Trophy', '-/trophy');
-//				game_data.addItem('Achievement', '-/achievement');
-//				game_data.addItem('Settings', '-/settings');
-//				game_data.addItem('Purchases', '-/purchases');
-
-
-				// Subitems of Dashboard
-//				dashboard.addItem('Dashboard 1', 	'-/variant-1'); // "-/" will append parents link
-//				dashboard.addItem('Dashboard 2', 	'-/variant-2');
-//				dashboard.addItem('Dashboard 3', 	'-/variant-3');
-//				dashboard.addItem('Dashboard 4', 	'-/variant-4');
-//				dashboard.addItem('Update Hightlights', '/app/update-highlights').setLabel('v1.3', 'pink');
-
-
-				// Subitems of UI Elements
-//				ui_elements.addItem('Panels', 				'-/panels');
-//				ui_elements.addItem('Buttons', 				'-/buttons');
-//				ui_elements.addItem('Tabs & Accordions', 	'-/tabs-accordions');
-//				ui_elements.addItem('Modals', 				'-/modals');
-//				ui_elements.addItem('Breadcrumbs', 			'-/breadcrumbs');
-//				ui_elements.addItem('Blockquotes', 			'-/blockquotes');
-//				ui_elements.addItem('Progress Bars', 		'-/progress-bars');
-//				ui_elements.addItem('Navbars', 				'-/navbars');
-//				ui_elements.addItem('Alerts', 				'-/alerts');
-//				ui_elements.addItem('Pagination', 			'-/pagination');
-//				ui_elements.addItem('Typography', 			'-/typography');
-//				ui_elements.addItem('Other Elements', 		'-/other-elements');
-
-
-				// Subitems of Mailbox
-//				mailbox.addItem('Inbox', 			'-/inbox');
-//				mailbox.addItem('Compose Message', 	'-/compose');
-//				mailbox.addItem('View Message', 	'-/message');
-
-
-				// Subitems of Tables
-//				tables.addItem('Basic Tables',		'-/basic');
-//				tables.addItem('Responsive Tables',	'-/responsive');
-//				tables.addItem('Data Tables',		'-/datatables');
-
-
-				// Subitems of Forms
-//				forms.addItem('Native Elements',		'-/native');
-//				forms.addItem('Advanced Plugins',		'-/advanced');
-//				forms.addItem('Form Wizard',			'-/wizard');
-//				forms.addItem('Form Validation',		'-/validation');
-//				forms.addItem('Input Masks',			'-/input-masks');
-//				forms.addItem('File Upload',			'-/file-upload');
-//				forms.addItem('Editors',				'-/wysiwyg');
-//				forms.addItem('Sliders',				'-/sliders');
-
-
-				// Subitems of Extra
-//				var extra_icons = extra.addItem('Icons', 	'-/icons');
-//				var extra_maps  = extra.addItem('Maps', 	'-/maps');
-//				var members 	= extra.addItem('Members', 	'-/members').setLabel('New', 'warning');
-//				extra.addItem('Gallery', 					'-/gallery');
-//				extra.addItem('Calendar', 					'-/calendar');
-//				extra.addItem('Profile', 					'-/profile');
-//				extra.addItem('Login', 						'/login');
-//				extra.addItem('Lockscreen', 				'/lockscreen');
-//				extra.addItem('Login Light', 				'/login-light');
-//				extra.addItem('Timeline', 					'-/timeline');
-//				extra.addItem('Timeline Centered', 			'-/timeline-centered');
-//				extra.addItem('Notes', 						'-/notes');
-//				extra.addItem('Image Crop', 				'-/image-crop');
-//				extra.addItem('Portlets', 					'-/portlets');
-//				extra.addItem('Blank Page', 				'-/blank-page');
-//				extra.addItem('Search', 					'-/search');
-//				extra.addItem('Invoice', 					'-/invoice');
-//				extra.addItem('404 Page', 					'-/page-404');
-//				extra.addItem('Tocify', 					'-/tocify');
-//				extra.addItem('Loading Progress', 			'-/loading-progress');
-//				//extra.addItem('Page Loading Overlay', 		'-/page-loading-overlay'); NOT SUPPORTED IN ANGULAR
-//				extra.addItem('Notifications', 				'-/notifications');
-//				extra.addItem('Nestable Lists', 			'-/nestable-lists');
-//				extra.addItem('Scrollable', 				'-/scrollable');
-
-					// Submenu of Extra/Icons
-//					extra_icons.addItem('Font Awesome', 	'-/font-awesome');
-//					extra_icons.addItem('Linecons', 		'-/linecons');
-//					extra_icons.addItem('Elusive', 			'-/elusive');
-//					extra_icons.addItem('Meteocons', 		'-/meteocons');
-
-					// Submenu of Extra/Maps
-//					extra_maps.addItem('Google Maps', 		'-/google');
-//					extra_maps.addItem('Advanced Map', 		'-/advanced');
-//					extra_maps.addItem('Vector Map', 		'-/vector');
-
-					// Submenu of Members
-//					members.addItem('Members List', '-/list');
-//					members.addItem('Add Member', '-/add');
-
-
-				// Subitems of Charts
-//				charts.addItem('Chart Variants', 		'-/variants');
-//				charts.addItem('Range Selector', 		'-/range-selector');
-//				charts.addItem('Sparklines', 			'-/sparklines');
-//				charts.addItem('Map Charts', 			'-/map-charts');
-//				charts.addItem('Circular Gauges', 		'-/gauges');
-//				charts.addItem('Bar Gauges', 			'-/bar-gauges');
-
-
-
-				// Subitems of Menu Levels
-//				var menu_lvl1 = menu_lvls.addItem('Menu Item 1.1');  // has to be referenced to add sub menu elements
-//				menu_lvls.addItem('Menu Item 1.2');
-//				menu_lvls.addItem('Menu Item 1.3');
-
-					// Sub Level 2
-//					menu_lvl1.addItem('Menu Item 2.1');
-//					var menu_lvl2 = menu_lvl1.addItem('Menu Item 2.2'); // has to be referenced to add sub menu elements
-//					menu_lvl1.addItem('Menu Item 2.3');
-
-						// Sub Level 3
-//						menu_lvl2.addItem('Menu Item 3.1');
-//						menu_lvl2.addItem('Menu Item 3.2');
-
-
+			//new design
+			var category = this.addItem('Category', '/app/cs', 'linecons-star');
+			category.isOpen = true;
+			category.isActive = true;
 			return this;
 		};
-
-		this.prepareHorizontalMenu = function()
-		{
-			var dashboard    = this.addItem('Dashboard', 		'/app/dashboard', 			'linecons-cog');
-			var layouts      = this.addItem('Layout',			'/app/layout-and-skins',	'linecons-desktop');
-			var ui_elements  = this.addItem('UI Elements', 		'/app/ui', 					'linecons-note');
-			var forms  	 	 = this.addItem('Forms', 			'/app/forms', 				'linecons-params');
-			var other  	 	 = this.addItem('Other', 			'/app/extra', 				'linecons-beaker');
-
-
-				// Subitems of Dashboard
-				dashboard.addItem('Dashboard 1', 	'-/variant-1'); // "-/" will append parents link
-				dashboard.addItem('Dashboard 2', 	'-/variant-2');
-				dashboard.addItem('Dashboard 3', 	'-/variant-3');
-				dashboard.addItem('Dashboard 4', 	'-/variant-4');
-
-
-				// Subitems of UI Elements
-				ui_elements.addItem('Panels', 				'-/panels');
-				ui_elements.addItem('Buttons', 				'-/buttons');
-				ui_elements.addItem('Tabs & Accordions', 	'-/tabs-accordions');
-				ui_elements.addItem('Modals', 				'-/modals');
-				ui_elements.addItem('Breadcrumbs', 			'-/breadcrumbs');
-				ui_elements.addItem('Blockquotes', 			'-/blockquotes');
-				ui_elements.addItem('Progress Bars', 		'-/progress-bars');
-				ui_elements.addItem('Navbars', 				'-/navbars');
-				ui_elements.addItem('Alerts', 				'-/alerts');
-				ui_elements.addItem('Pagination', 			'-/pagination');
-				ui_elements.addItem('Typography', 			'-/typography');
-				ui_elements.addItem('Other Elements', 		'-/other-elements');
-
-
-				// Subitems of Forms
-				forms.addItem('Native Elements',		'-/native');
-				forms.addItem('Advanced Plugins',		'-/advanced');
-				forms.addItem('Form Wizard',			'-/wizard');
-				forms.addItem('Form Validation',		'-/validation');
-				forms.addItem('Input Masks',			'-/input-masks');
-				forms.addItem('File Upload',			'-/file-upload');
-				forms.addItem('Editors',				'-/wysiwyg');
-				forms.addItem('Sliders',				'-/sliders');
-
-
-				// Subitems of Others
-				var widgets     = other.addItem('Widgets', 			'/app/widgets', 			'linecons-star');
-				var mailbox     = other.addItem('Mailbox', 			'/app/mailbox', 			'linecons-mail').setLabel('5', 'secondary', false);
-				var tables      = other.addItem('Tables', 			'/app/tables', 				'linecons-database');
-				var extra       = other.addItem('Extra', 			'/app/extra', 				'linecons-beaker').setLabel('New Items', 'purple');
-				var charts      = other.addItem('Charts', 			'/app/charts', 				'linecons-globe');
-				var menu_lvls   = other.addItem('Menu Levels', 		'', 						'linecons-cloud');
-
-
-					// Subitems of Mailbox
-					mailbox.addItem('Inbox', 			'-/inbox');
-					mailbox.addItem('Compose Message', 	'-/compose');
-					mailbox.addItem('View Message', 	'-/message');
-
-
-					// Subitems of Tables
-					tables.addItem('Basic Tables',		'-/basic');
-					tables.addItem('Responsive Tables',	'-/responsive');
-					tables.addItem('Data Tables',		'-/datatables');
-
-
-					// Subitems of Extra
-					var extra_icons = extra.addItem('Icons', 	'-/icons').setLabel(4, 'warning');
-					var extra_maps  = extra.addItem('Maps', 	'-/maps');
-					extra.addItem('Gallery', 					'-/gallery');
-					extra.addItem('Calendar', 					'-/calendar');
-					extra.addItem('Profile', 					'-/profile');
-					extra.addItem('Login', 						'/login');
-					extra.addItem('Lockscreen', 				'/lockscreen');
-					extra.addItem('Login Light', 				'/login-light');
-					extra.addItem('Timeline', 					'-/timeline');
-					extra.addItem('Timeline Centered', 			'-/timeline-centered');
-					extra.addItem('Notes', 						'-/notes');
-					extra.addItem('Image Crop', 				'-/image-crop');
-					extra.addItem('Portlets', 					'-/portlets');
-					extra.addItem('Blank Page', 				'-/blank-page');
-					extra.addItem('Search', 					'-/search');
-					extra.addItem('Invoice', 					'-/invoice');
-					extra.addItem('404 Page', 					'-/page-404');
-					extra.addItem('Tocify', 					'-/tocify');
-					extra.addItem('Loading Progress', 			'-/loading-progress');
-					//extra.addItem('Page Loading Overlay', 		'-/page-loading-overlay'); NOT SUPPORTED IN ANGULAR
-					extra.addItem('Notifications', 				'-/notifications');
-					extra.addItem('Nestable Lists', 			'-/nestable-lists');
-					extra.addItem('Scrollable', 				'-/scrollable');
-
-						// Submenu of Extra/Icons
-						extra_icons.addItem('Font Awesome', 	'-/font-awesome');
-						extra_icons.addItem('Linecons', 		'-/linecons');
-						extra_icons.addItem('Elusive', 			'-/elusive');
-						extra_icons.addItem('Meteocons', 		'-/meteocons');
-
-						// Submenu of Extra/Maps
-						extra_maps.addItem('Google Maps', 		'-/google');
-						extra_maps.addItem('Advanced Map', 		'-/advanced');
-						extra_maps.addItem('Vector Map', 		'-/vector');
-
-
-					// Subitems of Charts
-					charts.addItem('Chart Variants', 		'-/variants');
-					charts.addItem('Range Selector', 		'-/range-selector');
-					charts.addItem('Sparklines', 			'-/sparklines');
-					charts.addItem('Map Charts', 			'-/map-charts');
-					charts.addItem('Circular Gauges', 		'-/gauges');
-					charts.addItem('Bar Gauges', 			'-/bar-gauges');
-
-
-
-					// Subitems of Menu Levels
-					var menu_lvl1 = menu_lvls.addItem('Menu Item 1.1');  // has to be referenced to add sub menu elements
-					menu_lvls.addItem('Menu Item 1.2');
-					menu_lvls.addItem('Menu Item 1.3');
-
-						// Sub Level 2
-						menu_lvl1.addItem('Menu Item 2.1');
-						var menu_lvl2 = menu_lvl1.addItem('Menu Item 2.2'); // has to be referenced to add sub menu elements
-						menu_lvl1.addItem('Menu Item 2.3');
-
-							// Sub Level 3
-							menu_lvl2.addItem('Menu Item 3.1');
-							menu_lvl2.addItem('Menu Item 3.2');
-
-			return this;
-		}
 
 		this.instantiate = function()
 		{
