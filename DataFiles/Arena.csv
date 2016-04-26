@@ -1,0 +1,10 @@
+Type,Name,Troophy,Sprite,OrderName,MatchMin,MatchMax
+TrainingCamp,Training Camp,0,arena1,Training Camp,0,0
+Arena1,Goblin Stadium,0,arena1,Arena 1,-200,200
+Arena2,Bone Pit,400,arena2,Arena 2,-200,200
+Arena3,Barbarian Bowl,800,arena3,Arena 3,-300,300
+Arena4,P.E.K.K.A's Playhouse,1100,arena4,Arena 4,-350,350
+Arena5,Spell Valley,1400,arena5,Arena 5,-350,350
+Arena6,Builder's Workshop,1700,arena6,Arena 6,-350,350
+Arena7,Royal Arena,2000,arena7,Arena 7,-350,350
+Arena8,Legendary Arena,3000,arena8,Arena 8,-350,350

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
-import views.html.playersdata;
+import com.sgs.lumba.t5.views.html.playersdata;
 
 public class PlayersDataController extends Controller{
   public Result playersData() {

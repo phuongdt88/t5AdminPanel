@@ -1,80 +1,86 @@
 package controllers;
 
-import com.mongodb.WriteResult;
 import models.AdminUser;
-import org.jongo.MongoCursor;
 import org.json.JSONObject;
-import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import com.sgs.lumba.t5.models.Admin;
 
 import java.text.DecimalFormat;
-import java.util.function.Consumer;
 import views.html.*;
 
 import org.apache.commons.mail.*;
 
-/**
- * Created by phuongdt1 on 8/24/15.
- */
+
 public class UsersManagementController extends Controller{
 
-  public Result getAdminUserList() {
-    Logger.info("vao function");
+  public Result GetAdminUserInfo() throws SQLException{
     JSONObject resData = new JSONObject();
-    MongoCursor<AdminUser> users = AdminUser.getAllUsers();
-    if(users.count() > 0) {
-      users.forEach(new Consumer<AdminUser>() {
-        int userId;
-        String username;
-        String email;
-        String password;
-        int role;
-
-        @Override
-        public void accept(AdminUser adminUser) {
-          userId = adminUser.getUserId();
-          username = adminUser.getUsername();
-          email = adminUser.getEmail();
-          password = adminUser.getPassword();
-          role = adminUser.getRole();
-          JSONObject userInfo = new JSONObject();
-          userInfo.put("userId", userId);
-          userInfo.put("username", username);
-          userInfo.put("email", email);
-          userInfo.put("password", password);
-          userInfo.put("role", role);
-          resData.append("userInfo", userInfo);
-        }
-      });
+    ResultSet rs = Admin.GetUsersInfo();
+//    if (rs.first()) {
+    while (rs.next()) {
+      JSONObject userInfo = new JSONObject();
+      userInfo.put("userId", rs.getInt("id"));
+      userInfo.put("username", rs.getString("username"));
+      userInfo.put("email", rs.getString("email"));
+      userInfo.put("password", rs.getString("password"));
+      userInfo.put("role", rs.getString("role"));
+      userInfo.put("timezone", rs.getString("timezone"));
+      resData.append("userInfo", userInfo);
     }
-    Logger.info(resData.toString());
+//    }
+
+    rs.close();
+    Admin.CloseStatement();
     return ok(usersmanagement.render(resData.toString()));
   }
 
-  public Result addAdminAccount() {
+  public Result AddAdminAccount() throws SQLException {
     DynamicForm data = Form.form().bindFromRequest();
     String username = data.get("username");
     String email = data.get("email");
     String password = data.get("password");
     int role = Integer.parseInt(data.get("role"));
+    int timezone = Integer.parseInt(data.get("timezone"));
 
-    DecimalFormat fmt = new DecimalFormat("00000000");
-    int userId = Integer.parseInt(fmt.format((int) (Math.random() * (99999999 - 3) + 3)));
+//    DecimalFormat fmt = new DecimalFormat("00000000");
+//    int userId = Integer.parseInt(fmt.format((int) (Math.random() * (99999999 - 3) + 3)));
 
-    AdminUser findUsername = AdminUser.getUserInfoByName(username);
-    AdminUser findEmail = AdminUser.getUserInfoByEmail(email);
-    if(findUsername != null)
+    ResultSet findUsername = Admin.GetUserInfoByName(username);
+    ResultSet findEmail = Admin.GetUserInfoByEmail(email);
+    if (findUsername.first())
     {
       return ok("0");
-    } else if(findEmail != null) {
+    } else if (findEmail.first()) {
       return ok("1");
     } else {
-      WriteResult adminUser = AdminUser.addAccount(userId, username, email, password, role);
-      return ok("2");
+      int rs = Admin.AddAdminAccount(username, password, email, role, timezone);
+      if (rs != 0) {
+        return ok("2");
+      }
+      return ok ("3");
     }
+  }
+
+  public Result UpdateAdminAccount() throws SQLException{
+    DynamicForm data = Form.form().bindFromRequest();
+    int id = Integer.parseInt(data.get("id"));
+    String username = data.get("username");
+    String email = data.get("email");
+    int role = Integer.parseInt(data.get("role"));
+    int rs = Admin.UpdateAccountInfo(id, username, email, role);
+
+    JSONObject resData = new JSONObject();
+    if (rs == 0){
+      resData.put("result", false);
+    } else {
+      resData.put("result", true);
+    }
+    return ok(resData.toString());
   }
 
   public Result updateUsername() {
@@ -123,13 +129,18 @@ public class UsersManagementController extends Controller{
   public Result getUserData() {
     DynamicForm data = Form.form().bindFromRequest();
     String username = data.get("username");
-    AdminUser adminUser = AdminUser.getUserInfoByName(username);
+    // AdminUser adminUser = AdminUser.getUserInfoByName(username);
     JSONObject resData = new JSONObject();
     JSONObject userInfo = new JSONObject();
-    if(adminUser != null) {
-      userInfo.put("role", adminUser.getRole());
-      userInfo.put("timezone", adminUser.getTimezone());
-      resData.put("userInfo", userInfo);
+    try {
+      ResultSet results = Admin.GetUser(username);
+      if(results.first()) {
+        userInfo.put("role", results.getInt("role"));
+        userInfo.put("timezone", results.getInt("timezone"));
+        resData.put("userInfo", userInfo);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     return ok(resData.toString());
   }
@@ -149,6 +160,7 @@ public class UsersManagementController extends Controller{
 //    email.setMsg(message);
 //    email.addTo(receiverEmail);
 //    email.send();
+    System.out.println("send email");
     return ok("sent");
   }
 

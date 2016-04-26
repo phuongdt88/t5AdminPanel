@@ -10,7 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import java.io.FileWriter;
 import java.util.Date;
-import views.html.textstring;
+import com.sgs.lumba.t5.views.html.textstring;
 
 
 public class TextStringController extends Controller{

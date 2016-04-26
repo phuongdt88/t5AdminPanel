@@ -22,8 +22,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../target/native_libraries" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/test-reports" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/universal" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/web" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -169,5 +167,7 @@
     <orderEntry type="library" name="SBT: xml-apis:xml-apis:1.4.01:jar" level="project" />
     <orderEntry type="library" name="SBT: mysql:mysql-connector-java:5.1.34:jar" level="project" />
     <orderEntry type="library" name="SBT: mysql:mysql-connector-java:5.1.18:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.opencsv:opencsv:3.7:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.6:jar" level="project" />
   </component>
 </module>

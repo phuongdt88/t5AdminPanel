@@ -5,7 +5,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.gamesettings;
+import com.sgs.lumba.t5.views.html.gamesettings;
 
 public class GameSettingsController extends Controller {
 

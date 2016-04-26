@@ -5,25 +5,27 @@ import org.json.JSONObject;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.*;
-import views.html.login;
+import com.sgs.lumba.t5.views.html.login;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
 public class LoginController extends Controller{
 
-  public Result Login() {
-      return ok(login.render());
+  public Result Login() throws IOException{
+    return ok(login.render());
   }
 
-  public Result CheckLogin() {
+  public Result CheckLogin() throws SQLException{
     DynamicForm data = Form.form().bindFromRequest();
     String username = data.get("username");
     String password = data.get("password");
     JSONObject resData = new JSONObject();
+    ResultSet results = null;
     try {
-      ResultSet results = Admin.GetUser(username, password);
+      results = Admin.GetUser(username, password);
       if(results.first()) {
         resData.put("result", true);
       }
@@ -32,6 +34,10 @@ public class LoginController extends Controller{
       }
     } catch (SQLException e) {
       e.printStackTrace();
+    }
+    finally {
+      results.close();;
+      Admin.CloseStatement();
     }
     return ok(resData.toString());
   }

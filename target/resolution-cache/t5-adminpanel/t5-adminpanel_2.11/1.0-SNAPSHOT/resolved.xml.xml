@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="t5-adminpanel"
+		module="t5-adminpanel_2.11"
+		revision="1.0-SNAPSHOT"
+		status="integration"
+		publication="20160421102511"
+	>
+		<description>
+		t5-adminpanel
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="private" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+	</configurations>
+	<publications>
+		<artifact name="t5-adminpanel_2.11" type="pom" ext="pom" conf="pom"/>
+		<artifact name="t5-adminpanel_2.11" type="jar" ext="jar" conf="compile"/>
+		<artifact name="t5-adminpanel_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<artifact name="t5-adminpanel_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.6" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.6" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="twirl-api_2.11" rev="1.1.1" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-enhancer" rev="1.1.0" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-server_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-test_2.11" rev="2.4.2" conf="test->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-omnidoc_2.11" rev="2.4.2" conf="docs->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-java_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-netty-server_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-java-jdbc_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-cache_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-java-ws_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="org.json" name="json" rev="20141113" conf="compile->default(compile)"/>
+		<dependency org="uk.co.panaxiom" name="play-jongo_2.11" rev="0.8.0-jongo1.2" conf="compile->default(compile)"/>
+		<dependency org="com.google.gdata" name="core" rev="1.47.1" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-json_2.11" rev="2.4.2" conf="compile->default(compile)"/>
+		<dependency org="com.google.api-client" name="google-api-client" rev="1.20.0" conf="compile->default(compile)"/>
+		<dependency org="com.google.oauth-client" name="google-oauth-client-jetty" rev="1.20.0" conf="compile->default(compile)"/>
+		<dependency org="com.google.apis" name="google-api-services-drive" rev="v2-rev170-1.20.0" conf="compile->default(compile)"/>
+		<dependency org="com.google.http-client" name="google-http-client-jackson" rev="1.19.0" conf="compile->default(compile)"/>
+		<dependency org="net.sf.opencsv" name="opencsv" rev="2.3" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-mailer_2.11" rev="3.0.1" conf="compile->default(compile)"/>
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.18" conf="compile->default(compile)"/>
+		<dependency org="com.opencsv" name="opencsv" rev="3.7" conf="compile->default(compile)"/>
+		<override org="org.scala-lang" module="scala-library" matcher="exact" rev="2.11.6"/>
+		<override org="org.scala-lang" module="scala-compiler" matcher="exact" rev="2.11.6"/>
+		<override org="org.scala-lang" module="scala-reflect" matcher="exact" rev="2.11.6"/>
+	</dependencies>
+</ivy-module>

@@ -46,14 +46,47 @@
             <div class="col-sm-10">
               <select class="form-control" id="roleSelect" name="roleSelect" data-validate="number" style="width:20%">
                 <option value="0">Root Admin</option>
-                <option value="1">Customer Agent</option>
-                <option value="2">Investigating QA</option>
-                <option value="3">Analysis</option>
-                <option value="4">Designer</option>
-                <option value="5">Engineer</option>
+                <option value="1">Product Manager</option>
+                <option value="2">Community Manager</option>
+                <option value="3">QA</option>
+                <option value="4">Engineer</option>
               </select>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >TimeZone</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="timezoneSelect" name="timezoneSelect" data-validate="number" style="width:20%">
+                <option value="-12">GMT-12</option>
+                <option value="-11">GMT-11</option>
+                <option value="-10">GMT-10</option>
+                <option value="-9">GMT-9</option>
+                <option value="-8">GMT-8</option>
+                <option value="-7">GMT-7</option>
+                <option value="-6">GMT-6</option>
+                <option value="-5">GMT-5</option>
+                <option value="-4">GMT-4</option>
+                <option value="-3">GMT-3</option>
+                <option value="-2">GMT-2</option>
+                <option value="-1">GMT-1</option>
+                <option value="0">GMT+0</option>
+                <option value="1">GMT+1</option>
+                <option value="2">GMT+2</option>
+                <option value="3">GMT+3</option>
+                <option value="4">GMT+4</option>
+                <option value="5">GMT+5</option>
+                <option value="6">GMT+6</option>
+                <option value="7">GMT+7</option>
+                <option value="8">GMT+8</option>
+                <option value="9">GMT+9</option>
+                <option value="10">GMT+10</option>
+                <option value="11">GMT+11</option>
+                <option value="12">GMT+12</option>
+              </select>
+            </div>
+          </div>
+
 
           <button class="btn btn-turquoise" id="createAcc" style="width:17%;margin-left:17%">Create</button>
         </form>
@@ -89,9 +122,10 @@
         <tr>
           <th style="width:10%">ID</th>
           <th style="width:15%">Name</th>
-          <th style="width:25%">Email</th>
-          <th style="width:20%">Password</th>
+          <th style="width:15%">Email</th>
+          <!-- <th style="width:20%">Password</th> -->
           <th style="width:10%">Role</th>
+          <th style="width:10%">Time Zone</th>
           <th style="width:25%">Action</th>
         </tr>
         </thead>
@@ -142,6 +176,65 @@
               </div>
             </div>
             <button class="btn btn-success" id="sendEmailBtn" style="margin-left:17%">Send</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editAccSection">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit Account</h3>
+          <div class="panel-options">
+            <a href="" data-toggle="panel">
+              <span class="collapse-icon">&ndash;</span>
+              <span class="expand-icon">+</span>
+            </a>
+            <a href="" data-toggle="remove">
+              &times;
+            </a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <form role="form" class="form-horizontal validate" id="editAdminAccForm" name="editAdminAccForm" method="post">
+            <input type="hidden" class="form-control" id="hiddenUserId" name="hiddenUserId" data-validate="required" >
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="username">Username</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="newUsername" name="newUsername" data-validate="required" data-message-required="Please enter an username" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="email">Email</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="newEmail" name="newEmail" data-validate="email,required" data-message-required="Please enter a valid Email"  >
+              </div>
+            </div>
+  <!--           <div class="form-group">
+              <label class="col-sm-2 control-label" for="password">Password</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="newPassword" name="newPassword" data-validate="required,minlength[6]" data-message-required="Please enter a password" >
+              </div>
+            </div> -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label" >Role</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="newRoleSelect" name="newRoleSelect" data-validate="number" style="width:20%">
+                  <option value="0">Root Admin</option>
+                  <option value="1">Product Manager</option>
+                  <option value="2">Community Manager</option>
+                  <option value="3">QA</option>
+                  <option value="4">Engineer</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn btn-turquoise" id="updateButton" style="width:17%;margin-left:17%">Update</button>
           </form>
 
         </div>

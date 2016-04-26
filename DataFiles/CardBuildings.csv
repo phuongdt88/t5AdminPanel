@@ -1,0 +1,11 @@
+Type,CardName,SpriteName,UnlockArena,Rarity,ManaCost,SummonTroopType,SummonNumber,CardStatistic
+Cannon,Cannon,temp_cannon,Arena3,Common,3,Cannon,1,"Hitpoint, DamagePerSecond, Damage, HitSpeed, Targets, Range, DeployTime, LifeTime"
+GoblinHut,Goblin Hut,temp_goblinhut,Arena1,Rare,5,GoblinHut,1,"Hitpoint, SummonUnitLevel, SpawnSpeed, DeployTime, LifeTime"
+Mortar,Mortal,temp_mortal,Arena6,Common,4,Mortar,1,"Hitpoint, DamagePerSecond, AreaDamage, HitSpeed, Targets, Range, DeployTime, LifeTime"
+InfernoTower,Inferno Tower,temp_infernotower,Arena4,Rare,5,InfernoTower,1,"Hitpoint, DamagePerSecond, Damage, HitSpeed, Targets, Range, DeployTime, LifeTime "
+BombTower,Bomb Tower,temp_bombtower,Arena2,Rare,5,BombTower,1,"Hitpoint, DamagePerSecond, AreaDamage, HitSpeed, Targets, Range, DeployTime, LifeTime"
+BarbarianHut,Barbarian Hut,temp_babarianhut,Arena3,Rare,7,BarbarianHut,1,"Hitpoint, SummonUnitLevel, SpawnSpeed, DeployTime, LifeTime"
+Tesla,Tesla,temp_tesla,Arena4,Common,4,Tesla,1,"Hitpoint, DamagePerSecond, Damage, HitSpeed, Targets, Range, DeployTime, LifeTime"
+ElixirCollector,Elixir Collector,temp_elixircollector,Arena6,Rare,5,ElixirCollector,1,"Hitpoint, ProductionSpeed, DeployTime, LifeTime"
+Xbow,X-Bow,temp_xbow,Arena3,Epic,6,Xbow,1,"Hitpoint, DamagePerSecond, Damage, HitSpeed, Targets, Range, DeployTime, LifeTime"
+Tombstone,Tombstone,temp_tombstone,Arena2,Rare,3,Tombstone,1,"Hitpoint, SummonUnitLevel, SpawnSpeed, DeployTime, LifeTime"

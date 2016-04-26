@@ -1,0 +1,10 @@
+Type,DeployTime,SightRange,Range,ChargeRange,Speed,HitSpeed,LoadTime,AttacksGround,AttacksAir,TargetOnlyBuildings,DeathDamageRadius,DeathPushBack,Pushback,IgnorePushback,CollisionRadius,Mass,SpawnStartTime,SpawnInterval,SpawnNumber,SpawnLimit,SpawnPauseTime,SpawnCharacterLevelIndex,SpawnCharacter,LifeTime,Radius,HealthBarOffsetY,DeployEffect
+Fireball,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,2500,0,0
+Arrows,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,4000,0,0
+Rage,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,5000,0,0
+Rocket,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,2000,0,0
+GoblinBarrel,0,0,0,0,0,0,0,TRUE,FALSE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,1500,0,0
+Freeze,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,3000,0,0
+Mirror,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,0,0,0
+Lightning,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,3500,0,0
+Zap,0,0,0,0,0,0,0,TRUE,TRUE,FALSE,0,0,0,TRUE,0,0,0,0,0,0,0,0,None,0,2500,0,0

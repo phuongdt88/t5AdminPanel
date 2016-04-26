@@ -11,7 +11,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.*;
-import views.html.gamestate;
+import com.sgs.lumba.t5.views.html.gamestate;
 
 import java.util.function.Consumer;
 

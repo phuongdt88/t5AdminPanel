@@ -10,7 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import java.io.FileWriter;
 import java.util.Date;
-import views.html.profanity;
+import com.sgs.lumba.t5.views.html.profanity;
 
 public class ProfanityController extends Controller{
   public Result profanity() {

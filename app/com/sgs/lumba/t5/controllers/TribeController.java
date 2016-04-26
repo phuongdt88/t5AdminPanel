@@ -10,7 +10,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import org.json.JSONObject;
-import views.html.tribe;
+import com.sgs.lumba.t5.views.html.tribe;
 
 import java.util.function.Consumer;
 

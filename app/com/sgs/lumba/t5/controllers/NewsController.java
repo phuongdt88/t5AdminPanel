@@ -6,7 +6,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.news;
+import com.sgs.lumba.t5.views.html.news;
 
 
 public class NewsController extends Controller {

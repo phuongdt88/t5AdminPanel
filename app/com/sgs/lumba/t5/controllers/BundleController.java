@@ -5,7 +5,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.bundle;
+import com.sgs.lumba.t5.views.html.bundle;
 
 public class BundleController extends Controller{
   public Result bundle() {

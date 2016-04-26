@@ -1,0 +1,10 @@
+Type,CardName,SpriteName,UnlockArena,Rarity,ManaCost,SummonTroopType,SummonNumber,CardStat
+Fireball,Fireball,temp_fireball,TrainingCamp,Rare,4,Fireball,1,"AreaDamage, CrownTowerDamage, Radius"
+Arrows,Arrows,temp_arrow,TrainingCamp,Common,3,Arrows,1,"AreaDamage, CrownTowerDamage, Radius"
+Rage,Rage,temp_rage,Arena3,Epic,3,Rage,1,"Duration, Radius"
+Rocket,Rocket,temp_rocket,Arena3,Rare,6,Rocket,1,"AreaDamage, CrownTowerDamage, Radius"
+GoblinBarrel,Goblin Barrel,temp_goblinbarrel,Arena1,Epic,4,GoblinBarrel,1,"AreaDamage, CrownTowerDamage, Radius, SummonUnitLevel, SummonUnitCount"
+Freeze,Freeze,temp_freeze,Arena4,Epic,4,Freeze,1,"Duration, Radius"
+Mirror,Mirror,temp_mirror,Arena5,Epic,1,Mirror,1,"MirroredCommonLevel, MirroredRareLevel, MirroredEpicLevel, MirroredLegendaryLevel"
+Lightning,Lightning,temp_lightning,Arena1,Epic,6,Lightning,1,"SummonUnitCount, Damage, CrownTowerDamage, Duration, Radius"
+Zap,Zap,temp_zap,Arena5,Common,2,Zap,1,"AreaDamage, CrownTowerDamage, Duration, Radius"
