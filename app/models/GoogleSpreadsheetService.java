@@ -1,9 +1,12 @@
 package models;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson.JacksonFactory;
+import com.google.api.services.drive.Drive;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
 import com.google.gdata.data.spreadsheet.SpreadsheetFeed;
@@ -11,11 +14,15 @@ import com.google.gdata.data.spreadsheet.WorksheetEntry;
 import com.google.gdata.util.ServiceException;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
 import com.google.gdata.data.spreadsheet.*;
 
 public class GoogleSpreadsheetService{
@@ -67,8 +74,7 @@ public class GoogleSpreadsheetService{
         URL listFeedUrl = worksheet.getListFeedUrl();
         ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
         for (ListEntry row : listFeed.getEntries()) {
-
-          String rowData ="";
+          String rowData = "";
 
           // Iterate over the remaining columns, and print each cell value
           int index = 0;
@@ -91,6 +97,90 @@ public class GoogleSpreadsheetService{
           worksheetData += rowData + "\n";
         }
         return worksheetData;
+      }
+    }
+    return null;
+  }
+
+  public static List<String[]> getWorksheetDataToList(String spreadsheetId, String worksheetName) throws IOException, GeneralSecurityException, ServiceException {
+
+    URL SPREADSHEET_FEED_URL;
+    SPREADSHEET_FEED_URL = new URL("https://spreadsheets.google.com/feeds/spreadsheets/private/full/"+spreadsheetId);
+
+    SpreadsheetService service = GoogleSpreadsheetService.getSpreadsheetService();
+
+    SpreadsheetEntry spreadsheet = null;
+    try {
+      spreadsheet = service.getEntry(SPREADSHEET_FEED_URL, SpreadsheetEntry.class);
+    } catch (IOException e){
+      e.printStackTrace();
+    }
+
+    // Make a request to the API to fetch information about all
+    // worksheets in the spreadsheet.
+    List<WorksheetEntry> worksheets = spreadsheet.getWorksheets();
+
+    for (WorksheetEntry worksheet : worksheets) {
+      String title = worksheet.getTitle().getPlainText();
+      if(title.startsWith(worksheetName)) {
+        List<String[]> worksheetData = new ArrayList<>();
+        URL listFeedUrl = worksheet.getListFeedUrl();
+        ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+        for (ListEntry row : listFeed.getEntries()) {
+          String rowData = "";
+          String[] rowDataArr;
+          // Iterate over the remaining columns, and print each cell value
+          int index = 0;
+          String cellData;
+
+          for (String tag : row.getCustomElements().getTags()) {
+
+            cellData = row.getCustomElements().getValue(tag);
+            if(cellData == null) {
+              cellData = "";
+            } else {
+              cellData = row.getCustomElements().getValue(tag);
+            }
+            cellData = cellData.replace("\n","\\n");
+            if(index < row.getCustomElements().getTags().size() - 1) {
+              rowData += cellData + "\t";
+            } else {
+              rowData += cellData;
+            }
+            index++;
+          }
+          rowDataArr = rowData.split("\t");
+          worksheetData.add(rowDataArr);
+        }
+        return worksheetData;
+      }
+    }
+    return null;
+  }
+
+  public static String[] GetWorkSheetHeader(String spreadsheetId, String worksheetName) throws IOException, GeneralSecurityException, ServiceException{
+    URL SPREADSHEET_FEED_URL;
+    SPREADSHEET_FEED_URL = new URL("https://spreadsheets.google.com/feeds/spreadsheets/private/full/"+spreadsheetId);
+
+    SpreadsheetService service = GoogleSpreadsheetService.getSpreadsheetService();
+
+    SpreadsheetEntry spreadsheet = null;
+    try {
+      spreadsheet = service.getEntry(SPREADSHEET_FEED_URL, SpreadsheetEntry.class);
+    } catch (IOException e){
+      e.printStackTrace();
+    }
+
+    // Make a request to the API to fetch information about all
+    // worksheets in the spreadsheet.
+    List<WorksheetEntry> worksheets = spreadsheet.getWorksheets();
+    for (WorksheetEntry worksheet : worksheets) {
+      String title = worksheet.getTitle().getPlainText();
+      if(title.startsWith(worksheetName)) {
+        URL listFeedUrl = worksheet.getListFeedUrl();
+        ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+        Set<String> header = listFeed.getEntries().get(0).getCustomElements().getTags();
+        return header.toArray(new String[header.size()]);
       }
     }
     return null;

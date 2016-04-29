@@ -1,19 +1,26 @@
 package com.sgs.lumba.t5.models;
 
 
+import com.google.gdata.util.ServiceException;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import models.GoogleSpreadsheetService;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.*;
 
 
 public class CSVReaderClass {
 
-  public static String [][] ReadCSV(String fileName) throws IOException {
-    String [][] output = new String [GetRowCount(fileName)][GetColumnCount(fileName)];
+  public static String [][] ReadCSV(String filePath) throws IOException {
+    String [][] output = new String [GetRowCount(filePath)][GetColumnCount(filePath)];
     CSVReader reader = null;
     try {
-      reader = new CSVReader(new FileReader("DataFiles/"+fileName));
+      reader = new CSVReader(new FileReader(filePath));
     } catch (Exception e) {
       System.out.println("file not found");
       e.printStackTrace();
@@ -31,11 +38,11 @@ public class CSVReaderClass {
     return output;
   }
 
-  public static String ReadCSVToString(String fileName) throws IOException {
+  public static String ReadCSVToString(String filePath) throws IOException {
     String output = "";
     CSVReader reader = null;
     try {
-      reader = new CSVReader(new FileReader("DataFiles/"+fileName));
+      reader = new CSVReader(new FileReader(filePath));
     } catch (Exception e) {
       System.out.println("file not found");
       e.printStackTrace();
@@ -56,11 +63,11 @@ public class CSVReaderClass {
     return output;
   }
 
-  public static int GetColumnCount(String fileName) throws IOException {
+  public static int GetColumnCount(String filePath) throws IOException {
     int count;
     CSVReader reader = null;
     try {
-      reader = new CSVReader(new FileReader(fileName));
+      reader = new CSVReader(new FileReader(filePath));
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -68,11 +75,11 @@ public class CSVReaderClass {
     return count;
   }
 
-  public static int GetRowCount(String fileName) throws IOException {
+  public static int GetRowCount(String filePath) throws IOException {
     int count = 0;
     CSVReader reader = null;
     try {
-      reader = new CSVReader(new FileReader(fileName));
+      reader = new CSVReader(new FileReader(filePath));
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -80,6 +87,19 @@ public class CSVReaderClass {
       count++;
     }
     return count;
+  }
+
+  public static File WriteToCSVFile(String spreadsheetId, String worksheetName, String newFilePath)  throws IOException, GeneralSecurityException, ServiceException {
+
+    String[] header = GoogleSpreadsheetService.GetWorkSheetHeader(spreadsheetId, worksheetName);
+    List<String[]> spreadsheetData = GoogleSpreadsheetService.getWorksheetDataToList(spreadsheetId, worksheetName);
+
+    CSVWriter writer = new CSVWriter(new FileWriter(newFilePath));
+    writer.writeNext(header);
+    writer.writeAll(spreadsheetData);
+    writer.close();
+
+    return  new File(newFilePath);
   }
 
 

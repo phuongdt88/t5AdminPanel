@@ -2,7 +2,6 @@ package com.sgs.lumba.t5.controllers;
 
 import com.google.gdata.util.ServiceException;
 import com.sgs.lumba.t5.models.CSVReaderClass;
-import models.GoogleSpreadsheetService;
 import org.json.JSONObject;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -10,20 +9,28 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import java.io.IOException;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.GeneralSecurityException;
 import com.sgs.lumba.t5.views.html.gamedata;
 
 
 public class GameDataController extends Controller{
+
+  private String DATA_FILE_PATH = "DataFiles/";
+  private String TEMP_DATA_FILE_PATH = "NewDataFiles/";
+
   public Result GameData() {
     return ok(gamedata.render());
   }
 
   public Result GetData(String section) throws IOException{
     String fileName = GetCSVFileName(section);
-    String output = CSVReaderClass.ReadCSVToString(fileName);
+    String output = CSVReaderClass.ReadCSVToString(DATA_FILE_PATH + fileName);
     JSONObject resData = new JSONObject();
-    resData.put("data",output);
+    resData.put("data", output);
     return  ok(resData.toString());
   }
 
@@ -34,9 +41,10 @@ public class GameDataController extends Controller{
     System.out.println("export");
     if(exportType == 0) {
       System.out.println("export type = 0");
-      File file = new File("DataFiles/" + fileName);
+      File file = new File(DATA_FILE_PATH + fileName);
       return ok(file).as("text/csv");
     }
+    System.out.println(exportType);
     return  ok("1");
   }
 
@@ -47,8 +55,11 @@ public class GameDataController extends Controller{
     String worksheetName = GetWorkSheetName(section);
 
     String spreadsheetId = url.split("/edit")[0].split("https://docs.google.com/spreadsheets/d/")[1];
-    String content = GoogleSpreadsheetService.getWorksheetData(spreadsheetId, worksheetName);
-    return ok(content);
+//    String content = GoogleSpreadsheetService.getWorksheetData(spreadsheetId, worksheetName);
+    String filePath = TEMP_DATA_FILE_PATH + worksheetName + ".csv";
+    CSVReaderClass.WriteToCSVFile(spreadsheetId, worksheetName, filePath);
+    String output = CSVReaderClass.ReadCSVToString(filePath);
+    return ok(output);
   }
 
   private String GetCSVFileName (String section) {
@@ -240,10 +251,12 @@ public class GameDataController extends Controller{
 
     return worksheetName;
   }
-  public Result publishSpreadsheet() {
-    DynamicForm data = Form.form().bindFromRequest();
-    String section = data.get("section");
-    String spreadsheetData = data.get("tableData");
-    return ok("abc");
+  public Result PublishSpreadsheet(String section) throws IOException{
+    String fileName = GetCSVFileName(section);
+    File spreadsheetFile = new File(TEMP_DATA_FILE_PATH + fileName);
+    Path from = spreadsheetFile.toPath(); //convert from File to Path
+    Path to = Paths.get(DATA_FILE_PATH + fileName); //convert from String to Path
+    Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+    return ok("0");
   }
 }

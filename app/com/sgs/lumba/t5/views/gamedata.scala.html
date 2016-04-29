@@ -69,7 +69,7 @@
         <a href="" id="dataConstantLink">Data Constans</a>
       </li>
       <li>
-        <a href="" id="chestProbabilityLink">Chest Probality</a>
+        <a href="" id="chestProbabilityLink">Chest Probability</a>
       </li>
       <li>
         <a href="" id="loserDaggerModifierLink">Loser Dagger Modifier</a>
@@ -102,7 +102,7 @@
 </nav>
 
 
-<div id="arenaReferenceWrap">
+
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-default">
@@ -119,20 +119,21 @@
           </div>
         </div>
         <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="arenaReferenceGGSSForm" name="arenaReferenceGGSSForm" method="post">
+          <form role="form" class="form-horizontal validate" id="ggssForm" name="ggssForm" method="post">
             <div class="form-group">
               <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="arenaReferenceGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
+                <input type="text" class="form-control" id="ggssUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
               </div>
             </div>
-            <button class="btn btn btn-turquoise" id="arenaReferenceGGSSBtn" style="width:17%;margin-left:17%;">View</button>
+            <button class="btn btn btn-turquoise" id="ggssViewBtn" style="width:17%;margin-left:17%;">View</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
+<div id="arenaReferenceWrap">
   <div id = "currentArenaReference">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -168,11 +169,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="arenaRefExportSelect" name="arenaRefExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="arenaRefExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="arenaRefExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="arenaRefExportBtn" name="exportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -223,36 +224,6 @@
 
 <div id="cardBuildingWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardBuildingGGSSForm" name="cardBuildingGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardBuildingGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardBuildingGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardBuilding">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -290,11 +261,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardBuildingExportSelect" name="cardBuildingExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardBuildingExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardBuildingExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardBuildingExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -347,36 +318,6 @@
 
 <div id="cardBuildingLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardBuildingLevelGGSSForm" name="cardBuildingLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardBuildingLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardBuildingLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardBuildingLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -407,11 +348,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardBuildingLevelExportSelect" name="cardBuildingLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardBuildingLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardBuildingLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardBuildingLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -458,36 +399,6 @@
 
 <div id="cardTroopWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardTroopGGSSForm" name="cardTroopGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardTroopGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardTroopGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardTroop">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -525,11 +436,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardTroopExportSelect" name="cardTroopExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardTroopExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardTroopExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardTroopExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -582,36 +493,6 @@
 
 <div id="cardTroopLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardTroopLevelGGSSForm" name="cardTroopLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardTroopLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardTroopLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardTroopLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -642,11 +523,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardTroopLevelExportSelect" name="cardTroopLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardTroopLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardTroopLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardTroopLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -693,36 +574,6 @@
 
 <div id="cardSpellWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardSpellGGSSForm" name="cardSpellGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardSpellGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardSpellGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardSpell">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -760,11 +611,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardSpellExportSelect" name="cardSpellExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardSpellExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
-              <!-- <option value="0">Lifetime</option> -->
+              <!-- <option value="1">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardSpellExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardSpellExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -817,36 +668,6 @@
 
 <div id="cardSpellLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="cardSpellLevelGGSSForm" name="cardSpellLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cardSpellLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="cardSpellLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentCardSpellLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -877,11 +698,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="cardSpellLevelExportSelect" name="cardSpellLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="cardSpellLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="cardSpellLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="cardSpellLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -927,36 +748,6 @@
 </div>
 
 <div id="buildingWrap">
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="buildingGGSSForm" name="buildingGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="buildingGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="buildingGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id="currentBuilding">
     <div class="panel panel-default">
@@ -1014,11 +805,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="buildingExportSelect" name="buildingExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="buildingExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="buildingExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="buildingExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1090,36 +881,6 @@
 
 <div id="troopWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="troopGGSSForm" name="troopGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="troopGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="troopGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentTroop">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -1176,11 +937,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="troopExportSelect" name="troopExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="troopExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="troopExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="troopExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1252,36 +1013,6 @@
 
 <div id="spellWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="spellGGSSForm" name="spellGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="spellGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="spellGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentSpell">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -1338,11 +1069,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="spellExportSelect" name="spellExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="spellExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="spellExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="spellExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1414,36 +1145,6 @@
 
 <div id="buildingLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="buildingLevelGGSSForm" name="buildingLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="buildingLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="buildingLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentBuildingLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -1481,11 +1182,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="buildingLevelExportSelect" name="buildingLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="buildingLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="buildingLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="buildingLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1538,36 +1239,6 @@
 
 <div id="troopLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="troopLevelGGSSForm" name="troopLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="troopLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="troopLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentTroopLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -1605,11 +1276,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="troopLevelExportSelect" name="troopLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="troopLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="troopLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="troopLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1662,36 +1333,6 @@
 
 <div id="spellLevelWrap">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="spellLevelGGSSForm" name="spellLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="spellLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="spellLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="currentSpellLevel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -1729,11 +1370,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="spellLevelExportSelect" name="spellLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="spellLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="spellLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="spellLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1785,35 +1426,6 @@
 </div>
 
 <div id="chestSequenceWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="chestSequenceGGSSForm" name="chestSequenceGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="chestSequenceGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="chestSequenceGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentChestSequence">
     <div class="panel panel-default">
@@ -1846,11 +1458,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="chestSequenceExportSelect" name="chestSequenceExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="chestSequenceExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="chestSequenceExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="chestSequenceExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -1896,35 +1508,6 @@
 </div>
 
 <div id="achievementWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="achievementGGSSForm" name="achievementGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="achievementGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="achievementGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentAchievement">
     <div class="panel panel-default">
@@ -1962,11 +1545,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="achievementExportSelect" name="achievementExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="achievementExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="achievementExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="achievementExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2017,35 +1600,6 @@
 </div>
 
 <div id="donationWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="donationGGSSForm" name="donationGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="donationGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="donationGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentDonation">
     <div class="panel panel-default">
@@ -2081,11 +1635,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="donationExportSelect" name="donationExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="donationExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="donationExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="donationExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2134,35 +1688,6 @@
 </div>
 
 <div id="requestWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="requestGGSSForm" name="requestGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="requestGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="requestGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentRequest">
     <div class="panel panel-default">
@@ -2195,11 +1720,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="requestExportSelect" name="requestExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="requestExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="requestExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="requestExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2246,35 +1771,6 @@
 
 
 <div id="chestDataWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="chestDataGGSSForm" name="chestDataGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="chestDataGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="chestDataGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentChestData">
     <div class="panel panel-default">
@@ -2315,11 +1811,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="chestDataExportSelect" name="chestDataExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="chestDataExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="chestDataExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="chestDataExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2373,35 +1869,6 @@
 </div>
 
 <div id="tribeDaggerRankWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="tribeDaggerRankGGSSForm" name="tribeDaggerRankGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="tribeDaggerRankGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="tribeDaggerRankGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentTribeDaggerRank">
     <div class="panel panel-default">
@@ -2434,11 +1901,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="tribeDaggerRankExportSelect" name="tribeDaggerRankExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="tribeDaggerRankExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="tribeDaggerRankExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="tribeDaggerRankExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2484,35 +1951,6 @@
 </div>
 
 <div id="dataConstantWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="dataConstantGGSSForm" name="dataConstantGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="dataConstantGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="dataConstantGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentDataConstant">
     <div class="panel panel-default">
@@ -2544,11 +1982,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="dataConstantExportSelect" name="dataConstantExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="dataConstantExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="dataConstantExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="dataConstantExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2593,35 +2031,6 @@
 </div>
 
 <div id="chestProbabilityWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="chestProbabilityGGSSForm" name="chestProbabilityGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="chestProbabilityGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="chestProbabilityGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentChestProbability">
     <div class="panel panel-default">
@@ -2655,11 +2064,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="chestProbabilityExportSelect" name="chestProbabilityExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="chestProbabilityExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="chestProbabilityExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="chestProbabilityExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2706,37 +2115,8 @@
 </div>
 
 <div id="loserDaggerModifierWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="loserDaggerModifierGGSSForm" name="loserDaggerModifierGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="loserDaggerModifierGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="loserDaggerModifierGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div id = "currentloserDaggerModifier">
+  <div id = "currentLoserDaggerModifier">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Current Loser Dagger Modifier</h3>
@@ -2767,11 +2147,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="loserDaggerModifierExportSelect" name="loserDaggerModifierExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="loserDaggerModifierExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="loserDaggerModifierExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="loserDaggerModifierExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2817,35 +2197,6 @@
 </div>
 
 <div id="freeGemSequenceWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="freeGemSequenceGGSSForm" name="freeGemSequenceGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="freeGemSequenceGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="freeGemSequenceGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentFreeGemSequence">
     <div class="panel panel-default">
@@ -2878,11 +2229,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="freeGemSequenceExportSelect" name="freeGemSequenceExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="freeGemSequenceExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="freeGemSequenceExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="freeGemSequenceExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -2928,35 +2279,6 @@
 </div>
 
 <div id="crownGemSequenceWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="crownGemSequenceGGSSForm" name="crownGemSequenceGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="crownGemSequenceGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="crownGemSequenceGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentCrownGemSequence">
     <div class="panel panel-default">
@@ -2989,11 +2311,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="crownGemSequenceExportSelect" name="crownGemSequenceExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="crownGemSequenceExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="crownGemSequenceExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="crownGemSequenceExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3038,35 +2360,6 @@
 </div>
 
 <div id="tvRoyaleWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="tvRoyaleGGSSForm" name="tvRoyaleGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="tvRoyaleGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="tvRoyaleGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentTVRoyale">
     <div class="panel panel-default">
@@ -3098,11 +2391,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="tvRoyaleExportSelect" name="tvRoyaleExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="tvRoyaleExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="tvRoyaleExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="tvRoyaleExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3147,35 +2440,6 @@
 </div>
 
 <div id="towerLevelWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="towerLevelGGSSForm" name="towerLevelGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="towerLevelGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="towerLevelGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentTowerLevel">
     <div class="panel panel-default">
@@ -3211,11 +2475,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="towerLevelExportSelect" name="towerLevelExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="towerLevelExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="towerLevelExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="towerLevelExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3264,35 +2528,6 @@
 </div>
 
 <div id="shopCardPriceWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="shopCardPriceGGSSForm" name="shopCardPriceGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="shopCardPriceGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="shopCardPriceGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentShopCardPrice">
     <div class="panel panel-default">
@@ -3329,11 +2564,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="shopCardPriceExportSelect" name="shopCardPriceExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="shopCardPriceExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="shopCardPriceExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="shopCardPriceExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3383,35 +2618,6 @@
 </div>
 
 <div id="unitEffectWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="unitEffectGGSSForm" name="unitEffectGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="unitEffectGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="unitEffectGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentUnitEffect">
     <div class="panel panel-default">
@@ -3445,11 +2651,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="unitEffectExportSelect" name="unitEffectExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="unitEffectExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="unitEffectExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="unitEffectExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3496,35 +2702,6 @@
 </div>
 
 <div id="unitSoundFXWrap">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Action</h3>
-          <div class="panel-options">
-            <a href="" data-toggle="panel">
-              <span class="collapse-icon">&ndash;</span>
-              <span class="expand-icon">+</span>
-            </a>
-            <a href="" data-toggle="remove">
-              &times;
-            </a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <form role="form" class="form-horizontal validate" id="unitSoundFXGGSSForm" name="unitSoundFXGGSSForm" method="post">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Google Spreadsheet URL</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="unitSoundFXGGSSUrl" name="ggssUrl" data-validate="required" data-message-required="Please enter a Google Spreadsheet URL" style="width:45%" value="https://docs.google.com/spreadsheets/d/1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g/edit#gid=0">
-              </div>
-            </div>
-            <button class="btn btn btn-turquoise" id="unitSoundFXGGSSBtn" style="width:17%;margin-left:17%;">View</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id = "currentUnitSoundFX">
     <div class="panel panel-default">
@@ -3558,11 +2735,11 @@
         </table>
         <div class="form-group">
           <div class="col-sm-6">
-            <select class="form-control" id="unitSoundFXExportSelect" name="unitSoundFXExportSelect" style="width:30%;float:left">
+            <select class="form-control" id="unitSoundFXExportSelect" name="exportSelect" style="width:30%;float:left">
               <option value="0">Download CSV File</option>
               <!-- <option value="0">Lifetime</option> -->
             </select>
-            <button class="btn btn-turquoise" id="unitSoundFXExportBtn" style="width:25%;margin-left:1%">Export</button>
+            <button class="btn btn-turquoise" id="unitSoundFXExportBtn" name="exportBtn" style="width:25%;margin-left:1%">Export</button>
           </div>
         </div>
       </div>
@@ -3607,3 +2784,7 @@
   </div>
 
 </div>
+
+<div id="publishConfirmDialog" title="Publish">
+  Are you sure?
+</div>​

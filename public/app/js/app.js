@@ -131,7 +131,6 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 			$rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
 						console.log("vao state change");
       	    console.log($cookies.username);
-      	    console.log(toState);
       	    $cookies.thisUrl = toState.url;
       			if($cookies.username === undefined || $cookies.username == null){
       				console.log("loggin cookie undefined");
@@ -145,7 +144,6 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
                   event.preventDefault();
                   window.location.reload();
       				}
-      				console.log(accessState)
       				if(accessState != undefined){
       					if(accessState.indexOf(toState.name) > -1){
       						console.log("accessible");
