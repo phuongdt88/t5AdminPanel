@@ -9,6 +9,7 @@ jQuery(document).ready(function($)
   var email;
   var password;
   var role;
+  var timezone;
   var tableData = [];
 
   for(i = 0; i <= (userInfoArr.length -1); i++) {
@@ -17,19 +18,19 @@ jQuery(document).ready(function($)
     email = userInfoArr[i].email;
     password = userInfoArr[i].password;
     role = userInfoArr[i].role;
+    timezone = userInfoArr[i].timezone;
     var rowData = {};
     rowData["DT_RowId"] = userId;
     rowData["id"] = userId;
-    rowData["username"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='usernameEditAble'>"+username+"</span>";
-    rowData["email"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='emailEditAble'>"+email+"</span>";
-    rowData["password"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='passwordEditAble'>"+password+"</span>";
-    rowData["role"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='roleEditAble'>"+role+"</span>";
-    rowData["action"] = "<a href=''  class='sendEmailBtn btn btn-primary btn-single btn-sm' style='float:left;margin-right:1%'>Send Email</a><button class='deleteAccBtn btn btn-red'>Delete</button>";
+    rowData["username"] = username;
+    rowData["email"] = email;
+    // rowData["password"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='passwordEditAble'>"+password+"</span>";
+    rowData["role"] = getRoleName(parseInt(role));
+    rowData["timezone"] = getTimeZoneString(parseInt(timezone));
+    rowData["action"] = "<a href=''  class='sendEmailBtn btn btn-primary btn-single btn-sm' style='float:left;margin-right:1%'>Send Email</a><button class='editAccButton btn btn-orange'>Edit</button><button class='deleteAccBtn btn btn-red'>Delete</button>";
     tableData.push(rowData);
 
    }
-   console.log("table data:");
-   console.log(tableData);
 
    adminAccountTbl = $("#adminAccountTbl").DataTable({
     "bSort" : false,
@@ -40,8 +41,9 @@ jQuery(document).ready(function($)
        { "data": "id" },
        { "data": "username" },
        { "data": "email" },
-       { "data": "password" },
+       // { "data": "password" },
        { "data": "role" },
+       { "data": "timezone" },
        { "data": "action" }
      ],
      data: tableData,
@@ -127,7 +129,31 @@ jQuery(document).ready(function($)
     }
    })
 
-   $('.deleteAccBtn').click(function(){
+  $('.editAccButton').click(function(e){  
+    e.preventDefault();
+    $("body, html").animate({ 
+        scrollTop: $( $("#editAccSection").attr('href') ).offset().top 
+    }, 600);
+
+    $("#newUsername").val($(this).parent().parent()[0].getElementsByTagName("td")[1].innerHTML);
+    $("#newEmail").val($(this).parent().parent()[0].getElementsByTagName("td")[2].innerHTML);
+    var dataObj = {};
+    // dataObj["userId"] = userId;
+    // $.ajax({
+    //   method: "POST",
+    //   url: "deleteadminacc",
+    //   data: dataObj
+    // })
+    // .done(function(resData){
+    //   console.log(resData);
+    //   alert("deleted");
+    // })
+    // .fail(function (xhr, error, status) {
+    //   toastr.error(status, "Error", opts);
+    // })
+   })
+
+  $('.deleteAccBtn').click(function(){
     var userId = $(this).parent().parent()[0].id;
     var dataObj = {};
     dataObj["userId"] = userId;

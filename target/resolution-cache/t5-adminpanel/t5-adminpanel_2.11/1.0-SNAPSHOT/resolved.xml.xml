@@ -4,7 +4,7 @@
 		module="t5-adminpanel_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20160421102511"
+		publication="20160510171700"
 	>
 		<description>
 		t5-adminpanel

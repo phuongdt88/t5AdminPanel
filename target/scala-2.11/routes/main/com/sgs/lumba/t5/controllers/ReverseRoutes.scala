@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/phuongdt1/Desktop/lumba/t5-admin-panel/conf/routes
-// @DATE:Thu Apr 07 16:26:35 ICT 2016
+// @DATE:Tue May 10 17:17:25 ICT 2016
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
@@ -13,14 +13,14 @@ import _root_.play.libs.F
 // @LINE:11
 package com.sgs.lumba.t5.controllers {
 
-  // @LINE:117
+  // @LINE:105
   class ReverseGameVersionController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:117
+    // @LINE:105
     def getGameVersion(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "gameversion")
@@ -28,44 +28,44 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:109
+  // @LINE:97
   class ReverseGameSettingsController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:111
+    // @LINE:99
     def saveSettingsData(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "savesettingsdata")
     }
   
-    // @LINE:110
+    // @LINE:98
     def getSettings(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "settings")
     }
   
-    // @LINE:112
+    // @LINE:100
     def addVersionSFS(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "addversionsfs")
     }
   
-    // @LINE:113
+    // @LINE:101
     def deleteUnuseVersion(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "deleteunuseversion")
     }
   
-    // @LINE:114
+    // @LINE:102
     def changeGameSubVersion(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "changegamesubversion")
     }
   
-    // @LINE:109
+    // @LINE:97
     def getGameSettings(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "gamesettings")
@@ -73,26 +73,26 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:72
+  // @LINE:73
   class ReverseProfanityController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:73
+    // @LINE:74
     def getProfanityText(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getprofanitytext")
     }
   
-    // @LINE:72
+    // @LINE:73
     def profanity(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "profanity")
     }
   
-    // @LINE:74
+    // @LINE:75
     def exportProfanity(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "exportprofanity")
@@ -100,50 +100,50 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:123
+  // @LINE:111
   class ReverseiapController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:124
+    // @LINE:112
     def iapIOS(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "iapios")
     }
   
-    // @LINE:126
+    // @LINE:114
     def iapValid(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "iapvalid")
     }
   
-    // @LINE:125
+    // @LINE:113
     def iapAndroid(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "iapandroid")
     }
   
-    // @LINE:129
+    // @LINE:117
     def getNewPayingUsers(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "newpayingusers")
     }
   
-    // @LINE:127
+    // @LINE:115
     def testDate(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "testdate")
     }
   
-    // @LINE:123
+    // @LINE:111
     def iapData(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "iapdata")
     }
   
-    // @LINE:128
+    // @LINE:116
     def getUniquePayingUsers(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "uniquepayingusers")
@@ -279,86 +279,86 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:76
+  // @LINE:77
   class ReverseNewsController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:78
+    // @LINE:79
     def addArabNews(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "addarabnews")
     }
   
-    // @LINE:76
+    // @LINE:77
     def getNews(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "news")
     }
   
-    // @LINE:80
+    // @LINE:81
     def updateEnglishNewsImage(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updateenglishnewsimage")
     }
   
-    // @LINE:84
+    // @LINE:85
     def updateArabNewsTitle(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updatearabnewstitle")
     }
   
-    // @LINE:88
+    // @LINE:89
     def deleteArabNews(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "deletearabnews")
     }
   
-    // @LINE:87
+    // @LINE:88
     def updateArabNewsContent(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updatearabnewscontent")
     }
   
-    // @LINE:83
+    // @LINE:84
     def deleteEnglishNews(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "deleteenglishnews")
     }
   
-    // @LINE:82
+    // @LINE:83
     def updateEnglishNewsContent(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updateenglishnewscontent")
     }
   
-    // @LINE:81
+    // @LINE:82
     def updateEnglishNewsVideo(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updateenglishnewsvideo")
     }
   
-    // @LINE:79
+    // @LINE:80
     def updateEnglishNewsTitle(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updateenglishnewstitle")
     }
   
-    // @LINE:86
+    // @LINE:87
     def updateArabNewsVideo(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updatearabnewsvideo")
     }
   
-    // @LINE:77
+    // @LINE:78
     def addEnglishNews(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "addenglishnews")
     }
   
-    // @LINE:85
+    // @LINE:86
     def updateArabNewsImage(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updatearabnewsimage")
@@ -429,26 +429,26 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:141
+  // @LINE:129
   class ReverseAdjustCallbackController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:143
+    // @LINE:131
     def getAdjustCallbackData(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getadjustcallbackdata")
     }
   
-    // @LINE:142
+    // @LINE:130
     def getAllAdjustCallbackData(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getalladjustcallbackdata")
     }
   
-    // @LINE:141
+    // @LINE:129
     def AdjustCallback(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "adjustcallback")
@@ -456,26 +456,26 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:68
+  // @LINE:69
   class ReverseTextStringController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:68
+    // @LINE:69
     def textString(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "textstring")
     }
   
-    // @LINE:69
+    // @LINE:70
     def getTextString(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getTextString")
     }
   
-    // @LINE:70
+    // @LINE:71
     def exportTextString(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "exporttextstring")
@@ -540,143 +540,65 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:90
+  // @LINE:91
   class ReverseGameDataController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:94
-    def getDefensiveBuildings(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "defensivebuildings")
-    }
-  
-    // @LINE:95
-    def getDefensiveBuildingLevel(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "defensivebuildinglevel")
-    }
-  
-    // @LINE:101
-    def getSpells(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "spells")
-    }
-  
-    // @LINE:107
-    def publishSpreadsheet(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "publishspeadsheet")
-    }
-  
-    // @LINE:99
-    def getTownHallLevel(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "townhalllevel")
-    }
-  
-    // @LINE:98
-    def getOtherBuildings(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "otherbuildings")
-    }
-  
-    // @LINE:105
-    def getAchievements(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "achievements")
-    }
-  
-    // @LINE:103
-    def getObstacles(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "obstacles")
-    }
-  
-    // @LINE:102
-    def getSpellLevels(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "spelllevels")
-    }
-  
     // @LINE:93
-    def getCombatUnits(): Call = {
+    def exportGameData(section:String): Call = {
       import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "combatunits")
+      Call("POST", _prefix + { _defaultPrefix } + "exportgamedata/" + implicitly[PathBindable[String]].unbind("section", dynamicString(section)))
     }
   
-    // @LINE:100
-    def getDecorations(): Call = {
+    // @LINE:92
+    def getData(section:String): Call = {
       import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "decorations")
+      Call("GET", _prefix + { _defaultPrefix } + "getdata/" + implicitly[PathBindable[String]].unbind("section", dynamicString(section)))
     }
   
-    // @LINE:104
-    def getTrophy(): Call = {
+    // @LINE:94
+    def getSpreadsheetData(section:String): Call = {
       import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "trophy")
+      Call("GET", _prefix + { _defaultPrefix } + "viewspreadsheetdata/" + implicitly[PathBindable[String]].unbind("section", dynamicString(section)))
     }
   
-    // @LINE:90
+    // @LINE:91
     def gameData(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "gamedata")
     }
   
-    // @LINE:91
-    def getCampaignReference(): Call = {
+    // @LINE:95
+    def publishSpreadsheet(section:String): Call = {
       import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "campaignreference")
-    }
-  
-    // @LINE:96
-    def getResourceBuildings(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "resourcebuildings")
-    }
-  
-    // @LINE:92
-    def getUnitLevel(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "unitlevels")
-    }
-  
-    // @LINE:97
-    def getArmyBuildings(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "armybuildings")
-    }
-  
-    // @LINE:106
-    def getSpreadsheetData(): Call = {
-      import ReverseRouteContext.empty
-      Call("POST", _prefix + { _defaultPrefix } + "viewspreadsheetdata")
+      Call("GET", _prefix + { _defaultPrefix } + "publishspreadsheet/" + implicitly[PathBindable[String]].unbind("section", dynamicString(section)))
     }
   
   }
 
-  // @LINE:119
+  // @LINE:107
   class ReverseBundleController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:120
+    // @LINE:108
     def getBundle(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getbundle")
     }
   
-    // @LINE:121
+    // @LINE:109
     def saveBundle(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "savebundledata")
     }
   
-    // @LINE:119
+    // @LINE:107
     def bundle(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "bundle")
@@ -684,62 +606,62 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:131
+  // @LINE:119
   class ReversePlayersDataController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:136
+    // @LINE:124
     def getGlobalChat(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "globalchat")
     }
   
-    // @LINE:132
+    // @LINE:120
     def getDAU(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "dau")
     }
   
-    // @LINE:139
+    // @LINE:127
     def getUniqueUsersNumber(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "uniqueusersnumber")
     }
   
-    // @LINE:135
+    // @LINE:123
     def getCCU(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "getccu")
     }
   
-    // @LINE:137
+    // @LINE:125
     def getTribeChat(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "tribechat")
     }
   
-    // @LINE:134
+    // @LINE:122
     def getNewPlayingUsers(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "newplayingusers")
     }
   
-    // @LINE:133
+    // @LINE:121
     def getMAU(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "mau")
     }
   
-    // @LINE:138
+    // @LINE:126
     def getLoginLogoutTime(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "loginlogout")
     }
   
-    // @LINE:131
+    // @LINE:119
     def playersData(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "playersdata")
@@ -747,23 +669,23 @@ package com.sgs.lumba.t5.controllers {
   
   }
 
-  // @LINE:65
+  // @LINE:66
   class ReverseTimeZoneController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:65
-    def getTimeZone(): Call = {
-      import ReverseRouteContext.empty
-      Call("GET", _prefix + { _defaultPrefix } + "timezone")
-    }
-  
-    // @LINE:66
+    // @LINE:67
     def updateTimeZone(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "updatetimezone")
+    }
+  
+    // @LINE:66
+    def timeZone(): Call = {
+      import ReverseRouteContext.empty
+      Call("GET", _prefix + { _defaultPrefix } + "timezone")
     }
   
   }

@@ -42,39 +42,36 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 		public_vars.$pageLoadingOverlay.addClass('loaded');
 	})
 	console.log("vao app.run")
-	if($cookies.username === undefined || $cookies.username == null){
+	if ($cookies.username === undefined || $cookies.username == null) {
     $location.path("/login");
-  }
+  } 
 
 //	var role = [0, 1, 2, 3];
 	var permission = {
 		0: {
-			"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement","app.textstring", "app.profanity", "app.news","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback","app.gamedata","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
+			"accessibleState": ["login","logout","app.profile","app.dashboard","app.ltvcalculator","app.pullactivities","app.custommadereport","app.gamestate","app.tribes", "app.timezone","app.usersmanagement","app.textstring", "app.profanity", "app.news","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback","app.gamedata","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
 		},
 		1: {
-			"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone","app.usersmanagement", "app.gameversion"]
+			"accessibleState": ["login","logout","app.profile","app.dashboard","app.ltvcalculator","app.pullactivities","app.custommadereport","app.gamestate","app.tribes", "app.timezone","app.usersmanagement","app.textstring", "app.profanity", "app.news","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback","app.gamedata"]
 		},
 		2: {
-			"accessibleState": ["login","logout","app.profile","app.textstring", "app.profanity", "app.news", "app.gameversion"]
+			"accessibleState": ["login","logout","app.profile","app.gamestate","app.tribes", "app.timezone"]
 		},
 		3: {
-			"accessibleState": ["login","logout","app.profile","app.analysis-IAP", "app.analysis-DAU", "app.analysis-adjustcallback", "app.gameversion"]
+			"accessibleState": ["login","logout","app.profile","app.textstring", "app.profanity", "app.news","app.gamesettings"]
 		},
 		4: {
-			"accessibleState": ["login","logout","app.profile","app.gamedata", "app.gameversion"]
-		},
-		5: {
-			"accessibleState": ["login","logout","app.profile","app.bundle","app.gamesettings", "app.sendemail", "app.notification", "app.gameversion"]
-		},
+			"accessibleState": ["login","logout","app.profile","app.textstring", "app.profanity", "app.news","app.bundle","app.gamesettings"]
+		}
 	}
 
-	var sidebarItems = ["For Customer Agent","For Investigating QA","For Analysis","For Designer","For Engineers","Users Management"];
+	// var sidebarItems = ["For Customer Agent","For Investigating QA","For Analysis","For Designer","For Engineers","Users Management"];
 
 	var username = $cookies.username;
 	var dataObj = {};
 	var userRole;
 	var accessState;
-	if($cookies.username != null && $cookies.username != undefined) {
+	if ($cookies.username != null && $cookies.username != undefined) {
 		dataObj["username"] = username;
 		$http({
 			method: 'POST',
@@ -88,7 +85,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 			switch(userRole){
 				case 0:
 					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamestate");
+						$location.path("/app/dashboard");
 					} else {
 						$location.path("/app"+$cookies.thisUrl);
 					}
@@ -96,7 +93,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 					break;
 				case 1:
 					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamestate");
+						$location.path("/app/dashboard");
 					} else {
 						$location.path("/app"+$cookies.thisUrl);
 					}
@@ -104,7 +101,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 					break;
 				case 2:
 					if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/textstring");
+						$location.path("/app/gamestate");
 					} else {
 						$location.path("/app"+$cookies.thisUrl);
 					}
@@ -112,7 +109,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
           break;
         case 3:
         	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/analysis-IAP");
+						$location.path("/app/textstring");
 					} else {
 						$location.path("/app"+$cookies.thisUrl);
 					}
@@ -120,45 +117,35 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
           break;
         case 4:
         	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/gamedata");
+						$location.path("/app/textstring");
 					} else {
 						$location.path("/app"+$cookies.thisUrl);
 					}
           $rootScope.role = 4;
-          break;
-        case 5:
-        	if($cookies.thisUrl == undefined || $cookies.thisUrl == null || $cookies.thisUrl =="/login") {
-						$location.path("/app/bundle");
-					} else {
-						$location.path("/app"+$cookies.thisUrl);
-					}
-					$rootScope.role = 5;
           break;
         default:
         	$location.path("/");
         	break;
 			}
 
-			$rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+			$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
 						console.log("vao state change");
       	    console.log($cookies.username);
-      	    console.log(toState);
       	    $cookies.thisUrl = toState.url;
-      			if($cookies.username === undefined || $cookies.username == null){
+      			if ($cookies.username === undefined || $cookies.username == null){
       				console.log("loggin cookie undefined");
       				$location.path("/login");
       			}
       			else {
       				console.log("logged in");
-      				if(toState.url == "/login"){
+      				if (toState.url == "/login") {
       					console.log("logged in, can not access to login page");
       					  showLoadingBar(100);
                   event.preventDefault();
                   window.location.reload();
       				}
-      				console.log(accessState)
-      				if(accessState != undefined){
-      					if(accessState.indexOf(toState.name) > -1){
+      				if (accessState != undefined) {
+      					if (accessState.indexOf(toState.name) > -1) {
       						console.log("accessible");
       					} else {
       						console.log("access denied");
@@ -167,7 +154,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
       					}
       				}
       			}
-            if($cookies.username === undefined && toState.url.indexOf("/login") <= -1){
+            if ($cookies.username === undefined && toState.url.indexOf("/login") <= -1) {
               event.preventDefault();
               window.location.reload();
             }
@@ -177,9 +164,6 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 			toastr.error(status, "Unable to get user role", opts);
 		});
 	}
-
-
-
 });
 
 
@@ -967,27 +951,117 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 				},
 			}
 		}).
+		state('app.dashboard', {
+			url: '/dashboard',
+			templateUrl: 'dashboard',
+						resolve: {
+							deps: function($ocLazyLoad){
+								return $ocLazyLoad.load([
+									ASSETS.tables.datatables,
+									ASSETS.tables.rwd,
+								]);
+							},
+							jQueryValidate: function($ocLazyLoad){
+								return $ocLazyLoad.load([
+									ASSETS.forms.jQueryValidate,
+									ASSETS.extra.toastr,
+								]);
+							},
+						},
+		}).
+		state('app.ltvcalculator', {
+			url: '/ltvcalculator',
+			templateUrl: 'ltvcalculator',
+				resolve: {
+					deps: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.tables.datatables,
+							ASSETS.tables.rwd,
+						]);
+					},
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+					jqui: function($ocLazyLoad){
+						return $ocLazyLoad.load({
+							files: ASSETS.core.jQueryUI
+						});
+					},
+					datepicker: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.datepicker,
+						]);
+					},
+				},
+			}).
+		state('app.pullactivities', {
+			url: '/pullactivities',
+			templateUrl: 'pullactivities',
+				resolve: {
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+					jqui: function($ocLazyLoad){
+						return $ocLazyLoad.load({
+							files: ASSETS.core.jQueryUI
+						});
+					},
+					datepicker: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.datepicker,
+						]);
+					},
+				},
+			}).
+		state('app.custommadereport', {
+			url: '/custommadereport',
+			templateUrl: 'inprogress',
+				resolve: {
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+					jqui: function($ocLazyLoad){
+						return $ocLazyLoad.load({
+							files: ASSETS.core.jQueryUI
+						});
+					},
+					datepicker: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.datepicker,
+						]);
+					},
+				},
+			}).
 		state('app.gamestate', {
 			url: '/gamestate',
-			templateUrl: 'gamestate',
-						resolve: {
-      				deps: function($ocLazyLoad){
-      					return $ocLazyLoad.load([
-      						ASSETS.tables.datatables,
-      						ASSETS.tables.rwd,
-      					]);
-      				},
-      				jQueryValidate: function($ocLazyLoad){
-      					return $ocLazyLoad.load([
-      						ASSETS.forms.jQueryValidate,
-      						ASSETS.extra.toastr,
-      					]);
-      				},
-      			},
-		})
-		.state('app.tribes', {
+			templateUrl: 'inprogress',
+				resolve: {
+					deps: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.tables.datatables,
+							ASSETS.tables.rwd,
+						]);
+					},
+					jQueryValidate: function($ocLazyLoad){
+						return $ocLazyLoad.load([
+							ASSETS.forms.jQueryValidate,
+							ASSETS.extra.toastr,
+						]);
+					},
+				},
+			}).
+		state('app.tribes', {
 			url: '/tribes',
-			templateUrl: 'tribes',
+			templateUrl: 'inprogress',
 			resolve: {
         deps: function($ocLazyLoad){
           return $ocLazyLoad.load([
@@ -1046,7 +1120,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 		}).
 		state('app.textstring', {
 			url: '/textstring',
-			templateUrl: 'textstring',
+			templateUrl: 'inprogress',
 			resolve: {
 				deps: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1068,7 +1142,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			}
 		}).state('app.profanity', {
 			url: '/profanity',
-			templateUrl: 'profanity',
+			templateUrl: 'inprogress',
 			resolve: {
 				deps: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1090,7 +1164,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			}
 		}).state('app.news', {
 			url: '/news',
-			templateUrl: 'news',
+			templateUrl: 'inprogress',
 			resolve: {
 				deps: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1127,10 +1201,9 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 					]);
 				},
 			},
-			controller: 'GameDataCtrl',
 		}).state('app.bundle', {
 			url: '/bundle',
-			templateUrl: 'bundle',
+			templateUrl: 'inprogress',
 			resolve: {
 				deps: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1147,7 +1220,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			},
 		}).state('app.gamesettings', {
 			url: '/gamesettings',
-			templateUrl: 'gamesettings',
+			templateUrl: 'inprogress',
 			resolve: {
 				deps: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1189,7 +1262,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			controller: 'usersmanagementCtrl'
 		}).state('app.analysis-IAP', {
 			url: '/analysis-IAP',
-			templateUrl: 'iapdata',
+			templateUrl: 'inprogress',
 			resolve: {
 				jQueryValidate: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1210,7 +1283,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			}
 		}).state('app.analysis-DAU', {
 			url: '/analysis-DAU',
-			templateUrl: 'playersdata',
+			templateUrl: 'inprogress',
 			resolve: {
 				jQueryValidate: function($ocLazyLoad){
 					return $ocLazyLoad.load([
@@ -1231,7 +1304,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			}
 		}).state('app.analysis-adjustcallback', {
 			url: '/analysis-adjustcallback',
-			templateUrl: 'adjustcallback',
+			templateUrl: 'inprogress',
 			resolve: {
 				jQueryValidate: function($ocLazyLoad){
 					return $ocLazyLoad.load([

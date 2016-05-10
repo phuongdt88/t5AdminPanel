@@ -42,7 +42,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 		public_vars.$pageLoadingOverlay.addClass('loaded');
 	})
 	console.log("vao app.run")
-	if($cookies.username === undefined || $cookies.username == null){
+	if ($cookies.username === undefined || $cookies.username == null) {
     $location.path("/login");
   } 
 
@@ -71,7 +71,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
 	var dataObj = {};
 	var userRole;
 	var accessState;
-	if($cookies.username != null && $cookies.username != undefined) {
+	if ($cookies.username != null && $cookies.username != undefined) {
 		dataObj["username"] = username;
 		$http({
 			method: 'POST',
@@ -128,26 +128,24 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
         	break;
 			}
 
-			$rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+			$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
 						console.log("vao state change");
       	    console.log($cookies.username);
-      	    console.log(toState);
       	    $cookies.thisUrl = toState.url;
-      			if($cookies.username === undefined || $cookies.username == null){
+      			if ($cookies.username === undefined || $cookies.username == null){
       				console.log("loggin cookie undefined");
       				$location.path("/login");
       			}
       			else {
       				console.log("logged in");
-      				if(toState.url == "/login"){
+      				if (toState.url == "/login") {
       					console.log("logged in, can not access to login page");
       					  showLoadingBar(100);
                   event.preventDefault();
                   window.location.reload();
       				}
-      				console.log(accessState)
-      				if(accessState != undefined){
-      					if(accessState.indexOf(toState.name) > -1){
+      				if (accessState != undefined) {
+      					if (accessState.indexOf(toState.name) > -1) {
       						console.log("accessible");
       					} else {
       						console.log("access denied");
@@ -156,7 +154,7 @@ app.run(function($rootScope, $location, $cookies, $state, $http, $menuItems, $ti
       					}
       				}
       			}
-            if($cookies.username === undefined && toState.url.indexOf("/login") <= -1){
+            if ($cookies.username === undefined && toState.url.indexOf("/login") <= -1) {
               event.preventDefault();
               window.location.reload();
             }

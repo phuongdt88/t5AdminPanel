@@ -4,7 +4,7 @@
 		module="t5-admin-panel-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160421102504"
+		publication="20160510171652"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

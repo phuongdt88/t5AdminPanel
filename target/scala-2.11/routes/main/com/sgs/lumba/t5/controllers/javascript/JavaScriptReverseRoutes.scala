@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/phuongdt1/Desktop/lumba/t5-admin-panel/conf/routes
-// @DATE:Thu Apr 07 16:26:35 ICT 2016
+// @DATE:Tue May 10 17:17:25 ICT 2016
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
@@ -15,7 +15,7 @@ import _root_.play.libs.F
 package com.sgs.lumba.t5.controllers.javascript {
   import ReverseRouteContext.empty
 
-  // @LINE:117
+  // @LINE:105
   class ReverseGameVersionController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -23,7 +23,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:117
+    // @LINE:105
     def getGameVersion: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameVersionController.getGameVersion",
       """
@@ -35,7 +35,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:109
+  // @LINE:97
   class ReverseGameSettingsController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -43,7 +43,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:111
+    // @LINE:99
     def saveSettingsData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.saveSettingsData",
       """
@@ -53,7 +53,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:110
+    // @LINE:98
     def getSettings: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.getSettings",
       """
@@ -63,7 +63,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:112
+    // @LINE:100
     def addVersionSFS: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.addVersionSFS",
       """
@@ -73,7 +73,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:113
+    // @LINE:101
     def deleteUnuseVersion: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.deleteUnuseVersion",
       """
@@ -83,7 +83,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:114
+    // @LINE:102
     def changeGameSubVersion: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.changeGameSubVersion",
       """
@@ -93,7 +93,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:109
+    // @LINE:97
     def getGameSettings: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameSettingsController.getGameSettings",
       """
@@ -105,7 +105,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:72
+  // @LINE:73
   class ReverseProfanityController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -113,7 +113,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:73
+    // @LINE:74
     def getProfanityText: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.ProfanityController.getProfanityText",
       """
@@ -123,7 +123,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:72
+    // @LINE:73
     def profanity: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.ProfanityController.profanity",
       """
@@ -133,7 +133,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:74
+    // @LINE:75
     def exportProfanity: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.ProfanityController.exportProfanity",
       """
@@ -145,7 +145,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:123
+  // @LINE:111
   class ReverseiapController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -153,7 +153,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:124
+    // @LINE:112
     def iapIOS: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.iapIOS",
       """
@@ -163,7 +163,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:126
+    // @LINE:114
     def iapValid: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.iapValid",
       """
@@ -173,7 +173,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:125
+    // @LINE:113
     def iapAndroid: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.iapAndroid",
       """
@@ -183,7 +183,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:129
+    // @LINE:117
     def getNewPayingUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.getNewPayingUsers",
       """
@@ -193,7 +193,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:127
+    // @LINE:115
     def testDate: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.testDate",
       """
@@ -203,7 +203,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:123
+    // @LINE:111
     def iapData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.iapData",
       """
@@ -213,7 +213,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:128
+    // @LINE:116
     def getUniquePayingUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.iapController.getUniquePayingUsers",
       """
@@ -419,7 +419,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:76
+  // @LINE:77
   class ReverseNewsController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -427,7 +427,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:78
+    // @LINE:79
     def addArabNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.addArabNews",
       """
@@ -437,7 +437,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:76
+    // @LINE:77
     def getNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.getNews",
       """
@@ -447,7 +447,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:80
+    // @LINE:81
     def updateEnglishNewsImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateEnglishNewsImage",
       """
@@ -457,7 +457,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:84
+    // @LINE:85
     def updateArabNewsTitle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateArabNewsTitle",
       """
@@ -467,7 +467,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:88
+    // @LINE:89
     def deleteArabNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.deleteArabNews",
       """
@@ -477,7 +477,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:87
+    // @LINE:88
     def updateArabNewsContent: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateArabNewsContent",
       """
@@ -487,7 +487,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:83
+    // @LINE:84
     def deleteEnglishNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.deleteEnglishNews",
       """
@@ -497,7 +497,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:82
+    // @LINE:83
     def updateEnglishNewsContent: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateEnglishNewsContent",
       """
@@ -507,7 +507,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:81
+    // @LINE:82
     def updateEnglishNewsVideo: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateEnglishNewsVideo",
       """
@@ -517,7 +517,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:79
+    // @LINE:80
     def updateEnglishNewsTitle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateEnglishNewsTitle",
       """
@@ -527,7 +527,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:86
+    // @LINE:87
     def updateArabNewsVideo: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateArabNewsVideo",
       """
@@ -537,7 +537,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:77
+    // @LINE:78
     def addEnglishNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.addEnglishNews",
       """
@@ -547,7 +547,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:85
+    // @LINE:86
     def updateArabNewsImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.NewsController.updateArabNewsImage",
       """
@@ -649,7 +649,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:141
+  // @LINE:129
   class ReverseAdjustCallbackController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -657,7 +657,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:143
+    // @LINE:131
     def getAdjustCallbackData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.AdjustCallbackController.getAdjustCallbackData",
       """
@@ -667,7 +667,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:142
+    // @LINE:130
     def getAllAdjustCallbackData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.AdjustCallbackController.getAllAdjustCallbackData",
       """
@@ -677,7 +677,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:141
+    // @LINE:129
     def AdjustCallback: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.AdjustCallbackController.AdjustCallback",
       """
@@ -689,7 +689,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:68
+  // @LINE:69
   class ReverseTextStringController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -697,7 +697,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:68
+    // @LINE:69
     def textString: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.TextStringController.textString",
       """
@@ -707,7 +707,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:69
+    // @LINE:70
     def getTextString: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.TextStringController.getTextString",
       """
@@ -717,7 +717,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:70
+    // @LINE:71
     def exportTextString: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.TextStringController.exportTextString",
       """
@@ -819,7 +819,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:90
+  // @LINE:91
   class ReverseGameDataController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -827,127 +827,37 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:94
-    def getDefensiveBuildings: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getDefensiveBuildings",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "defensivebuildings"})
-        }
-      """
-    )
-  
-    // @LINE:95
-    def getDefensiveBuildingLevel: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getDefensiveBuildingLevel",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "defensivebuildinglevel"})
-        }
-      """
-    )
-  
-    // @LINE:101
-    def getSpells: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getSpells",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "spells"})
-        }
-      """
-    )
-  
-    // @LINE:107
-    def publishSpreadsheet: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.publishSpreadsheet",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "publishspeadsheet"})
-        }
-      """
-    )
-  
-    // @LINE:99
-    def getTownHallLevel: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getTownHallLevel",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "townhalllevel"})
-        }
-      """
-    )
-  
-    // @LINE:98
-    def getOtherBuildings: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getOtherBuildings",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "otherbuildings"})
-        }
-      """
-    )
-  
-    // @LINE:105
-    def getAchievements: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getAchievements",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "achievements"})
-        }
-      """
-    )
-  
-    // @LINE:103
-    def getObstacles: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getObstacles",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "obstacles"})
-        }
-      """
-    )
-  
-    // @LINE:102
-    def getSpellLevels: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getSpellLevels",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "spelllevels"})
-        }
-      """
-    )
-  
     // @LINE:93
-    def getCombatUnits: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getCombatUnits",
+    def exportGameData: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "com.sgs.lumba.t5.controllers.GameDataController.exportGameData",
       """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "combatunits"})
+        function(section) {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "exportgamedata/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("section", encodeURIComponent(section))})
         }
       """
     )
   
-    // @LINE:100
-    def getDecorations: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getDecorations",
+    // @LINE:92
+    def getData: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "com.sgs.lumba.t5.controllers.GameDataController.getData",
       """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "decorations"})
+        function(section) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "getdata/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("section", encodeURIComponent(section))})
         }
       """
     )
   
-    // @LINE:104
-    def getTrophy: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getTrophy",
+    // @LINE:94
+    def getSpreadsheetData: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "com.sgs.lumba.t5.controllers.GameDataController.getSpreadsheetData",
       """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "trophy"})
+        function(section) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "viewspreadsheetdata/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("section", encodeURIComponent(section))})
         }
       """
     )
   
-    // @LINE:90
+    // @LINE:91
     def gameData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.GameDataController.gameData",
       """
@@ -957,59 +867,19 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:91
-    def getCampaignReference: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getCampaignReference",
+    // @LINE:95
+    def publishSpreadsheet: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "com.sgs.lumba.t5.controllers.GameDataController.publishSpreadsheet",
       """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "campaignreference"})
-        }
-      """
-    )
-  
-    // @LINE:96
-    def getResourceBuildings: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getResourceBuildings",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "resourcebuildings"})
-        }
-      """
-    )
-  
-    // @LINE:92
-    def getUnitLevel: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getUnitLevel",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "unitlevels"})
-        }
-      """
-    )
-  
-    // @LINE:97
-    def getArmyBuildings: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getArmyBuildings",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "armybuildings"})
-        }
-      """
-    )
-  
-    // @LINE:106
-    def getSpreadsheetData: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.GameDataController.getSpreadsheetData",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "viewspreadsheetdata"})
+        function(section) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "publishspreadsheet/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("section", encodeURIComponent(section))})
         }
       """
     )
   
   }
 
-  // @LINE:119
+  // @LINE:107
   class ReverseBundleController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -1017,7 +887,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:120
+    // @LINE:108
     def getBundle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.BundleController.getBundle",
       """
@@ -1027,7 +897,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:121
+    // @LINE:109
     def saveBundle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.BundleController.saveBundle",
       """
@@ -1037,7 +907,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:119
+    // @LINE:107
     def bundle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.BundleController.bundle",
       """
@@ -1049,7 +919,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:131
+  // @LINE:119
   class ReversePlayersDataController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -1057,7 +927,7 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:136
+    // @LINE:124
     def getGlobalChat: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getGlobalChat",
       """
@@ -1067,7 +937,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:132
+    // @LINE:120
     def getDAU: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getDAU",
       """
@@ -1077,7 +947,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:139
+    // @LINE:127
     def getUniqueUsersNumber: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getUniqueUsersNumber",
       """
@@ -1087,7 +957,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:135
+    // @LINE:123
     def getCCU: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getCCU",
       """
@@ -1097,7 +967,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:137
+    // @LINE:125
     def getTribeChat: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getTribeChat",
       """
@@ -1107,7 +977,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:134
+    // @LINE:122
     def getNewPlayingUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getNewPlayingUsers",
       """
@@ -1117,7 +987,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:133
+    // @LINE:121
     def getMAU: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getMAU",
       """
@@ -1127,7 +997,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:138
+    // @LINE:126
     def getLoginLogoutTime: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.getLoginLogoutTime",
       """
@@ -1137,7 +1007,7 @@ package com.sgs.lumba.t5.controllers.javascript {
       """
     )
   
-    // @LINE:131
+    // @LINE:119
     def playersData: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.PlayersDataController.playersData",
       """
@@ -1149,7 +1019,7 @@ package com.sgs.lumba.t5.controllers.javascript {
   
   }
 
-  // @LINE:65
+  // @LINE:66
   class ReverseTimeZoneController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -1157,22 +1027,22 @@ package com.sgs.lumba.t5.controllers.javascript {
     }
 
   
-    // @LINE:65
-    def getTimeZone: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "com.sgs.lumba.t5.controllers.TimeZoneController.getTimeZone",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "timezone"})
-        }
-      """
-    )
-  
-    // @LINE:66
+    // @LINE:67
     def updateTimeZone: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "com.sgs.lumba.t5.controllers.TimeZoneController.updateTimeZone",
       """
         function() {
           return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "updatetimezone"})
+        }
+      """
+    )
+  
+    // @LINE:66
+    def timeZone: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "com.sgs.lumba.t5.controllers.TimeZoneController.timeZone",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "timezone"})
         }
       """
     )

@@ -1,152 +1,150 @@
-var sections = ["campaignWrap",
-                "unitLevelsWrap",
-                "combatUnitsWrap",
-                "defensiveBuildingsWrap",
-                "defensiveBuildingLevelWrap",
-                "resourceBuildingsWrap",
-                "armyBuildingsWrap",
-                "otherBuildingsWrap",
-                "townHallLevelWrap",
-                "decorationsWrap",
-                "spellsWrap",
-                "spellLevelsWrap",
-                "obstaclesWrap",
-                "trophyWrap",
-                "achievementsWrap"]
+var sectionWrap = [ "arenaReferenceWrap",
+                    "cardBuildingWrap",
+                    "cardBuildingLevelWrap",
+                    "cardTroopWrap",
+                    "cardTroopLevelWrap",
+                    "cardSpellWrap",
+                    "cardSpellLevelWrap",
+                    "buildingWrap",
+                    "troopWrap",
+                    "spellWrap",
+                    "buildingLevelWrap",
+                    "troopLevelWrap",
+                    "spellLevelWrap",
+                    "chestSequenceWrap",
+                    "achievementWrap",
+                    "donationWrap",
+                    "requestWrap",
+                    "chestDataWrap",
+                    "tribeDaggerRankWrap",
+                    "dataConstantWrap",
+                    "chestProbabilityWrap",
+                    "loserDaggerModifierWrap",
+                    "freeGemSequenceWrap",
+                    "crownGemSequenceWrap",
+                    "tvRoyaleWrap",
+                    "towerLevelWrap",
+                    "shopCardPriceWrap",
+                    "unitEffectWrap",
+                    "unitSoundFXWrap" ]
+
+var selectedSection;
 
 jQuery(document).ready(function($)
 {
- if(gameVersionSelected()){
-    campaignDBTbl = $("#campaignDBTbl").dataTable({
+
+  $("#publishConfirmDialog").dialog({
+    autoOpen: false,
+    modal: true,
+    buttons : {
+      "Publish" : function() {
+        publishGGSSToServer();
+      },
+      "Cancel" : function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+
+	arenaReferenceTable = $("#arenaReferenceTable").dataTable({
+	       "bSort" : false,
+	       "aLengthMenu": [
+	        [25, 50, 100, -1], [25, 50, 100, "All"]
+	      ]
+	    });
+
+  arenaReferenceGGSSTbl = $("#arenaReferenceGGSSTbl").dataTable({
          "bSort" : false,
          "aLengthMenu": [
           [25, 50, 100, -1], [25, 50, 100, "All"]
         ]
       });
 
-
-      campaignGGSSTbl = $("#campaignGGSSTbl").dataTable({
+	cardBuildingTable = $("#cardBuildingTable").dataTable({
          "bSort" : false,
          "aLengthMenu": [
           [25, 50, 100, -1], [25, 50, 100, "All"]
         ]
       });
 
-      unitLevelsDBTbl = $("#unitLevelsDBTbl").dataTable({
-         "bSort" : false,
-         "sScrollX":'130%',
-         "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
-      });
-
-      unitLevelsGGSSTbl = $("#unitLevelsGGSSTbl").dataTable({
-         "bSort" : false,
-         "sScrollX":'130%',
-         "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
-      });
-
-      combatUnitsDBTbl = $("#combatUnitsDBTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      combatUnitsGGSSTbl = $("#combatUnitsGGSSTbl").dataTable({
-          "bSort" : false,
-          "bPaginate": false,
-          "sScrollX":'150%'
-      });
-
-      defensiveBuildingsDBTbl = $("#defensiveBuildingsDBTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      defensiveBuildingsGGSSTbl = $("#defensiveBuildingsGGSSTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-       defensiveBuildingLevelDBTbl = $("#defensiveBuildingLevelDBTbl").dataTable({
-           "bSort" : false,
-           "sScrollX":'200%',
-           "aLengthMenu": [
-              [25, 50, 100, -1], [25, 50, 100, "All"]
-            ]
-        });
-
-        defensiveBuildingLevelGGSSTbl = $("#defensiveBuildingLevelGGSSTbl").dataTable({
-           "bSort" : false,
-           "sScrollX":'200%',
-           "aLengthMenu": [
-              [25, 50, 100, -1], [25, 50, 100, "All"]
-            ]
-        });
-
-       resourceBuildingsDBTbl = $("#resourceBuildingsDBTbl").dataTable({
-           "bSort" : false,
-           "sScrollX":'250%',
-           "aLengthMenu": [
-             [25, 50, 100, -1], [25, 50, 100, "All"]
-           ]
-        });
-
-       resourceBuildingsGGSSTbl = $("#resourceBuildingsGGSSTbl").dataTable({
-           "bSort" : false,
-           "sScrollX":'250%',
-           "aLengthMenu": [
-             [25, 50, 100, -1], [25, 50, 100, "All"]
-           ]
-        });
-
-       armyBuildingsDBTbl = $("#armyBuildingsDBTbl").dataTable({
-         "bSort" : false,
-         "sScrollX":'200%',
-         "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
-       });
-
-       armyBuildingsGGSSTbl = $("#armyBuildingsGGSSTbl").dataTable({
-          "bSort" : false,
-          "sScrollX":'200%',
-          "aLengthMenu": [
-            [25, 50, 100, -1], [25, 50, 100, "All"]
-          ]
-       });
-
-      otherBuildingsDBTbl = $("#otherBuildingsDBTbl").dataTable({
-           "bSort" : false,
-           "bPaginate": false,
-           "sScrollX":'200%',
-        });
-
-      otherBuildingsGGSSTbl = $("#otherBuildingsGGSSTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'200%',
-      });
-
-      townHallLevelDBTbl = $("#townHallLevelDBTbl").dataTable({
-           "bSort" : false,
-           "aLengthMenu": [
-             [25, 50, 100, -1], [25, 50, 100, "All"]
-           ]
-        });
-
-      townHallLevelGGSSTbl = $("#townHallLevelGGSSTbl").dataTable({
+  cardBuildingGGSSTbl = $("#cardBuildingGGSSTbl").dataTable({
          "bSort" : false,
          "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
       });
 
-      decorationsDBTbl = $("#decorationsDBTbl").dataTable({
+	cardBuildingLevelTable = $("#cardBuildingLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  cardBuildingLevelGGSSTbl = $("#cardBuildingLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	cardTroopTable = $("#cardTroopTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  cardTroopGGSSTbl = $("#cardTroopGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	cardTroopLevelTable = $("#cardTroopLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  cardTroopLevelGGSSTbl = $("#cardTroopLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	cardSpellTable = $("#cardSpellTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  cardSpellGGSSTbl = $("#cardSpellGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	cardSpellLevelTable = $("#cardSpellLevelTable").dataTable({
+       "bSort" : false,
+       "aLengthMenu": [
+        [25, 50, 100, -1], [25, 50, 100, "All"]
+      ]
+    });
+
+  cardSpellLevelGGSSTbl = $("#cardSpellLevelGGSSTbl").dataTable({
+       "bSort" : false,
+       "aLengthMenu": [
+        [25, 50, 100, -1], [25, 50, 100, "All"]
+      ]
+    });
+
+	buildingTable = $("#buildingTable").dataTable({
          "bSort" : false,
          "sScrollX":'200%',
          "aLengthMenu": [
@@ -154,7 +152,7 @@ jQuery(document).ready(function($)
         ]
       });
 
-      decorationsGGSSTbl = $("#decorationsGGSSTbl").dataTable({
+  buildingGGSSTbl = $("#buildingGGSSTbl").dataTable({
          "bSort" : false,
          "sScrollX":'200%',
          "aLengthMenu": [
@@ -162,434 +160,881 @@ jQuery(document).ready(function($)
         ]
       });
 
-      spellsDBTbl = $("#spellsDBTbl").dataTable({
+	troopTable = $("#troopTable").dataTable({
          "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'120%'
-      });
-
-      spellsGGSSTbl = $("#spellsGGSSTbl").dataTable({
-           "bSort" : false,
-           "bPaginate": false,
-           "sScrollX":'120%'
-        });
-
-      spellLevelsDBTbl = $("#spellLevelsDBTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      spellLevelsGGSSTbl = $("#spellLevelsGGSSTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      obstaclesDBTbl = $("#obstaclesDBTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      obstaclesGGSSTbl = $("#obstaclesGGSSTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-         "sScrollX":'150%'
-      });
-
-      trophyDBTbl = $("#trophyDBTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-      });
-
-      trophyGGSSTbl = $("#trophyGGSSTbl").dataTable({
-         "bSort" : false,
-         "bPaginate": false,
-      });
-
-      achievementsDBTbl = $("#achievementsDBTbl").dataTable({
-         "bSort" : false,
-         "sScrollX": '150%',
+         "sScrollX":'200%',
          "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
       });
 
-      achievementsGGSSTbl = $("#achievementsGGSSTbl").dataTable({
+  troopGGSSTbl = $("#troopGGSSTbl").dataTable({
          "bSort" : false,
-         "sScrollX": '150%',
+         "sScrollX":'200%',
          "aLengthMenu": [
-           [25, 50, 100, -1], [25, 50, 100, "All"]
-         ]
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
       });
 
-  //  hideAllSections();
+	spellTable = $("#spellTable").dataTable({
+         "bSort" : false,
+         "sScrollX":'200%',
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
 
-    hideAllSectionsExceptCampaign();
-    getSectionFromDB("campaign");
-    $("#campaignWrap").show();
+  spellGGSSTbl = $("#spellGGSSTbl").dataTable({
+         "bSort" : false,
+         "sScrollX":'200%',
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
 
+	buildingLevelTable = $("#buildingLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
 
-    $("ul.navbar-nav").find("li").on('click', function() {
+  buildingLevelGGSSTbl = $("#buildingLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	troopLevelTable = $("#troopLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  troopLevelGGSSTbl = $("#troopLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+	spellLevelTable = $("#spellLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  spellLevelGGSSTbl = $("#spellLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  chestSequenceTable = $("#chestSequenceTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ],
+        "columns" : [
+        null,
+        null,
+        {
+          defaultContent: ""
+        }]
+         
+      });
+
+  chestSequenceGGSSTbl = $("#chestSequenceGGSSTbl").dataTable({
+        "bSort" : false,
+        "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ],
+        "columns" : [
+        null,
+        null,
+        {
+          defaultContent: ""
+        }]
+      });
+
+  achievementTable = $("#achievementTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  achievementGGSSTbl = $("#achievementGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  donationTable = $("#donationTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  donationGGSSTbl = $("#donationGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  requestTable = $("#requestTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  requestGGSSTbl = $("#requestGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  chestDataTable = $("#chestDataTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  chestDataGGSSTbl = $("#chestDataGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  tribeDaggerRankTable = $("#tribeDaggerRankTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  tribeDaggerRankGGSSTbl = $("#tribeDaggerRankGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  dataConstantTable = $("#dataConstantTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  dataConstantGGSSTbl = $("#dataConstantGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  chestProbabilityTable = $("#chestProbabilityTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  chestProbabilityGGSSTbl = $("#chestProbabilityGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  loserDaggerModifierTable = $("#loserDaggerModifierTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  loserDaggerModifierGGSSTbl = $("#loserDaggerModifierGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  freeGemSequenceTable = $("#freeGemSequenceTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  freeGemSequenceGGSSTbl = $("#freeGemSequenceGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  crownGemSequenceTable = $("#crownGemSequenceTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  crownGemSequenceGGSSTbl = $("#crownGemSequenceGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });  
+
+  tvRoyaleTable = $("#tvRoyaleTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  tvRoyaleGGSSTbl = $("#tvRoyaleGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  towerLevelTable = $("#towerLevelTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  towerLevelGGSSTbl = $("#towerLevelGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });  
+
+  shopCardPriceTable = $("#shopCardPriceTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  shopCardPriceGGSSTbl = $("#shopCardPriceGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  unitEffectTable = $("#unitEffectTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  unitEffectGGSSTbl = $("#unitEffectGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  unitSoundFXTable = $("#unitSoundFXTable").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  unitSoundFXGGSSTbl = $("#unitSoundFXGGSSTbl").dataTable({
+         "bSort" : false,
+         "aLengthMenu": [
+          [25, 50, 100, -1], [25, 50, 100, "All"]
+        ]
+      });
+
+  section = {
+    ARENA_REFERENCE : {
+      dataTable: arenaReferenceTable, 
+      ggssTable: arenaReferenceGGSSTbl, 
+      sectionName: "arenareference", 
+      wrap: "arenaReferenceWrap",
+      currentSection: "currentArenaReference",
+      exportTypeSelectID: "arenaRefExportSelect",
+      ggssSection: "arenaReferenceGGSS",
+      publishBtn: "arenaReferenceGGSSPublishBtn",
+    },
+    CARD_BUILDING : {
+      dataTable: cardBuildingTable, 
+      ggssTable: cardBuildingGGSSTbl, 
+      sectionName: "cardbuilding", 
+      wrap: "cardBuildingWrap",
+      currentSection: "currentCardBuilding",
+      exportTypeSelectID: "cardBuildingExportSelect", 
+      ggssSection: "cardBuildingGGSS",
+      publishBtn: "cardBuildingGGSSPublishBtn",
+    },
+    CARD_BUILDING_LEVEL : {
+      dataTable: cardBuildingLevelTable, 
+      ggssTable: cardBuildingLevelGGSSTbl, 
+      sectionName: "cardbuildinglevel", 
+      wrap: "cardBuildingLevelWrap",
+      currentSection: "currentCardBuildingLevel", 
+      exportTypeSelectID: "cardBuildingLevelExportSelect",
+      ggssSection: "cardBuildingLevelGGSS",
+      publishBtn: "cardBuildingLevelGGSSPublishBtn",
+    },
+    CARD_TROOP : {
+      dataTable: cardTroopTable, 
+      ggssTable: cardTroopGGSSTbl, 
+      sectionName: "cardtroop", 
+      wrap: "cardTroopWrap",
+      currentSection: "currentCardTroop",
+      exportTypeSelectID: "cardTroopExportSelect", 
+      ggssSection: "cardTroopGGSS",
+      publishBtn: "cardTroopGGSSPublishBtn",
+    },
+    CARD_TROOP_LEVEL : {
+      dataTable: cardTroopLevelTable, 
+      ggssTable: cardTroopLevelGGSSTbl, 
+      sectionName: "cardtrooplevel", 
+      wrap: "cardTroopLevelWrap",
+      currentSection: "currentCardTroopLevel",
+      exportTypeSelectID: "cardTroopLevelExportSelect", 
+      ggssSection: "cardTroopLevelGGSS",
+      publishBtn: "cardTroopLevelGGSSPublishBtn"
+    },
+    CARD_SPELL : {
+      dataTable: cardSpellTable, 
+      ggssTable: cardSpellGGSSTbl, 
+      sectionName: "cardspell", 
+      wrap: "cardSpellWrap",
+      currentSection: "currentCardSpell",
+      exportTypeSelectID: "cardSpellExportSelect", 
+      ggssSection: "cardSpellGGSS",
+      publishBtn: "cardSpellGGSSPublishBtn"
+    },
+    CARD_SPELL_LEVEL : {
+      dataTable: cardSpellLevelTable, 
+      ggssTable: cardSpellLevelGGSSTbl, 
+      sectionName: "cardspelllevel", 
+      wrap: "cardSpellLevelWrap",
+      currentSection: "currentCardSpellLevel",
+      exportTypeSelectID: "cardSpellLevelExportSelect", 
+      ggssSection: "cardSpellLevelGGSS",
+      publishBtn: "cardSpellLevelGGSSPublishBtn"
+    },
+    BUILDING : {
+      dataTable: buildingTable, 
+      ggssTable: buildingGGSSTbl, 
+      sectionName: "building", 
+      wrap: "buildingWrap",
+      currentSection: "currentBuilding",
+      exportTypeSelectID: "buildingExportSelect", 
+      ggssSection: "buildingGGSS",
+      publishBtn: "buildingGGSSPublishBtn"
+    },
+    BUILDING_LEVEL : {
+      dataTable: buildingLevelTable, 
+      ggssTable: buildingLevelGGSSTbl, 
+      sectionName: "buildinglevel", 
+      wrap: "buildingLevelWrap",
+      currentSection: "currentBuildingLevel",
+      exportTypeSelectID: "buildingLevelExportSelect", 
+      ggssSection: "buildingLevelGGSS",
+      publishBtn: "buildingLevelGGSSPublishBtn"
+    },
+    TROOP : {
+      dataTable: troopTable, 
+      ggssTable: troopGGSSTbl, 
+      sectionName: "troop", 
+      wrap: "troopWrap",
+      currentSection: "currentTroop",
+      exportTypeSelectID: "troopExportSelect", 
+      ggssSection: "troopGGSS",
+      publishBtn: "troopGGSSPublishBtn"
+    },
+    TROOP_LEVEL : {
+      dataTable: troopLevelTable, 
+      ggssTable: troopLevelGGSSTbl, 
+      sectionName: "trooplevel", 
+      wrap: "troopLevelWrap",
+      currentSection: "currentTroopLevel",
+      exportTypeSelectID: "troopLevelExportSelect", 
+      ggssSection: "troopLevelGGSS",
+      publishBtn: "troopLevelGGSSPublishBtn"
+    },
+    SPELL : {
+      dataTable: spellTable, 
+      ggssTable: spellGGSSTbl, 
+      sectionName: "spell", 
+      wrap: "spellWrap",
+      currentSection: "currentSpell",
+      exportTypeSelectID: "spellExportSelect", 
+      ggssSection: "spellGGSS",
+      publishBtn: "spellGGSSPublishBtn"
+    },
+    SPELL_LEVEL : {
+      dataTable: spellLevelTable, 
+      ggssTable: spellLevelGGSSTbl, 
+      sectionName: "spelllevel", 
+      wrap: "spellLevelWrap",
+      currentSection: "currentSpellLevel",
+      exportTypeSelectID: "spellLevelExportSelect", 
+      ggssSection: "spellLevelGGSS",
+      publishBtn: "spellLevelGGSSPublishBtn"
+    },
+    CHEST_SEQUENCE : {
+      dataTable: chestSequenceTable, 
+      ggssTable: chestSequenceGGSSTbl, 
+      sectionName: "chestsequence", 
+      wrap: "chestSequenceWrap",
+      currentSection: "currentChestSequence",
+      exportTypeSelectID: "chestSequenceExportSelect", 
+      ggssSection: "chestSequenceGGSS",
+      publishBtn: "chestSequenceGGSSPublishBtn"
+    },
+    ACHIEVEMENT : {
+      dataTable: achievementTable, 
+      ggssTable: achievementGGSSTbl, 
+      sectionName: "achievement", 
+      wrap: "achievementWrap",
+      currentSection: "currentAchievement",
+      exportTypeSelectID: "achievementExportSelect", 
+      ggssSection: "achievementGGSS",
+      publishBtn: "achievementGGSSPublishBtn"
+    },
+    DONATION : {
+      dataTable: donationTable, 
+      ggssTable: donationGGSSTbl, 
+      sectionName: "donation", 
+      wrap: "donationWrap",
+      currentSection: "currentDonation",
+      exportTypeSelectID: "donationExportSelect", 
+      ggssSection: "donationGGSS",
+      publishBtn: "donationGGSSPublishBtn"
+    },
+    REQUEST : {
+      dataTable: requestTable, 
+      ggssTable: requestGGSSTbl, 
+      sectionName: "request", 
+      wrap: "requestWrap",
+      currentSection: "currentRequest",
+      exportTypeSelectID: "requestExportSelect", 
+      ggssSection: "requestGGSS",
+      publishBtn: "requestGGSSPublishBtn"
+    },
+    CHEST_DATA : {
+      dataTable: chestDataTable, 
+      ggssTable: chestDataGGSSTbl, 
+      sectionName: "chestdata", 
+      wrap: "chestDataWrap",
+      currentSection: "currentChestData",
+      exportTypeSelectID: "chestDataExportSelect", 
+      ggssSection: "chestDataGGSS",
+      publishBtn: "chestDataGGSSPublishBtn"
+    },
+    TRIBE_DAGGER_RANK : {
+      dataTable: tribeDaggerRankTable, 
+      ggssTable: tribeDaggerRankGGSSTbl, 
+      sectionName: "tribedaggerrank", 
+      wrap: "tribeDaggerRankWrap",
+      currentSection: "currentTribeDaggerRank",
+      exportTypeSelectID: "tribeDaggerRankExportSelect", 
+      ggssSection: "tribeDaggerRankGGSS",
+      publishBtn: "tribeDaggerRankGGSSPublishBtn"
+    },
+    DATA_CONSTANT : {
+      dataTable: dataConstantTable, 
+      ggssTable: dataConstantGGSSTbl, 
+      sectionName: "dataconstant", 
+      wrap: "dataConstantWrap",
+      currentSection: "currentDataConstant",
+      exportTypeSelectID: "dataConstantExportSelect", 
+      ggssSection: "dataConstantGGSS",
+      publishBtn: "dataConstantGGSSPublishBtn"
+    },
+    CHEST_PROBABILITY : {
+      dataTable: chestProbabilityTable, 
+      ggssTable: chestProbabilityGGSSTbl, 
+      sectionName: "chestprobability", 
+      wrap: "chestProbabilityWrap",
+      currentSection: "currentChestProbability",
+      exportTypeSelectID: "chestProbabilityExportSelect", 
+      ggssSection: "chestProbabilityGGSS",
+      publishBtn: "chestProbabilityGGSSPublishBtn"
+    },
+    LOSER_DAGGER_MODIFIER : {
+      dataTable: loserDaggerModifierTable, 
+      ggssTable: loserDaggerModifierGGSSTbl, 
+      sectionName: "loserdaggermodifier", 
+      wrap: "loserDaggerModifierWrap",
+      currentSection: "currentLoserDaggerModifier",
+      exportTypeSelectID: "loserDaggerModifierExportSelect", 
+      ggssSection: "loserDaggerModifierGGSS",
+      publishBtn: "loserDaggerModifierGGSSPublishBtn"
+    },
+    FREE_GEM_SEQUENCE : {
+      dataTable: freeGemSequenceTable, 
+      ggssTable: freeGemSequenceGGSSTbl, 
+      sectionName: "freegemsequence", 
+      wrap: "freeGemSequenceWrap",
+      currentSection: "currentFreeGemSequence",
+      exportTypeSelectID: "freeGemSequenceExportSelect", 
+      ggssSection: "freeGemSequenceGGSS",
+      publishBtn: "freeGemSequenceGGSSPublishBtn"
+    },
+    CROWN_GEM_SEQUENCE : {
+      dataTable: crownGemSequenceTable, 
+      ggssTable: crownGemSequenceGGSSTbl, 
+      sectionName: "crowngemsequence", 
+      wrap: "crownGemSequenceWrap",
+      currentSection: "currentCrownGemSequence",
+      exportTypeSelectID: "crownGemSequenceExportSelect", 
+      ggssSection: "crownGemSequenceGGSS",
+      publishBtn: "crownGemSequenceGGSSPublishBtn"
+    },
+    TV_ROYALE : {
+      dataTable: tvRoyaleTable, 
+      ggssTable: tvRoyaleGGSSTbl, 
+      sectionName: "tvroyale", 
+      wrap: "tvRoyaleWrap",
+      currentSection: "currentTVRoyale",
+      exportTypeSelectID: "tvRoyaleExportSelect", 
+      ggssSection: "tvRoyaleGGSS",
+      publishBtn: "tvRoyaleGGSSPublishBtn"
+    },
+    TOWER_LEVEL : {
+      dataTable: towerLevelTable, 
+      ggssTable: towerLevelGGSSTbl, 
+      sectionName: "towerlevel", 
+      wrap: "towerLevelWrap",
+      currentSection: "currentTowerLevel",
+      exportTypeSelectID: "towerLevelExportSelect", 
+      ggssSection: "towerLevelGGSS",
+      publishBtn: "towerLevelGGSSPublishBtn"
+    },
+    SHOP_CARD_PRICE : {
+      dataTable: shopCardPriceTable, 
+      ggssTable: shopCardPriceGGSSTbl, 
+      sectionName: "shopcardprice", 
+      wrap: "shopCardPriceWrap",
+      currentSection: "currentShopCardPrice",
+      exportTypeSelectID: "shopCardPriceExportSelect", 
+      ggssSection: "shopCardPriceGGSS",
+      publishBtn: "shopCardPriceGGSSPublishBtn"
+    },
+    UNIT_EFFECT : {
+      dataTable: unitEffectTable, 
+      ggssTable: unitEffectGGSSTbl, 
+      sectionName: "uniteffect", 
+      wrap: "unitEffectWrap",
+      currentSection: "currentUnitEffect",
+      exportTypeSelectID: "unitEffectExportSelect", 
+      ggssSection: "unitEffectGGSS",
+      publishBtn: "unitEffectGGSSPublishBtn"
+    },
+    UNIT_SOUND_FX : {
+      dataTable: unitSoundFXTable, 
+      ggssTable: unitSoundFXGGSSTbl, 
+      sectionName: "unitsoundfx", 
+      wrap: "unitSoundFXWrap",
+      currentSection: "currentUnitSoundFX",
+      exportTypeSelectID: "unitSoundFXExportSelect", 
+      ggssSection: "unitSoundFXGGSS",
+      publishBtn: "unitSoundFXGGSSPublishBtn"
+    },
+  }
+
+	  $("ul.navbar-nav").find("li").on('click', function() {
       $("ul.navbar-nav").find(".active")[0].className = "";
       $(this)[0].className = "active";
     })
 
-
-  //  click on campaign link
-    $("#campaignLink").on('click', function() {
-      getSectionFromDB("campaign");
+    $("#arenaReferenceLink").on('click', function() {
+      selectedSection = section.ARENA_REFERENCE;
+      getCurrentData();
     });
 
-  //  click on unit level link
-    $("#unitLevelsLink").on('click', function(){
-      getSectionFromDB("unitLevels");
+    $("#cardBuildingLink").on('click', function() {
+      selectedSection = section.CARD_BUILDING;
+      getCurrentData();
     });
 
-  //  click on combat units link
-    $("#combatUnitsLink").on('click', function(){
-        getSectionFromDB("combatUnits");
-      });
-
-  //    click on defensive buildings link
-    $("#defensiveBuildingsLink").on('click', function(){
-      getSectionFromDB("defensiveBuildings");
+    $("#cardBuildingLevelLink").on('click', function() {
+      selectedSection = section.CARD_BUILDING_LEVEL;
+      getCurrentData();
     });
 
-  //    click on defensive building level link
-    $("#defensiveBuildingLevelLink").on('click', function(){
-      getSectionFromDB("defensiveBuildingLevel");
+    $("#cardTroopLink").on('click', function() {
+      selectedSection = section.CARD_TROOP;
+      getCurrentData();
     });
 
-  //    click on resource buildings  link
-    $("#resourceBuildingsLink").on('click', function(){
-      getSectionFromDB("resourceBuildings");
+    $("#cardTroopLevelLink").on('click', function() {
+      selectedSection = section.CARD_TROOP_LEVEL;
+      getCurrentData();
     });
 
-  //    click on army buildings  link
-    $("#armyBuildingsLink").on('click', function(){
-      getSectionFromDB("armyBuildings");
+    $("#cardSpellLink").on('click', function() {
+      selectedSection = section.CARD_SPELL;
+      getCurrentData();
     });
 
-  //    click on other buildings  link
-    $("#otherBuildingsLink").on('click', function(){
-      getSectionFromDB("otherBuildings");
+    $("#cardSpellLevelLink").on('click', function() {
+      selectedSection = section.CARD_SPELL_LEVEL;
+      getCurrentData();
     });
 
-  //    click on town hall level  link
-    $("#townHallLevelLink").on('click', function(){
-      getSectionFromDB("townHallLevel");
+    $("#buildingLink").on('click', function() {
+      selectedSection = section.BUILDING;
+      getCurrentData();
     });
 
-  //    click on decorations  link
-    $("#decorationsLink").on('click', function(){
-      getSectionFromDB("decorations");
+    $("#buildingLevelLink").on('click', function() {
+      selectedSection = section.BUILDING_LEVEL;
+      getCurrentData();
     });
 
-  //    click on spells  link
-    $("#spellsLink").on('click', function(){
-      getSectionFromDB("spells");
+    $("#troopLink").on('click', function() {
+      selectedSection = section.TROOP;
+      getCurrentData();
     });
 
-  //    click on spell levels  link
-    $("#spellLevelsLink").on('click', function(){
-      getSectionFromDB("spellLevels");
+    $("#troopLevelLink").on('click', function() {
+      selectedSection = section.TROOP_LEVEL;
+      getCurrentData();
     });
 
-  //    click on obstacles  link
-    $("#obstaclesLink").on('click', function(){
-      getSectionFromDB("obstacles");
+    $("#spellLink").on('click', function() {
+      selectedSection = section.SPELL;
+      getCurrentData();
     });
 
-  //    click on trophy  link
-    $("#trophyLink").on('click', function(){
-      getSectionFromDB("trophy");
+    $("#spellLevelLink").on('click', function() {
+      selectedSection = section.SPELL_LEVEL;
+      getCurrentData();
     });
 
-  //    click on achievements  link
-    $("#achievementsLink").on('click', function(){
-      getSectionFromDB("achievements");
+    $("#chestSequenceLink").on('click', function() {
+      selectedSection = section.CHEST_SEQUENCE;
+      getCurrentData();
     });
 
+    $("#achievementLink").on('click', function() {
+      selectedSection = section.ACHIEVEMENT;
+      getCurrentData();
+    });
 
-  //  armyBuildingsGGSSForm
-    $("#armyBuildingsGGSSForm").submit(function() {
-      $("#armyBuildingsGGSSForm").validate();
-      if($("#armyBuildingsGGSSForm").valid()) {
-        var spreadsheetUrl = $("#armyBuildingsGGSSUrl").val();
-        var sectionName = "Army Building";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#donationLink").on('click', function() {
+      selectedSection = section.DONATION;
+      getCurrentData();
+    });
 
-  // campaignGGSSForm
-    $("#campaignGGSSForm").submit(function() {
-      $("#campaignGGSSForm").validate();
-      if($("#campaignGGSSForm").valid()) {
-        var spreadsheetUrl = $("#campaignGGSSUrl").val();
-        var sectionName = "Campaign";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#requestLink").on('click', function() {
+      selectedSection = section.REQUEST;
+      getCurrentData();
+    });
 
-  //  combatUnitsGGSSForm
-    $("#combatUnitsGGSSForm").submit(function() {
-      $("#combatUnitsGGSSForm").validate();
-      if($("#combatUnitsGGSSForm").valid()){
-        var spreadsheetUrl = $("#combatUnitsGGSSUrl").val();
-        var sectionName = "Combat Units";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#chestDataLink").on('click', function() {
+      selectedSection = section.CHEST_DATA;
+      getCurrentData(section.CHEST_DATA);
+    });
 
-  //  unitLevelsGGSSForm
-    $("#unitLevelsGGSSForm").submit(function() {
-      $("#unitLevelsGGSSForm").validate();
-      if($("#unitLevelsGGSSForm").valid()){
-        var spreadsheetUrl = $("#unitLevelsGGSSUrl").val();
-        var sectionName = "Unit levels";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#tribeDaggerRankLink").on('click', function() {
+      selectedSection = section.TRIBE_DAGGER_RANK;
+      getCurrentData();
+    });
 
-  //  defensiveBuildingsGGSSForm
-    $("#defensiveBuildingsGGSSForm").submit(function() {
-      $("#defensiveBuildingsGGSSForm").validate();
-      if($("#defensiveBuildingsGGSSForm").valid()){
-        var spreadsheetUrl = $("#defensiveBuildingsGGSSUrl").val();
-        var sectionName = "Defensive Buildings";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#dataConstantLink").on('click', function() {
+      selectedSection = section.DATA_CONSTANT;
+      getCurrentData();
+    });
 
-  //  defensiveBuildingLevelGGSSForm
-    $("#defensiveBuildingLevelGGSSForm").submit(function() {
-      $("#defensiveBuildingLevelGGSSForm").validate();
-      if($("#defensiveBuildingLevelGGSSForm").valid()){
-        var spreadsheetUrl = $("#defensiveBuildingLevelGGSSUrl").val();
-        var sectionName = "Defensive Buildings Level";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#chestProbabilityLink").on('click', function() {
+      selectedSection = section.CHEST_PROBABILITY;
+      getCurrentData();
+    });
 
-  //  resourceBuildingsGGSSForm
-    $("#resourceBuildingsGGSSForm").submit(function() {
-      $("#resourceBuildingsGGSSForm").validate();
-      if($("#resourceBuildingsGGSSForm").valid()){
-        var spreadsheetUrl = $("#resourceBuildingsGGSSUrl").val();
-        var sectionName = "Resource Building variables";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#loserDaggerModifierLink").on('click', function() {
+      selectedSection = section.LOSER_DAGGER_MODIFIER;
+      getCurrentData();
+    });
 
-  //  otherBuildingsGGSSForm
-    $("#otherBuildingsGGSSForm").submit(function() {
-      $("#otherBuildingsGGSSForm").validate();
-      if($("#otherBuildingsGGSSForm").valid()){
-        var spreadsheetUrl = $("#otherBuildingsGGSSUrl").val();
-        var sectionName = "Other Buildings";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#freeGemSequenceLink").on('click', function() {
+      selectedSection = section.FREE_GEM_SEQUENCE;
+      getCurrentData();
+    });
 
-  //  townHallLevelGGSSForm
-    $("#townHallLevelGGSSForm").submit(function() {
-      $("#townHallLevelGGSSForm").validate();
-      if($("#townHallLevelGGSSForm").valid()){
-        var spreadsheetUrl = $("#townHallLevelGGSSUrl").val();
-        var sectionName = "Town Hall Level";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#crownGemSequenceLink").on('click', function() {
+      selectedSection = section.CROWN_GEM_SEQUENCE;
+      getCurrentData();
+    });
 
-  //  decorationsGGSSForm
-    $("#decorationsGGSSForm").submit(function() {
-      $("#decorationsGGSSForm").validate();
-      if($("#decorationsGGSSForm").valid()){
-        var spreadsheetUrl = $("#decorationsGGSSUrl").val();
-        var sectionName = "Decorations";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#tvRoyaleLink").on('click', function() {
+      selectedSection = section.TV_ROYALE;
+      getCurrentData();
+    });
 
-    //  spellsGGSSForm
-    $("#spellsGGSSForm").submit(function() {
-      $("#spellsGGSSForm").validate();
-      if($("#spellsGGSSForm").valid()){
-        var spreadsheetUrl = $("#spellsGGSSUrl").val();
-        var sectionName = "Spell";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#towerLevelLink").on('click', function() {
+      selectedSection = section.TOWER_LEVEL;
+      getCurrentData();
+    });
 
-  //  spellLevelsGGSSForm
-    $("#spellLevelsGGSSForm").submit(function() {
-      $("#spellLevelsGGSSForm").validate();
-      if($("#spellLevelsGGSSForm").valid()){
-        var spreadsheetUrl = $("#spellLevelsGGSSUrl").val();
-        var sectionName = "Spell Level";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#shopCardPriceLink").on('click', function() {
+      selectedSection = section.SHOP_CARD_PRICE;
+      getCurrentData();
+    });
 
-    //  obstaclesGGSSForm
-    $("#obstaclesGGSSForm").submit(function() {
-      $("#obstaclesGGSSForm").validate();
-      if($("#obstaclesGGSSForm").valid()){
-        var spreadsheetUrl = $("#obstaclesGGSSUrl").val();
-        var sectionName = "Obstacles";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#unitEffectLink").on('click', function() {
+      selectedSection = section.UNIT_EFFECT;
+      getCurrentData();
+    });
 
-  //  trophyGGSSForm
-    $("#trophyGGSSForm").submit(function() {
-      $("#trophyGGSSForm").validate();
-      if($("#trophyGGSSForm").valid()){
-        var spreadsheetUrl = $("#trophyGGSSUrl").val();
-        var sectionName = "Trophy";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    $("#unitSoundFXLink").on('click', function() {
+      selectedSection = section.UNIT_SOUND_FX;
+      getCurrentData();
+    });
 
-  //  achievementsGGSSForm
-    $("#achievementsGGSSForm").submit(function() {
-      $("#achievementsGGSSForm").validate();
-      if($("#achievementsGGSSForm").valid()){
-        var spreadsheetUrl = $("#achievementsGGSSUrl").val();
-        var sectionName = "Achievement";
-        getSpreadsheetData(sectionName, spreadsheetUrl);
-      }
-    })
+    selectedSection = section.ARENA_REFERENCE;
+		getCurrentData();  //default - first visit page
+
+    var exportBtnArr = $('[name="exportBtn"]');
+    for (var i = 0; i < exportBtnArr.length; i ++ ) {
+      $("#" + exportBtnArr[i].id).click(function(e) {
+        e.preventDefault();
+        exportFile();
+      })
+    }
+})
+
+// ggssForm
+$("#ggssForm").submit(function() {
+  $("#ggssForm").validate();
+  if ($("#ggssForm").valid()) {
+    var spreadsheetUrl = $("#ggssUrl").val();
+    getSpreadsheetData(spreadsheetUrl);
   }
-});
+})
 
-function hideAllSections() {
-  for(var i = 0; i <= sections.length - 1; i++) {
-      $("#"+sections[i]).hide();
-  }
-}
-
-function hideAllSectionsExceptCampaign() {
-  for(var i = 0; i <= sections.length - 1; i++) {
-    if(sections[i] != "campaignWrap")
-      $("#"+sections[i]).hide();
-  }
-}
-
-
-function getSectionFromDB(sectionName) {
-  hideAllSections();
-  var gameVersion = getCookie("gameVersion");
+function exportFile() {
   var dataObj = {};
-  dataObj["gameVersion"] = gameVersion;
-  var table;
-  var ajaxUrl;
-  var thisSectionWrap;
-  switch(sectionName) {
-    case "campaign":
-      table = campaignDBTbl;
-      ajaxUrl = 'campaignreference';
-      thisSectionWrap = $("#campaignWrap");
-      break;
-    case "combatUnits":
-      table = combatUnitsDBTbl;
-      ajaxUrl = 'combatunits';
-      thisSectionWrap = $("#combatUnitsWrap");
-      break;
-    case "unitLevels":
-      table = unitLevelsDBTbl;
-      ajaxUrl = 'unitlevels';
-      thisSectionWrap = $("#unitLevelsWrap");
-      break;
-    case "defensiveBuildings":
-      table = defensiveBuildingsDBTbl;
-      ajaxUrl = 'defensivebuildings';
-      thisSectionWrap = $("#defensiveBuildingsWrap");
-      break;
-    case "defensiveBuildingLevel":
-      table = defensiveBuildingLevelDBTbl;
-      ajaxUrl = "defensivebuildinglevel";
-      thisSectionWrap = $("#defensiveBuildingLevelWrap");
-      break;
-    case "resourceBuildings":
-      table = resourceBuildingsDBTbl;
-      ajaxUrl = "resourcebuildings";
-      thisSectionWrap = $("#resourceBuildingsWrap");
-      break;
-    case "armyBuildings":
-      table = armyBuildingsDBTbl;
-      ajaxUrl = "armybuildings";
-      thisSectionWrap = $("#armyBuildingsWrap");
-      break;
-    case "otherBuildings":
-      table = otherBuildingsDBTbl;
-      ajaxUrl = "otherbuildings";
-      thisSectionWrap = $("#otherBuildingsWrap");
-      break;
-    case "townHallLevel":
-      table = townHallLevelDBTbl;
-      ajaxUrl = "townhalllevel";
-      thisSectionWrap = $("#townHallLevelWrap");
-      break;
-    case "decorations":
-      table = decorationsDBTbl;
-      ajaxUrl = "decorations";
-      thisSectionWrap = $("#decorationsWrap");
-      break;
-    case "spells":
-      table = spellsDBTbl;
-      ajaxUrl = "spells";
-      thisSectionWrap = $("#spellsWrap");
-      break;
-    case "spellLevels":
-      table = spellLevelsDBTbl;
-      ajaxUrl = "spelllevels";
-      thisSectionWrap = $("#spellLevelsWrap");
-      break;
-    case "obstacles":
-      table = obstaclesDBTbl;
-      ajaxUrl = "obstacles";
-      thisSectionWrap = $("#obstaclesWrap");
-      break;
-    case "trophy":
-      table = trophyDBTbl;
-      ajaxUrl = "trophy";
-      thisSectionWrap = $("#trophyWrap");
-      break;
-    case "achievements":
-      table = achievementsDBTbl;
-      ajaxUrl = "achievements";
-      thisSectionWrap = $("#achievementsWrap");
-      break;
-  }
+  var exportType = $("#" + selectedSection.exportTypeSelectID).val();
+  dataObj["exportType"] = exportType;
   $.ajax({
-    url: ajaxUrl,
-    method: 'POST',
+    url: "exportgamedata/" + selectedSection.sectionName,
+    method: "POST",
+    data: dataObj,
+    beforeSend: function() {
+      showLoadingBar(70);
+    }
+  })
+  .done(function(resData) {
+    showLoadingBar(100); 
+    if (exportType == 0) {
+      saveFile(resData, selectedSection.sectionName);
+    } else if (exportType == 1) {
+      window.open("https://docs.google.com/spreadsheets/d/" + resData, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=1600, height=900, top=10, left=10");
+    } else if (exportType == 2) {
+      var csvData = new Blob([resData], { type: 'text/csv' }); 
+      var uri = URL.createObjectURL(csvData);
+      $('#CSVTable').CSVToTable(uri);
+      $("#CSVTable").show();
+      $('html, body').animate({
+        scrollTop: $("#CSVTable").offset().top
+      }, 500);
+    }
+  })
+  .fail(function(xhr, status, error) {
+    showLoadingBar(100);
+    toastr.error(status, "Error", opts);
+  })
+}
+
+function getCurrentData() {
+  $("#CSVTable").hide();
+
+	var section = "";
+	var tempSectionWrap;
+	$.ajax({
+		url: "getdata/" + selectedSection.sectionName,
+		method: "GET"
+	})
+	.done(function(resData) {
+		var data = JSON.parse(resData).data;
+		addDataToTable(selectedSection.dataTable, data);
+		showSection(selectedSection.wrap);
+	})
+	.fail(function(xhr, status, error) {
+		showLoadingBar(100);
+  	toastr.error(status, "Error", opts);
+	})
+}
+
+function showSection(sectionName) {
+  for (var i = 0; i < sectionWrap.length; i++) {
+  		if (sectionWrap[i] == sectionName) {
+  			$("#" + sectionWrap[i]).show();
+  		} else {
+  			$("#" + sectionWrap[i]).hide();
+  		} 
+  }
+}
+
+function getSpreadsheetData(spreadsheetUrl) {
+  var dataObj = {};
+  dataObj["spreadsheetUrl"] = spreadsheetUrl;
+  $.ajax({
+    url: 'viewspreadsheetdata/' + selectedSection.sectionName,
+    method: 'GET',
     data: dataObj,
     beforeSend: function() {
       showLoadingBar(70);
     }
   }).
-  done(function(resData) {
+  done(function(resData){
     showLoadingBar(100);
-    addDataToDBTable(table, resData);
-    thisSectionWrap.show();
+    addDataToTable(selectedSection.ggssTable, resData);
+    $('html, body').animate({
+        scrollTop: $("#"+selectedSection.ggssSection).offset().top
+      }, 500);
+    addEventForPublishBtn(selectedSection);
   }).
-  fail(function (xhr, error, status) {
-     showLoadingBar(100);
-     toastr.error(status, "Error", opts);
-   })
+  fail(function(xhr, status, error){
+    toastr.error(status, "Error", opts);
+    showLoadingBar(100);
+  })
 }
 
-/* add Data to DB table  */
-function addDataToDBTable(table, resData) {
+function addDataToTable(table, resData) {
   var dataArr = resData.split("\n");
   var tableData = [];
-  for(var i = 1; i <= dataArr.length -1; i++){        //i = 0 -> headertext
+  for (var i = 1; i <= dataArr.length -1; i++) {        //i = 0 -> headertext
     var tdDataArr = dataArr[i].split("\t");
-    if(tdDataArr.length > 1){                         // prevent null array ([""])
+    if (tdDataArr.length > 1){                         // prevent null array ([""])
+      for (var j = 0; j < tdDataArr.length; j++) {
+        if (tdDataArr[j] == null) {
+          tdDataArr[j] == "";
+        }
+      }
       tableData.push(tdDataArr);
     }
   }
@@ -597,6 +1042,43 @@ function addDataToDBTable(table, resData) {
   table.fnAddData(tableData);
 }
 
+function addEventForPublishBtn(selectedSection) {
+  $("#" + selectedSection.publishBtn).click (function(e) {
+    $("#publishConfirmDialog").dialog("open");
+  }) 
+}
 
+function publishGGSSToServer() {
+  $.ajax({
+    url: 'publishspreadsheet/' + selectedSection.sectionName,
+    method: 'GET',
+    beforeSend: function() {
+      showLoadingBar(70);
+    }
+  }).
+  done(function(resData){
+    showLoadingBar(100);
+    if (resData == "0") {
+      getCurrentData();
+      $("#publishConfirmDialog").dialog("close");
+      toastr.success("Published successfully!!", "Publish to Server", opts);
+      $('html, body').animate({
+        scrollTop: $("#"+selectedSection.currentSection).offset().top
+      }, 500);
+    }
+  }).
+  fail(function(xhr, status, error){
+    toastr.error(status, "Error", opts);
+    showLoadingBar(100);
+  })
+}
 
-
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    // console.log(elHtml);
+    // var link = document.createElement('a');
+    // mimeType = mimeType || 'text/plain';
+    // link.setAttribute('download', filename);
+    // link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    // link.click(); 
+}

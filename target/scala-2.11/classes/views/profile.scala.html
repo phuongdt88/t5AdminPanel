@@ -1,0 +1,53 @@
+<script src="assets/script/profile.js"></script>
+
+<page-title ng-if="layoutOptions.pageTitles" title="User Profile" description=""></page-title>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Your Information</h3>
+        <div class="panel-options">
+          <a href="" data-toggle="panel">
+            <span class="collapse-icon">&ndash;</span>
+            <span class="expand-icon">+</span>
+          </a>
+          <a href="" data-toggle="remove">
+            &times;
+          </a>
+        </div>
+      </div>
+      <div class="panel-body">
+        <form role="form" class="form-horizontal validate" id="editProfileForm" name="editProfileForm" method="post">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="username">Username</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="username" name="username" data-validate="required" data-message-required="Please enter an username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="email">Email</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="email" name="email" data-validate="email,required" data-message-required="Please enter a valid Email" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">Password</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="password" name="password" data-validate="required,minlength[6]" data-message-required="Please enter a password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Role">Role</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="role" name="role" readonly="readonly">
+            </div>
+          </div>
+
+          <button class="btn btn-turquoise" id="updateProfileBtn" type="submit" style="width:17%;margin-left:17%">Update</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

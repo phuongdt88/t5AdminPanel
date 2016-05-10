@@ -36,10 +36,10 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Tribal Rivals Admin Panel" />
+        <meta name="description" content="T5 Admin Panel" />
         <meta name="author" content="" />
 
-        <title>Tribal Rivals - Admin Panel</title>
+        <title>T5 - Admin Panel</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
         <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -51,11 +51,14 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
         <link rel="stylesheet" href="assets/css/xenon-skins.css">
         <link rel="stylesheet" href="assets/css/custom.css">
         <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/csvtable.css" type="text/css" />
 
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
+
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="assets/js/jquery.jeditable.js"></script>
         <script src="assets/js/jquery-ui.min.js"></script>
         <script src="assets/script/global.js"></script>
+        <script src="assets/js/jquery.csvToTable.js"></script>
         <script>
 	var appHelper = """),format.raw/*29.18*/("""{"""),format.raw/*29.19*/("""
 		"""),format.raw/*30.3*/("""// Vars (paths without trailing slash)

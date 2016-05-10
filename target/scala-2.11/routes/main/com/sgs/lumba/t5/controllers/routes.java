@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/phuongdt1/Desktop/lumba/t5-admin-panel/conf/routes
-// @DATE:Thu Apr 07 16:26:35 ICT 2016
+// @DATE:Tue May 10 17:17:25 ICT 2016
 
 package com.sgs.lumba.t5.controllers;
 

@@ -48,121 +48,120 @@ function clearCookie(cname) {
   document.cookie = cname + "=" + "";
 }
 
+// function getSpreadsheetData(sectionName, spreadsheetUrl) {
+//   var table;
+//   var ggssSection;
+//   switch(sectionName) {
+//     case "Campaign":
+//       table = campaignGGSSTbl;
+//       ggssSection = "#campaignGGSS";
+//       break;
+//     case "Combat Units":
+//       table = combatUnitsGGSSTbl;
+//       ggssSection = "#combatUnitsGGSS";
+//       break;
+//     case "Unit levels":
+//       table = unitLevelsGGSSTbl;
+//       ggssSection = "#unitLevelsGGSS";
+//       break;
+//     case "Defensive Buildings":
+//       table = defensiveBuildingsGGSSTbl;
+//       ggssSection = "#defensiveBuildingsGGSS";
+//       break;
+//     case "Defensive Buildings Level":
+//       table = defensiveBuildingLevelGGSSTbl;
+//       ggssSection = "#defensiveBuildingLevelGGSS";
+//       break;
+//     case "Resource Building variables":
+//       table = resourceBuildingsGGSSTbl;
+//       ggssSection = "#resourceBuildingsGGSS";
+//       break;
+//     case "Army Building":
+//       table = armyBuildingsGGSSTbl;
+//       ggssSection = "#armyBuildingsGGSS";
+//       break;
+//     case "Other Buildings":
+//       table = otherBuildingsGGSSTbl;
+//       ggssSection = "#otherBuildingsGGSS";
+//       break;
+//     case "Town Hall Level":
+//       table = townHallLevelGGSSTbl;
+//       ggssSection = "#townHallLevelGGSS";
+//       break;
+//     case "Decorations":
+//       table = decorationsGGSSTbl;
+//       ggssSection = "#decorationsGGSS";
+//       break;
+//     case "Spell":
+//       table = spellsGGSSTbl;
+//       ggssSection = "#spellsGGSS";
+//       break;
+//     case "Spell Level":
+//       table = spellLevelsGGSSTbl;
+//       ggssSection = "#spellLevelsGGSS";
+//       break;
+//     case "Obstacles":
+//       table = obstaclesGGSSTbl;
+//       ggssSection = "#obstaclesGGSS";
+//       break;
+//     case "Trophy":
+//       table = trophyGGSSTbl;
+//       ggssSection = "#trophyGGSS";
+//       break;
+//     case "Achievement":
+//       table = achievementsGGSSTbl;
+//       ggssSection = "#achievementsGGSS";
+//       break;
+//     case "Text Strings (SGS)":
+//       table = textStringGGSSTbl;
+//       ggssSection = "#textStringGGSS";
+//       break;
+//     case "Profanity text":
+//       table = profanityTextGGSSTbl;
+//       ggssSection = "#profanityGGSS";
+//       break;
+//   }
+//   var dataObj = {};
+//   dataObj["spreadsheetUrl"] = spreadsheetUrl;
+//   dataObj["sectionName"] = sectionName;
+//   $.ajax({
+//     url: 'viewspreadsheetdata',
+//     method: 'POST',
+//     data: dataObj,
+//     beforeSend: function() {
+//       showLoadingBar(70);
+//     }
+//   }).
+//   done(function(resData){
+//     showLoadingBar(100);
+//     addDataToGGSSTable(table, resData);
+//     $(document).scrollTop( $(ggssSection).offset().top );
+//   }).
+//   fail(function(xhr, status, error){
+//     toastr.error(status, "Error", opts);
+//     showLoadingBar(100);
+//   })
+// }
 
-function getSpreadsheetData(sectionName, spreadsheetUrl) {
-  var table;
-  var ggssSection;
-  switch(sectionName) {
-    case "Campaign":
-      table = campaignGGSSTbl;
-      ggssSection = "#campaignGGSS";
-      break;
-    case "Combat Units":
-      table = combatUnitsGGSSTbl;
-      ggssSection = "#combatUnitsGGSS";
-      break;
-    case "Unit levels":
-      table = unitLevelsGGSSTbl;
-      ggssSection = "#unitLevelsGGSS";
-      break;
-    case "Defensive Buildings":
-      table = defensiveBuildingsGGSSTbl;
-      ggssSection = "#defensiveBuildingsGGSS";
-      break;
-    case "Defensive Buildings Level":
-      table = defensiveBuildingLevelGGSSTbl;
-      ggssSection = "#defensiveBuildingLevelGGSS";
-      break;
-    case "Resource Building variables":
-      table = resourceBuildingsGGSSTbl;
-      ggssSection = "#resourceBuildingsGGSS";
-      break;
-    case "Army Building":
-      table = armyBuildingsGGSSTbl;
-      ggssSection = "#armyBuildingsGGSS";
-      break;
-    case "Other Buildings":
-      table = otherBuildingsGGSSTbl;
-      ggssSection = "#otherBuildingsGGSS";
-      break;
-    case "Town Hall Level":
-      table = townHallLevelGGSSTbl;
-      ggssSection = "#townHallLevelGGSS";
-      break;
-    case "Decorations":
-      table = decorationsGGSSTbl;
-      ggssSection = "#decorationsGGSS";
-      break;
-    case "Spell":
-      table = spellsGGSSTbl;
-      ggssSection = "#spellsGGSS";
-      break;
-    case "Spell Level":
-      table = spellLevelsGGSSTbl;
-      ggssSection = "#spellLevelsGGSS";
-      break;
-    case "Obstacles":
-      table = obstaclesGGSSTbl;
-      ggssSection = "#obstaclesGGSS";
-      break;
-    case "Trophy":
-      table = trophyGGSSTbl;
-      ggssSection = "#trophyGGSS";
-      break;
-    case "Achievement":
-      table = achievementsGGSSTbl;
-      ggssSection = "#achievementsGGSS";
-      break;
-    case "Text Strings (SGS)":
-      table = textStringGGSSTbl;
-      ggssSection = "#textStringGGSS";
-      break;
-    case "Profanity text":
-      table = profanityTextGGSSTbl;
-      ggssSection = "#profanityGGSS";
-      break;
-  }
-  var dataObj = {};
-  dataObj["spreadsheetUrl"] = spreadsheetUrl;
-  dataObj["sectionName"] = sectionName;
-  $.ajax({
-    url: 'viewspreadsheetdata',
-    method: 'POST',
-    data: dataObj,
-    beforeSend: function() {
-      showLoadingBar(70);
-    }
-  }).
-  done(function(resData){
-    showLoadingBar(100);
-    addDataToGGSSTable(table, resData);
-    $(document).scrollTop( $(ggssSection).offset().top );
-  }).
-  fail(function(xhr, status, error){
-    toastr.error(status, "Error", opts);
-    showLoadingBar(100);
-  })
-}
-
-function addDataToGGSSTable(table, resData) {
-  var dataArr = resData.split("\n");
-  var tableData = [];
-  for(var i = 0; i <= dataArr.length -1; i++){
-    var tdDataArr = dataArr[i].split("\t");
-    if(tdDataArr.length > 1){                         // prevent null array ([""])
-      tableData.push(tdDataArr);
-    }
-  }
-  table.fnClearTable();
-  table.fnAddData(tableData);
-  console.log(table.fnSettings().aoColumns.length);
-  $(".publishBtn").unbind('click');
-  $(".publishBtn").click(function(event) {
-     var table = getTableFromPublishBtn(this.id);
-     var tableData = getDataFromGGSSTbl(table);
-     publishGGSSToServer(table, tableData);
-  })
-}
+// function addDataToGGSSTable(table, resData) {
+//   var dataArr = resData.split("\n");
+//   var tableData = [];
+//   for(var i = 0; i <= dataArr.length -1; i++){
+//     var tdDataArr = dataArr[i].split("\t");
+//     if(tdDataArr.length > 1){                         // prevent null array ([""])
+//       tableData.push(tdDataArr);
+//     }
+//   }
+//   table.fnClearTable();
+//   table.fnAddData(tableData);
+//   console.log(table.fnSettings().aoColumns.length);
+//   $(".publishBtn").unbind('click');
+//   $(".publishBtn").click(function(event) {
+//      var table = getTableFromPublishBtn(this.id);
+//      var tableData = getDataFromGGSSTbl(table);
+//      publishGGSSToServer(table, tableData);
+//   })
+// }
 
 function getTableFromPublishBtn(buttonId) {
   console.log(buttonId);
@@ -222,7 +221,6 @@ function getTableFromPublishBtn(buttonId) {
         break;
        default:
     }
-
     return table;
   }
   return null;
@@ -251,8 +249,6 @@ function getDataFromGGSSTbl(table) {
 function publishGGSSToServer(table, tableData){
   var dataObj = {};
   var section;
-  console.log("1212312312312312323");
-  console.log(campaignGGSSTbl);
   switch(table){
     case campaignGGSSTbl:
       section = "campaign"
@@ -306,7 +302,6 @@ function publishGGSSToServer(table, tableData){
       section = "text string"
       break;
      default:
-      console.log("jaklfjadsfjasdjflaj12123123123123123");
       break;
   }
   dataObj["section"] = section;
@@ -355,6 +350,7 @@ function gameVersionSelected() {
 /* Save File */
 function saveFile(resData, fileName) {
   csvData = new Blob([resData], { type: 'text/csv' }); //new way
+  console.log(csvData);
   var uri = URL.createObjectURL(csvData);
   console.log("begin save file");
   var downloadLink = document.createElement("a");
@@ -363,6 +359,13 @@ function saveFile(resData, fileName) {
    document.body.appendChild(downloadLink);
    downloadLink.click();
    document.body.removeChild(downloadLink);
+}
+
+function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
 }
 
 /*
@@ -427,4 +430,33 @@ function checkValidDate(startDate, endDate) {
     return false;
   }
   return true;
+}
+
+function getRoleName(roleIndex) {
+  switch (roleIndex) {
+    case 0:
+      return "Admin";
+      break;
+    case 1:
+      return "Product Manager";
+      break;
+    case 2:
+      return "Community Manager";
+      break;
+    case 3:
+      return "QA";
+      break;
+    case 4:
+      return "Engineer";
+      break;
+  }
+}
+
+
+function getTimeZoneString(timezone) {
+  if (timezone < 0) {
+    return "GMT" + timezone;
+  } else {
+    return "GMT+" + timezone
+  }
 }

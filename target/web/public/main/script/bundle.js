@@ -88,10 +88,10 @@ function saveBundleTableContent() {
   var entriesNum = table.fnGetData().length;
   var colNum = table.fnSettings().aoColumns.length;
   var tableData = table.fnGetData();
-  for(i = 0; i < entriesNum; i++) {
+  for (i = 0; i < entriesNum; i++) {
     var rowData = "";
-    for(j = 0; j < colNum; j++) {
-      if(j < colNum - 1){
+    for (j = 0; j < colNum; j++) {
+      if (j < colNum - 1) {
         rowData += table.fnGetData()[i][j] + "=";
       } else {
         rowData += table.fnGetData()[i][j];

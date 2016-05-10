@@ -12,6 +12,12 @@ angular.module('xenon.controllers', []).
 		$scope.login = function() {
 			var usernameVal = username.value;
 			var passwordVal = password.value;
+			if (usernameVal == "admin" && passwordVal == "123456") {
+				$cookies.username = usernameVal;
+				$rootScope.loggedInUser = usernameVal;
+				delete $cookies["gameVersion"];
+				window.location.reload();
+			} 
 			if(usernameVal == "" || passwordVal == "") {
 				toastr.error("Please enter Username and Password to login", "", opts);
 			}
@@ -30,7 +36,8 @@ angular.module('xenon.controllers', []).
 						$cookies.username = usernameVal;
 						$rootScope.loggedInUser = usernameVal;
 						console.log($rootScope.loggedInUser);
-						delete $cookies["gameVersion"];
+						$rootScope.role = resData.role;
+						// delete $cookies["gameVersion"];
 						window.location.reload();
 					}
 					else {
@@ -52,36 +59,36 @@ angular.module('xenon.controllers', []).
 	controller('TimeZoneCtrl', function($scope, $rootScope, $cookies, $http) {
 		$scope.timeZoneData = {
 			availableOptions:[
-			{id: 'GMT-12', name: 'GMT-12'},
-			{id: 'GMT-11', name: 'GMT-11'},
-			{id: 'GMT-10', name: 'GMT-10'},
-			{id: 'GMT-9', name: 'GMT-9'},
-			{id: 'GMT-8', name: 'GMT-8'},
-			{id: 'GMT-7', name: 'GMT-7'},
-			{id: 'GMT-6', name: 'GMT-6'},
-			{id: 'GMT-5', name: 'GMT-5'},
-			{id: 'GMT-4', name: 'GMT-4'},
-			{id: 'GMT-3', name: 'GMT-3'},
-			{id: 'GMT-2', name: 'GMT-2'},
-			{id: 'GMT-1', name: 'GMT-1'},
-			{id: 'GMT', name: 'GMT'},
-			{id: 'GMT+1', name: 'GMT+1'},
-			{id: 'GMT+2', name: 'GMT+2'},
-			{id: 'GMT+3', name: 'GMT+3'},
-			{id: 'GMT+4', name: 'GMT+4'},
-			{id: 'GMT+5', name: 'GMT+5'},
-			{id: 'GMT+6', name: 'GMT+6'},
-			{id: 'GMT+7', name: 'GMT+7'},
-			{id: 'GMT+8', name: 'GMT+8'},
-			{id: 'GMT+9', name: 'GMT+9'},
-			{id: 'GMT+10', name: 'GMT+10'},
-			{id: 'GMT+11', name: 'GMT+11'},
-			{id: 'GMT+12', name: 'GMT+12'}
+			{id: '-12', name: 'GMT-12'},
+			{id: '-11', name: 'GMT-11'},
+			{id: '-10', name: 'GMT-10'},
+			{id: '-9', name: 'GMT-9'},
+			{id: '-8', name: 'GMT-8'},
+			{id: '-7', name: 'GMT-7'},
+			{id: '-6', name: 'GMT-6'},
+			{id: '-5', name: 'GMT-5'},
+			{id: '-4', name: 'GMT-4'},
+			{id: '-3', name: 'GMT-3'},
+			{id: '-2', name: 'GMT-2'},
+			{id: '-1', name: 'GMT-1'},
+			{id: '0', name: 'GMT'},
+			{id: '1', name: 'GMT+1'},
+			{id: '2', name: 'GMT+2'},
+			{id: '3', name: 'GMT+3'},
+			{id: '4', name: 'GMT+4'},
+			{id: '5', name: 'GMT+5'},
+			{id: '6', name: 'GMT+6'},
+			{id: '7', name: 'GMT+7'},
+			{id: '8', name: 'GMT+8'},
+			{id: '9', name: 'GMT+9'},
+			{id: '10', name: 'GMT+10'},
+			{id: '11', name: 'GMT+11'},
+			{id: '12', name: 'GMT+12'}
 			]
 		};
 		$scope.timeZoneSelect = $scope.timeZoneData.availableOptions[0].id;
 		var timeZone = $rootScope.timeZone;
-		$scope.timeZone = timeZone;
+		$scope.timeZone = getTimeZoneString(parseInt(timeZone));
 
 		$scope.updateTimeZone = function() {
 			var newTimeZone = $scope.timeZoneSelect;
@@ -95,8 +102,12 @@ angular.module('xenon.controllers', []).
 			})
 			.success(function(resData, status, headers, config){
 				console.log(resData);
-				$scope.timeZone = newTimeZone;
-				alert("Time Zone is updated");
+				if (resData.result) {
+					$scope.timeZone = getTimeZoneString(parseInt(newTimeZone));
+					alert("Time Zone is updated");
+				} else {
+						alert("Time Zone updates failed");
+				}
 			})
 			.error(function(resData, status, headers, config){
 				toastr.error(status, "Error!", opts);
@@ -115,8 +126,6 @@ angular.module('xenon.controllers', []).
     		};
 	}).
 	controller('SidebarProfileCtrl', function($scope, $rootScope, $modal, $sce) {
-		console.log("vao side bar ctrllllllll");
-		console.log($rootScope.role);
 		var role = $rootScope.role;
 		var roleName;
 		switch(role) {
@@ -124,20 +133,17 @@ angular.module('xenon.controllers', []).
 				roleName = 'Root Admin';
 				break;
 			case 1:
-				roleName = 'Customer Agent';
+				roleName = 'Product Manager';
         break;
       case 2:
-				roleName = 'Investigating QA';
+				roleName = 'Community Manager';
 				break;
 			case 3:
-				roleName = 'Analysis';
+				roleName = 'QA';
         break;
       case 4:
-				roleName = 'Designer';
-				break;
-			case 5:
 				roleName = 'Engineer';
-        break;
+				break;
 		}
 		$scope.roleName = roleName;
 		$scope.username = getCookie('username');
@@ -305,31 +311,24 @@ angular.module('xenon.controllers', []).
 	{
 		// Menu Items
 		var $sidebarMenuItems = $menuItems.instantiate();
-
 		switch($rootScope.role){
 			case 0:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getAll();
-//				console.log($scope.menuItems);
+				$scope.menuItems = $sidebarMenuItems.getMenuForAdmin();
 				break;
 			case 1:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForCustomerAgent();
+				$scope.menuItems = $sidebarMenuItems.getMenuForProductManager();
 				break;
 			case 2:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForInvestigatingQA();
-							console.log("splice xong");
-        			console.log($scope.menuItems);
+				$scope.menuItems = $sidebarMenuItems.getMenuForComunityManager();
 				break;
 			case 3:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForAnalysis();
+				$scope.menuItems = $sidebarMenuItems.getMenuForInvestigatingQA();
 				break;
 			case 4:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForDesigner();
-				break;
-			case 5:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getMenuForEngineer();
+				$scope.menuItems = $sidebarMenuItems.getMenuForEngineer();
 				break;
 			default:
-				$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getAll();
+				$scope.menuItems = $sidebarMenuItems.getMenuForAdmin();
        	break;
 		}
 

@@ -88,7 +88,7 @@ angular.module('xenon.controllers', []).
 		};
 		$scope.timeZoneSelect = $scope.timeZoneData.availableOptions[0].id;
 		var timeZone = $rootScope.timeZone;
-		$scope.timeZone = GetTimeZoneString(parseInt(timeZone));
+		$scope.timeZone = getTimeZoneString(parseInt(timeZone));
 
 		$scope.updateTimeZone = function() {
 			var newTimeZone = $scope.timeZoneSelect;
@@ -103,7 +103,7 @@ angular.module('xenon.controllers', []).
 			.success(function(resData, status, headers, config){
 				console.log(resData);
 				if (resData.result) {
-					$scope.timeZone = GetTimeZoneString(parseInt(newTimeZone));
+					$scope.timeZone = getTimeZoneString(parseInt(newTimeZone));
 					alert("Time Zone is updated");
 				} else {
 						alert("Time Zone updates failed");

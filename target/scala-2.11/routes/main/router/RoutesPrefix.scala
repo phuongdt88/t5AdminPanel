@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/phuongdt1/Desktop/lumba/lumba-play-admin-panel/conf/routes
-// @DATE:Thu Sep 24 14:06:56 ICT 2015
+// @SOURCE:/Users/phuongdt1/Desktop/lumba/t5-admin-panel/conf/routes
+// @DATE:Tue May 10 17:17:25 ICT 2016
 
 
 package router {

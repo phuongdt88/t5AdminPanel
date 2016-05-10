@@ -1,37 +1,51 @@
-var sections = ["arenaReferenceWrap",
-                "cardBuildingWrap",
-                "cardBuildingLevelWrap",
-                "cardTroopWrap",
-                "cardTroopLevelWrap",
-                "cardSpellWrap",
-                "cardSpellLevelWrap",
-                "buildingWrap",
-                "troopWrap",
-                "spellWrap",
-                "buildingLevelWrap",
-                "troopLevelWrap",
-                "spellLevelWrap",
-                "chestSequenceWrap",
-                "achievementWrap",
-                "donationWrap",
-                "requestWrap",
-                "chestDataWrap",
-                "tribeDaggerRankWrap",
-                "dataConstantWrap",
-                "chestProbabilityWrap",
-                "loserDaggerModifierWrap",
-                "freeGemSequenceWrap",
-                "crownGemSequenceWrap",
-                "tvRoyaleWrap",
-                "towerLevelWrap",
-                "shopCardPriceWrap",
-                "unitEffectWrap",
-                "unitSoundFXWrap"]
+var sectionWrap = [ "arenaReferenceWrap",
+                    "cardBuildingWrap",
+                    "cardBuildingLevelWrap",
+                    "cardTroopWrap",
+                    "cardTroopLevelWrap",
+                    "cardSpellWrap",
+                    "cardSpellLevelWrap",
+                    "buildingWrap",
+                    "troopWrap",
+                    "spellWrap",
+                    "buildingLevelWrap",
+                    "troopLevelWrap",
+                    "spellLevelWrap",
+                    "chestSequenceWrap",
+                    "achievementWrap",
+                    "donationWrap",
+                    "requestWrap",
+                    "chestDataWrap",
+                    "tribeDaggerRankWrap",
+                    "dataConstantWrap",
+                    "chestProbabilityWrap",
+                    "loserDaggerModifierWrap",
+                    "freeGemSequenceWrap",
+                    "crownGemSequenceWrap",
+                    "tvRoyaleWrap",
+                    "towerLevelWrap",
+                    "shopCardPriceWrap",
+                    "unitEffectWrap",
+                    "unitSoundFXWrap" ]
 
-// var gameDataObj = {chestData:1};
+var selectedSection;
 
 jQuery(document).ready(function($)
 {
+
+  $("#publishConfirmDialog").dialog({
+    autoOpen: false,
+    modal: true,
+    buttons : {
+      "Publish" : function() {
+        publishGGSSToServer();
+      },
+      "Cancel" : function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+
 	arenaReferenceTable = $("#arenaReferenceTable").dataTable({
 	       "bSort" : false,
 	       "aLengthMenu": [
@@ -224,14 +238,27 @@ jQuery(document).ready(function($)
          "bSort" : false,
          "aLengthMenu": [
           [25, 50, 100, -1], [25, 50, 100, "All"]
-        ]
+        ],
+        "columns" : [
+        null,
+        null,
+        {
+          defaultContent: ""
+        }]
+         
       });
 
   chestSequenceGGSSTbl = $("#chestSequenceGGSSTbl").dataTable({
-         "bSort" : false,
-         "aLengthMenu": [
+        "bSort" : false,
+        "aLengthMenu": [
           [25, 50, 100, -1], [25, 50, 100, "All"]
-        ]
+        ],
+        "columns" : [
+        null,
+        null,
+        {
+          defaultContent: ""
+        }]
       });
 
   achievementTable = $("#achievementTable").dataTable({
@@ -444,520 +471,497 @@ jQuery(document).ready(function($)
         ]
       });
 
+  section = {
+    ARENA_REFERENCE : {
+      dataTable: arenaReferenceTable, 
+      ggssTable: arenaReferenceGGSSTbl, 
+      sectionName: "arenareference", 
+      wrap: "arenaReferenceWrap",
+      currentSection: "currentArenaReference",
+      exportTypeSelectID: "arenaRefExportSelect",
+      ggssSection: "arenaReferenceGGSS",
+      publishBtn: "arenaReferenceGGSSPublishBtn",
+    },
+    CARD_BUILDING : {
+      dataTable: cardBuildingTable, 
+      ggssTable: cardBuildingGGSSTbl, 
+      sectionName: "cardbuilding", 
+      wrap: "cardBuildingWrap",
+      currentSection: "currentCardBuilding",
+      exportTypeSelectID: "cardBuildingExportSelect", 
+      ggssSection: "cardBuildingGGSS",
+      publishBtn: "cardBuildingGGSSPublishBtn",
+    },
+    CARD_BUILDING_LEVEL : {
+      dataTable: cardBuildingLevelTable, 
+      ggssTable: cardBuildingLevelGGSSTbl, 
+      sectionName: "cardbuildinglevel", 
+      wrap: "cardBuildingLevelWrap",
+      currentSection: "currentCardBuildingLevel", 
+      exportTypeSelectID: "cardBuildingLevelExportSelect",
+      ggssSection: "cardBuildingLevelGGSS",
+      publishBtn: "cardBuildingLevelGGSSPublishBtn",
+    },
+    CARD_TROOP : {
+      dataTable: cardTroopTable, 
+      ggssTable: cardTroopGGSSTbl, 
+      sectionName: "cardtroop", 
+      wrap: "cardTroopWrap",
+      currentSection: "currentCardTroop",
+      exportTypeSelectID: "cardTroopExportSelect", 
+      ggssSection: "cardTroopGGSS",
+      publishBtn: "cardTroopGGSSPublishBtn",
+    },
+    CARD_TROOP_LEVEL : {
+      dataTable: cardTroopLevelTable, 
+      ggssTable: cardTroopLevelGGSSTbl, 
+      sectionName: "cardtrooplevel", 
+      wrap: "cardTroopLevelWrap",
+      currentSection: "currentCardTroopLevel",
+      exportTypeSelectID: "cardTroopLevelExportSelect", 
+      ggssSection: "cardTroopLevelGGSS",
+      publishBtn: "cardTroopLevelGGSSPublishBtn"
+    },
+    CARD_SPELL : {
+      dataTable: cardSpellTable, 
+      ggssTable: cardSpellGGSSTbl, 
+      sectionName: "cardspell", 
+      wrap: "cardSpellWrap",
+      currentSection: "currentCardSpell",
+      exportTypeSelectID: "cardSpellExportSelect", 
+      ggssSection: "cardSpellGGSS",
+      publishBtn: "cardSpellGGSSPublishBtn"
+    },
+    CARD_SPELL_LEVEL : {
+      dataTable: cardSpellLevelTable, 
+      ggssTable: cardSpellLevelGGSSTbl, 
+      sectionName: "cardspelllevel", 
+      wrap: "cardSpellLevelWrap",
+      currentSection: "currentCardSpellLevel",
+      exportTypeSelectID: "cardSpellLevelExportSelect", 
+      ggssSection: "cardSpellLevelGGSS",
+      publishBtn: "cardSpellLevelGGSSPublishBtn"
+    },
+    BUILDING : {
+      dataTable: buildingTable, 
+      ggssTable: buildingGGSSTbl, 
+      sectionName: "building", 
+      wrap: "buildingWrap",
+      currentSection: "currentBuilding",
+      exportTypeSelectID: "buildingExportSelect", 
+      ggssSection: "buildingGGSS",
+      publishBtn: "buildingGGSSPublishBtn"
+    },
+    BUILDING_LEVEL : {
+      dataTable: buildingLevelTable, 
+      ggssTable: buildingLevelGGSSTbl, 
+      sectionName: "buildinglevel", 
+      wrap: "buildingLevelWrap",
+      currentSection: "currentBuildingLevel",
+      exportTypeSelectID: "buildingLevelExportSelect", 
+      ggssSection: "buildingLevelGGSS",
+      publishBtn: "buildingLevelGGSSPublishBtn"
+    },
+    TROOP : {
+      dataTable: troopTable, 
+      ggssTable: troopGGSSTbl, 
+      sectionName: "troop", 
+      wrap: "troopWrap",
+      currentSection: "currentTroop",
+      exportTypeSelectID: "troopExportSelect", 
+      ggssSection: "troopGGSS",
+      publishBtn: "troopGGSSPublishBtn"
+    },
+    TROOP_LEVEL : {
+      dataTable: troopLevelTable, 
+      ggssTable: troopLevelGGSSTbl, 
+      sectionName: "trooplevel", 
+      wrap: "troopLevelWrap",
+      currentSection: "currentTroopLevel",
+      exportTypeSelectID: "troopLevelExportSelect", 
+      ggssSection: "troopLevelGGSS",
+      publishBtn: "troopLevelGGSSPublishBtn"
+    },
+    SPELL : {
+      dataTable: spellTable, 
+      ggssTable: spellGGSSTbl, 
+      sectionName: "spell", 
+      wrap: "spellWrap",
+      currentSection: "currentSpell",
+      exportTypeSelectID: "spellExportSelect", 
+      ggssSection: "spellGGSS",
+      publishBtn: "spellGGSSPublishBtn"
+    },
+    SPELL_LEVEL : {
+      dataTable: spellLevelTable, 
+      ggssTable: spellLevelGGSSTbl, 
+      sectionName: "spelllevel", 
+      wrap: "spellLevelWrap",
+      currentSection: "currentSpellLevel",
+      exportTypeSelectID: "spellLevelExportSelect", 
+      ggssSection: "spellLevelGGSS",
+      publishBtn: "spellLevelGGSSPublishBtn"
+    },
+    CHEST_SEQUENCE : {
+      dataTable: chestSequenceTable, 
+      ggssTable: chestSequenceGGSSTbl, 
+      sectionName: "chestsequence", 
+      wrap: "chestSequenceWrap",
+      currentSection: "currentChestSequence",
+      exportTypeSelectID: "chestSequenceExportSelect", 
+      ggssSection: "chestSequenceGGSS",
+      publishBtn: "chestSequenceGGSSPublishBtn"
+    },
+    ACHIEVEMENT : {
+      dataTable: achievementTable, 
+      ggssTable: achievementGGSSTbl, 
+      sectionName: "achievement", 
+      wrap: "achievementWrap",
+      currentSection: "currentAchievement",
+      exportTypeSelectID: "achievementExportSelect", 
+      ggssSection: "achievementGGSS",
+      publishBtn: "achievementGGSSPublishBtn"
+    },
+    DONATION : {
+      dataTable: donationTable, 
+      ggssTable: donationGGSSTbl, 
+      sectionName: "donation", 
+      wrap: "donationWrap",
+      currentSection: "currentDonation",
+      exportTypeSelectID: "donationExportSelect", 
+      ggssSection: "donationGGSS",
+      publishBtn: "donationGGSSPublishBtn"
+    },
+    REQUEST : {
+      dataTable: requestTable, 
+      ggssTable: requestGGSSTbl, 
+      sectionName: "request", 
+      wrap: "requestWrap",
+      currentSection: "currentRequest",
+      exportTypeSelectID: "requestExportSelect", 
+      ggssSection: "requestGGSS",
+      publishBtn: "requestGGSSPublishBtn"
+    },
+    CHEST_DATA : {
+      dataTable: chestDataTable, 
+      ggssTable: chestDataGGSSTbl, 
+      sectionName: "chestdata", 
+      wrap: "chestDataWrap",
+      currentSection: "currentChestData",
+      exportTypeSelectID: "chestDataExportSelect", 
+      ggssSection: "chestDataGGSS",
+      publishBtn: "chestDataGGSSPublishBtn"
+    },
+    TRIBE_DAGGER_RANK : {
+      dataTable: tribeDaggerRankTable, 
+      ggssTable: tribeDaggerRankGGSSTbl, 
+      sectionName: "tribedaggerrank", 
+      wrap: "tribeDaggerRankWrap",
+      currentSection: "currentTribeDaggerRank",
+      exportTypeSelectID: "tribeDaggerRankExportSelect", 
+      ggssSection: "tribeDaggerRankGGSS",
+      publishBtn: "tribeDaggerRankGGSSPublishBtn"
+    },
+    DATA_CONSTANT : {
+      dataTable: dataConstantTable, 
+      ggssTable: dataConstantGGSSTbl, 
+      sectionName: "dataconstant", 
+      wrap: "dataConstantWrap",
+      currentSection: "currentDataConstant",
+      exportTypeSelectID: "dataConstantExportSelect", 
+      ggssSection: "dataConstantGGSS",
+      publishBtn: "dataConstantGGSSPublishBtn"
+    },
+    CHEST_PROBABILITY : {
+      dataTable: chestProbabilityTable, 
+      ggssTable: chestProbabilityGGSSTbl, 
+      sectionName: "chestprobability", 
+      wrap: "chestProbabilityWrap",
+      currentSection: "currentChestProbability",
+      exportTypeSelectID: "chestProbabilityExportSelect", 
+      ggssSection: "chestProbabilityGGSS",
+      publishBtn: "chestProbabilityGGSSPublishBtn"
+    },
+    LOSER_DAGGER_MODIFIER : {
+      dataTable: loserDaggerModifierTable, 
+      ggssTable: loserDaggerModifierGGSSTbl, 
+      sectionName: "loserdaggermodifier", 
+      wrap: "loserDaggerModifierWrap",
+      currentSection: "currentLoserDaggerModifier",
+      exportTypeSelectID: "loserDaggerModifierExportSelect", 
+      ggssSection: "loserDaggerModifierGGSS",
+      publishBtn: "loserDaggerModifierGGSSPublishBtn"
+    },
+    FREE_GEM_SEQUENCE : {
+      dataTable: freeGemSequenceTable, 
+      ggssTable: freeGemSequenceGGSSTbl, 
+      sectionName: "freegemsequence", 
+      wrap: "freeGemSequenceWrap",
+      currentSection: "currentFreeGemSequence",
+      exportTypeSelectID: "freeGemSequenceExportSelect", 
+      ggssSection: "freeGemSequenceGGSS",
+      publishBtn: "freeGemSequenceGGSSPublishBtn"
+    },
+    CROWN_GEM_SEQUENCE : {
+      dataTable: crownGemSequenceTable, 
+      ggssTable: crownGemSequenceGGSSTbl, 
+      sectionName: "crowngemsequence", 
+      wrap: "crownGemSequenceWrap",
+      currentSection: "currentCrownGemSequence",
+      exportTypeSelectID: "crownGemSequenceExportSelect", 
+      ggssSection: "crownGemSequenceGGSS",
+      publishBtn: "crownGemSequenceGGSSPublishBtn"
+    },
+    TV_ROYALE : {
+      dataTable: tvRoyaleTable, 
+      ggssTable: tvRoyaleGGSSTbl, 
+      sectionName: "tvroyale", 
+      wrap: "tvRoyaleWrap",
+      currentSection: "currentTVRoyale",
+      exportTypeSelectID: "tvRoyaleExportSelect", 
+      ggssSection: "tvRoyaleGGSS",
+      publishBtn: "tvRoyaleGGSSPublishBtn"
+    },
+    TOWER_LEVEL : {
+      dataTable: towerLevelTable, 
+      ggssTable: towerLevelGGSSTbl, 
+      sectionName: "towerlevel", 
+      wrap: "towerLevelWrap",
+      currentSection: "currentTowerLevel",
+      exportTypeSelectID: "towerLevelExportSelect", 
+      ggssSection: "towerLevelGGSS",
+      publishBtn: "towerLevelGGSSPublishBtn"
+    },
+    SHOP_CARD_PRICE : {
+      dataTable: shopCardPriceTable, 
+      ggssTable: shopCardPriceGGSSTbl, 
+      sectionName: "shopcardprice", 
+      wrap: "shopCardPriceWrap",
+      currentSection: "currentShopCardPrice",
+      exportTypeSelectID: "shopCardPriceExportSelect", 
+      ggssSection: "shopCardPriceGGSS",
+      publishBtn: "shopCardPriceGGSSPublishBtn"
+    },
+    UNIT_EFFECT : {
+      dataTable: unitEffectTable, 
+      ggssTable: unitEffectGGSSTbl, 
+      sectionName: "uniteffect", 
+      wrap: "unitEffectWrap",
+      currentSection: "currentUnitEffect",
+      exportTypeSelectID: "unitEffectExportSelect", 
+      ggssSection: "unitEffectGGSS",
+      publishBtn: "unitEffectGGSSPublishBtn"
+    },
+    UNIT_SOUND_FX : {
+      dataTable: unitSoundFXTable, 
+      ggssTable: unitSoundFXGGSSTbl, 
+      sectionName: "unitsoundfx", 
+      wrap: "unitSoundFXWrap",
+      currentSection: "currentUnitSoundFX",
+      exportTypeSelectID: "unitSoundFXExportSelect", 
+      ggssSection: "unitSoundFXGGSS",
+      publishBtn: "unitSoundFXGGSSPublishBtn"
+    },
+  }
+
 	  $("ul.navbar-nav").find("li").on('click', function() {
       $("ul.navbar-nav").find(".active")[0].className = "";
       $(this)[0].className = "active";
     })
 
     $("#arenaReferenceLink").on('click', function() {
-      GetTableData(arenaReferenceTable);
+      selectedSection = section.ARENA_REFERENCE;
+      getCurrentData();
     });
 
     $("#cardBuildingLink").on('click', function() {
-      GetTableData(cardBuildingTable);
+      selectedSection = section.CARD_BUILDING;
+      getCurrentData();
     });
 
     $("#cardBuildingLevelLink").on('click', function() {
-      GetTableData(cardBuildingLevelTable);
+      selectedSection = section.CARD_BUILDING_LEVEL;
+      getCurrentData();
     });
 
     $("#cardTroopLink").on('click', function() {
-      GetTableData(cardTroopTable);
+      selectedSection = section.CARD_TROOP;
+      getCurrentData();
     });
 
     $("#cardTroopLevelLink").on('click', function() {
-      GetTableData(cardTroopLevelTable);
+      selectedSection = section.CARD_TROOP_LEVEL;
+      getCurrentData();
     });
 
     $("#cardSpellLink").on('click', function() {
-      GetTableData(cardSpellTable);
+      selectedSection = section.CARD_SPELL;
+      getCurrentData();
     });
 
     $("#cardSpellLevelLink").on('click', function() {
-      GetTableData(cardSpellLevelTable);
+      selectedSection = section.CARD_SPELL_LEVEL;
+      getCurrentData();
     });
 
     $("#buildingLink").on('click', function() {
-      GetTableData(buildingTable);
+      selectedSection = section.BUILDING;
+      getCurrentData();
     });
 
     $("#buildingLevelLink").on('click', function() {
-      GetTableData(buildingLevelTable);
+      selectedSection = section.BUILDING_LEVEL;
+      getCurrentData();
     });
 
     $("#troopLink").on('click', function() {
-      GetTableData(troopTable);
+      selectedSection = section.TROOP;
+      getCurrentData();
     });
 
     $("#troopLevelLink").on('click', function() {
-      GetTableData(troopLevelTable);
+      selectedSection = section.TROOP_LEVEL;
+      getCurrentData();
     });
 
     $("#spellLink").on('click', function() {
-      GetTableData(spellTable);
+      selectedSection = section.SPELL;
+      getCurrentData();
     });
 
     $("#spellLevelLink").on('click', function() {
-      GetTableData(spellLevelTable);
+      selectedSection = section.SPELL_LEVEL;
+      getCurrentData();
     });
 
     $("#chestSequenceLink").on('click', function() {
-      GetTableData(chestSequenceTable);
+      selectedSection = section.CHEST_SEQUENCE;
+      getCurrentData();
     });
 
     $("#achievementLink").on('click', function() {
-      GetTableData(achievementTable);
+      selectedSection = section.ACHIEVEMENT;
+      getCurrentData();
     });
 
     $("#donationLink").on('click', function() {
-      GetTableData(donationTable);
+      selectedSection = section.DONATION;
+      getCurrentData();
     });
 
     $("#requestLink").on('click', function() {
-      GetTableData(requestTable);
+      selectedSection = section.REQUEST;
+      getCurrentData();
     });
 
     $("#chestDataLink").on('click', function() {
-      GetTableData(chestDataTable);
+      selectedSection = section.CHEST_DATA;
+      getCurrentData(section.CHEST_DATA);
     });
 
     $("#tribeDaggerRankLink").on('click', function() {
-      GetTableData(tribeDaggerRankTable);
+      selectedSection = section.TRIBE_DAGGER_RANK;
+      getCurrentData();
     });
 
     $("#dataConstantLink").on('click', function() {
-      GetTableData(dataConstantTable);
+      selectedSection = section.DATA_CONSTANT;
+      getCurrentData();
     });
 
     $("#chestProbabilityLink").on('click', function() {
-      GetTableData(chestProbabilityTable);
+      selectedSection = section.CHEST_PROBABILITY;
+      getCurrentData();
     });
 
     $("#loserDaggerModifierLink").on('click', function() {
-      GetTableData(loserDaggerModifierTable);
+      selectedSection = section.LOSER_DAGGER_MODIFIER;
+      getCurrentData();
     });
 
     $("#freeGemSequenceLink").on('click', function() {
-      GetTableData(freeGemSequenceTable);
+      selectedSection = section.FREE_GEM_SEQUENCE;
+      getCurrentData();
     });
 
     $("#crownGemSequenceLink").on('click', function() {
-      GetTableData(crownGemSequenceTable);
+      selectedSection = section.CROWN_GEM_SEQUENCE;
+      getCurrentData();
     });
 
     $("#tvRoyaleLink").on('click', function() {
-      GetTableData(tvRoyaleTable);
+      selectedSection = section.TV_ROYALE;
+      getCurrentData();
     });
 
     $("#towerLevelLink").on('click', function() {
-      GetTableData(towerLevelTable);
+      selectedSection = section.TOWER_LEVEL;
+      getCurrentData();
     });
 
     $("#shopCardPriceLink").on('click', function() {
-      GetTableData(shopCardPriceTable);
+      selectedSection = section.SHOP_CARD_PRICE;
+      getCurrentData();
     });
 
     $("#unitEffectLink").on('click', function() {
-      GetTableData(unitEffectTable);
+      selectedSection = section.UNIT_EFFECT;
+      getCurrentData();
     });
 
     $("#unitSoundFXLink").on('click', function() {
-      GetTableData(unitSoundFXTable);
+      selectedSection = section.UNIT_SOUND_FX;
+      getCurrentData();
     });
 
-		GetTableData(arenaReferenceTable);  //default - first visit page
+    selectedSection = section.ARENA_REFERENCE;
+		getCurrentData();  //default - first visit page
 
-    $("#arenaRefExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#arenaRefExportSelect").val(), "arenareference");
-    });
-
-    $("#cardBuildingExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardBuildingExportSelect").val(), "cardbuilding");
-    });
-
-    $("#cardBuildingLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardBuildingLevelExportSelect").val(), "cardbuildinglevel");
-    });
-
-    $("#cardTroopExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardTroopExportSelect").val(), "cardtroop");
-    });
-
-    $("#cardTroopLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardTroopLevelExportSelect").val(), "cardtrooplevel");
-    });
-
-    $("#cardSpellExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardSpellExportSelect").val(), "cardspell");
-    });
-
-    $("#cardSpellLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#cardSpellLevelExportSelect").val(), "cardspelllevel");
-    });
-
-    $("#buildingExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#buildingExportSelect").val(), "building");
-    });
-
-    $("#troopExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#troopExportSelect").val(), "troop");
-    });
-
-    $("#spellExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#spellExportSelect").val(), "spell");
-    });
-
-    $("#buildingLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#buildingLevelExportSelect").val(), "buildinglevel");
-    });
-
-    $("#troopLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#troopLevelExportSelect").val(), "trooplevel");
-    });
-
-    $("#spellLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#spellLevelExportSelect").val(), "spelllevel");
-    });
-
-    $("#chestSequenceExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#chestSequenceExportSelect").val(), "chestsequence");
-    });
-
-    $("#achievementExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#achievementExportSelect").val(), "achievement");
-    });
-
-    $("#donationExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#donationExportSelect").val(), "donation");
-    });
-
-    $("#chestDataExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#chestDataExportSelect").val(), "chestdata");
-    });
-
-    $("#requestExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#requestExportSelect").val(), "request");
-    });
-
-    $("#tribeDaggerRankExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#tribeDaggerRankExportSelect").val(), "tribedaggerrank");
-    });
-
-    $("#dataConstantExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#dataConstantExportSelect").val(), "dataconstant");
-    });
-
-    $("#chestProbabilityExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#chestProbabilityExportSelect").val(), "chestprobability");
-    });
-
-    $("#loserDaggerModifierExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#loserDaggerModifierExportSelect").val(), "loserdaggermodifier");
-    });
-
-    $("#freeGemSequenceExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#freeGemSequenceExportSelect").val(), "freegemsequence");
-    });
-
-    $("#crownGemSequenceExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#crownGemSequenceExportSelect").val(), "crowngemsequence");
-    });
-
-    $("#tvRoyaleExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#tvRoyaleExportSelect").val(), "tvroyale");
-    });
-
-    $("#towerLevelExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#towerLevelExportSelect").val(), "towerlevel");
-    });
-
-    $("#shopCardPriceExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#shopCardPriceExportSelect").val(), "shopcardprice");
-    });
-
-    $("#unitEffectExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#unitEffectExportSelect").val(), "uniteffect");
-    });
-
-    $("#unitSoundFXExportBtn").click(function(e) {
-      e.preventDefault();
-      ExportFile($("#unitSoundFXExportSelect").val(), "unitsoundfx");
-    });
+    var exportBtnArr = $('[name="exportBtn"]');
+    for (var i = 0; i < exportBtnArr.length; i ++ ) {
+      $("#" + exportBtnArr[i].id).click(function(e) {
+        e.preventDefault();
+        exportFile();
+      })
+    }
 })
 
-// arenaReferenceGGSSForm
-$("#arenaReferenceGGSSForm").submit(function() {
-  $("#arenaReferenceGGSSForm").validate();
-  if($("#arenaReferenceGGSSForm").valid()) {
-    GetSpreadsheetData("arenareference", $("#arenaReferenceGGSSUrl").val());
+// ggssForm
+$("#ggssForm").submit(function() {
+  $("#ggssForm").validate();
+  if ($("#ggssForm").valid()) {
+    var spreadsheetUrl = $("#ggssUrl").val();
+    getSpreadsheetData(spreadsheetUrl);
   }
 })
 
-// cardBuildingGGSSForm
-$("#cardBuildingGGSSForm").submit(function() {
-  $("#cardBuildingGGSSForm").validate();
-  if($("#cardBuildingGGSSForm").valid()) {
-    GetSpreadsheetData("cardbuilding", $("#cardBuildingGGSSUrl").val());
-  }
-})
-
-// cardBuildingLevelGGSSForm
-$("#cardBuildingLevelGGSSForm").submit(function() {
-  $("#cardBuildingLevelGGSSForm").validate();
-  if($("#cardBuildingLevelGGSSForm").valid()) {
-    GetSpreadsheetData("cardbuildinglevel", $("#cardBuildingLevelGGSSUrl").val());
-  }
-})
-
-// cardTroopGGSSForm
-$("#cardTroopGGSSForm").submit(function() {
-  $("#cardTroopGGSSForm").validate();
-  if($("#cardTroopGGSSForm").valid()) {
-    GetSpreadsheetData("cardtroop", $("#cardTroopLevelGGSSUrl").val());
-  }
-})
-
-// cardTroopLevelGGSSForm
-$("#cardTroopLevelGGSSForm").submit(function() {
-  $("#cardTroopLevelGGSSForm").validate();
-  if($("#cardTroopLevelGGSSForm").valid()) {
-    GetSpreadsheetData("cardtrooplevel", $("#cardTroopGGSSUrl").val());
-  }
-})
-
-// cardSpellGGSSForm
-$("#cardSpellGGSSForm").submit(function() {
-  $("#cardSpellGGSSForm").validate();
-  if($("#cardSpellGGSSForm").valid()) {
-    GetSpreadsheetData("cardspell", $("#cardSpellGGSSUrl").val());
-  }
-})
-
-// cardSpellLevelGGSSForm
-$("#cardSpellLevelGGSSForm").submit(function() {
-  $("#cardSpellLevelGGSSForm").validate();
-  if($("#cardSpellLevelGGSSForm").valid()) {
-    GetSpreadsheetData("cardspelllevel", $("#cardSpellLevelGGSSUrl").val());
-  }
-})
-
-// buildingGGSSForm
-$("#buildingGGSSForm").submit(function() {
-  $("#buildingGGSSForm").validate();
-  if($("#buildingGGSSForm").valid()) {
-    GetSpreadsheetData("building", $("#buildingGGSSUrl").val());
-  }
-})
-
-// buildingLevelGGSSForm
-$("#buildingLevelGGSSForm").submit(function() {
-  $("#buildingLevelGGSSForm").validate();
-  if($("#buildingLevelGGSSForm").valid()) {
-    GetSpreadsheetData("buildinglevel", $("#buildingLevelGGSSUrl").val());
-  }
-})
-
-// troopGGSSForm
-$("#troopGGSSForm").submit(function() {
-  $("#troopGGSSForm").validate();
-  if($("#troopGGSSForm").valid()) {
-    GetSpreadsheetData("troop", $("#troopGGSSUrl").val());
-  }
-})
-
-// troopLevelGGSSForm
-$("#troopLevelGGSSForm").submit(function() {
-  $("#troopLevelGGSSForm").validate();
-  if($("#troopLevelGGSSForm").valid()) {
-    GetSpreadsheetData("trooplevel", $("#troopLevelGGSSUrl").val());
-  }
-})
-
-// spellGGSSForm
-$("#spellGGSSForm").submit(function() {
-  $("#spellGGSSForm").validate();
-  if($("#spellGGSSForm").valid()) {
-    GetSpreadsheetData("spell", $("#spellGGSSUrl").val());
-  }
-})
-
-// spellLevelGGSSForm
-$("#spellLevelGGSSForm").submit(function() {
-  $("#spellLevelGGSSForm").validate();
-  if($("#spellLevelGGSSForm").valid()) {
-    GetSpreadsheetData("spelllevel", $("#spellLevelGGSSUrl").val());
-  }
-})
-
-// chestSequenceGGSSForm
-$("#chestSequenceGGSSForm").submit(function() {
-  $("#chestSequenceGGSSForm").validate();
-  if($("#chestSequenceGGSSForm").valid()) {
-    GetSpreadsheetData("chestsequence", $("#chestSequenceGGSSUrl").val());
-  }
-})
-
-// achievementGGSSForm
-$("#achievementGGSSForm").submit(function() {
-  $("#achievementGGSSForm").validate();
-  if($("#achievementGGSSForm").valid()) {
-    GetSpreadsheetData("achievement", $("#achievementGGSSUrl").val());
-  }
-})
-
-// donationGGSSForm
-$("#donationGGSSForm").submit(function() {
-  $("#donationGGSSForm").validate();
-  if($("#donationGGSSForm").valid()) {
-    GetSpreadsheetData("donation", $("#donationGGSSUrl").val());
-  }
-})
-
-// chestDataGGSSForm
-$("#chestDataGGSSForm").submit(function() {
-  $("#chestDataGGSSForm").validate();
-  if($("#chestDataGGSSForm").valid()) {
-    GetSpreadsheetData("chestdata", $("#chestDataGGSSUrl").val());
-  }
-})
-
-// requestGGSSForm
-$("#requestGGSSForm").submit(function() {
-  $("#requestGGSSForm").validate();
-  if($("#requestGGSSForm").valid()) {
-    GetSpreadsheetData("request", $("#requestGGSSUrl").val());
-  }
-})
-
-// tribeDaggerRankGGSSForm
-$("#tribeDaggerRankGGSSForm").submit(function() {
-  $("#tribeDaggerRankGGSSForm").validate();
-  if($("#tribeDaggerRankGGSSForm").valid()) {
-    GetSpreadsheetData("tribedaggerrank", $("#tribeDaggerRankGGSSUrl").val());
-  }
-})
-
-// dataConstantGGSSForm
-$("#dataConstantGGSSForm").submit(function() {
-  $("#dataConstantGGSSForm").validate();
-  if($("#dataConstantGGSSForm").valid()) {
-    GetSpreadsheetData("dataconstant", $("#dataConstantGGSSUrl").val());
-  }
-})
-
-// chestProbabilityGGSSForm
-$("#chestProbabilityGGSSForm").submit(function() {
-  $("#chestProbabilityGGSSForm").validate();
-  if($("#chestProbabilityGGSSForm").valid()) {
-    GetSpreadsheetData("chestprobability", $("#chestProbabilityGGSSUrl").val());
-  }
-})
-
-// loserDaggerModifierGGSSForm
-$("#loserDaggerModifierGGSSForm").submit(function() {
-  $("#loserDaggerModifierGGSSForm").validate();
-  if($("#loserDaggerModifierGGSSForm").valid()) {
-    GetSpreadsheetData("loserdaggermodifier", $("#loserDaggerModifierGGSSUrl").val());
-  }
-})
-
-// freeGemSequenceGGSSForm
-$("#freeGemSequenceGGSSForm").submit(function() {
-  $("#freeGemSequenceGGSSForm").validate();
-  if($("#freeGemSequenceGGSSForm").valid()) {
-    GetSpreadsheetData("freegemsequence", $("#freeGemSequenceGGSSUrl").val());
-  }
-})
-
-// crownGemSequenceGGSSForm
-$("#crownGemSequenceGGSSForm").submit(function() {
-  $("#crownGemSequenceGGSSForm").validate();
-  if($("#crownGemSequenceGGSSForm").valid()) {
-    GetSpreadsheetData("crowngemsequence", $("#crownGemSequenceGGSSUrl").val());
-  }
-})
-
-// tvRoyaleGGSSForm
-$("#tvRoyaleGGSSForm").submit(function() {
-  $("#tvRoyaleGGSSForm").validate();
-  if($("#tvRoyaleGGSSForm").valid()) {
-    GetSpreadsheetData("tvroyale", $("#tvRoyaleGGSSUrl").val());
-  }
-})
-
-// towerLevelGGSSForm
-$("#towerLevelGGSSForm").submit(function() {
-  $("#towerLevelGGSSForm").validate();
-  if($("#towerLevelGGSSForm").valid()) {
-    GetSpreadsheetData("towerlevel", $("#towerLevelGGSSUrl").val());
-  }
-})
-
-// shopCardPriceGGSSForm
-$("#shopCardPriceGGSSForm").submit(function() {
-  $("#shopCardPriceGGSSForm").validate();
-  if($("#shopCardPriceGGSSForm").valid()) {
-    GetSpreadsheetData("shopcardprice", $("#shopCardPriceGGSSUrl").val());
-  }
-})
-
-// shopCardPriceGGSSForm
-$("#unitEffectGGSSForm").submit(function() {
-  $("#unitEffectGGSSForm").validate();
-  if($("#unitEffectGGSSForm").valid()) {
-    GetSpreadsheetData("uniteffect", $("#unitEffectGGSSUrl").val());
-  }
-})
-
-// unitSoundFXGGSSForm
-$("#unitSoundFXGGSSForm").submit(function() {
-  $("#unitSoundFXGGSSForm").validate();
-  if($("#unitSoundFXGGSSForm").valid()) {
-    GetSpreadsheetData("unitsoundfx", $("#unitSoundFXGGSSUrl").val());
-  }
-})
-
-
-function ExportFile(exportType, section) {
+function exportFile() {
   var dataObj = {};
+  var exportType = $("#" + selectedSection.exportTypeSelectID).val();
   dataObj["exportType"] = exportType;
   $.ajax({
-    url: "exportgamedata/" + section,
+    url: "exportgamedata/" + selectedSection.sectionName,
     method: "POST",
-    data: dataObj
+    data: dataObj,
+    beforeSend: function() {
+      showLoadingBar(70);
+    }
   })
   .done(function(resData) {
-    console.log(resData);
-    var fileName = "test_download_file";
-    saveFile(resData, fileName);
+    showLoadingBar(100); 
+    if (exportType == 0) {
+      saveFile(resData, selectedSection.sectionName);
+    } else if (exportType == 1) {
+      window.open("https://docs.google.com/spreadsheets/d/" + resData, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=1600, height=900, top=10, left=10");
+    } else if (exportType == 2) {
+      var csvData = new Blob([resData], { type: 'text/csv' }); 
+      var uri = URL.createObjectURL(csvData);
+      $('#CSVTable').CSVToTable(uri);
+      $("#CSVTable").show();
+      $('html, body').animate({
+        scrollTop: $("#CSVTable").offset().top
+      }, 500);
+    }
   })
   .fail(function(xhr, status, error) {
     showLoadingBar(100);
@@ -965,135 +969,19 @@ function ExportFile(exportType, section) {
   })
 }
 
-function GetTableData(table) {
+function getCurrentData() {
+  $("#CSVTable").hide();
+
 	var section = "";
 	var tempSectionWrap;
-	switch (table) {
-		case arenaReferenceTable:
-			section = "arenareference";
-			tempSectionWrap = "arenaReferenceWrap";
-			break;
-		case cardBuildingTable:
-			section = "cardbuilding";
-			tempSectionWrap = "cardBuildingWrap";
-			break;
-		case cardBuildingLevelTable:
-			section = "cardbuildinglevel";
-			tempSectionWrap = "cardBuildingLevelWrap";
-			break;
-		case cardTroopTable:
-			section = "cardtroop";
-			tempSectionWrap = "cardTroopWrap";
-			break;
-		case cardTroopLevelTable:
-			section = "cardtrooplevel";
-			tempSectionWrap = "cardTroopLevelWrap";
-			break;
-		case cardSpellTable:
-			section = "cardspell";
-			tempSectionWrap = "cardSpellWrap";
-			break;
-		case cardSpellLevelTable:
-			section = "cardspelllevel";
-			tempSectionWrap = "cardSpellLevelWrap";
-			break;
-		case buildingTable:
-			section = "building";
-			tempSectionWrap = "buildingWrap";
-			break;
-		case troopTable:
-			section = "troop";
-			tempSectionWrap = "troopWrap";
-			break;
-		case spellTable:
-			section = "spell";
-			tempSectionWrap = "spellWrap";
-			break;
-		case buildingLevelTable:
-			section = "buildinglevel";
-			tempSectionWrap = "buildingLevelWrap";
-			break;
-		case troopLevelTable:
-			section = "trooplevel";
-			tempSectionWrap = "troopLevelWrap";
-			break;
-		case spellLevelTable:
-			section = "spelllevel";
-			tempSectionWrap = "spellLevelWrap";
-			break;
-    case chestSequenceTable:
-      section = "chestsequence";
-      tempSectionWrap = "chestSequenceWrap";
-      break;
-    case achievementTable:
-      section = "achievement";
-      tempSectionWrap = "achievementWrap";
-      break;
-    case donationTable:
-      section = "donation";
-      tempSectionWrap = "donationWrap";
-      break;
-    case requestTable:
-      section = "request";
-      tempSectionWrap = "requestWrap";
-      break;
-    case chestDataTable:
-      section = "chestdata";
-      tempSectionWrap = "chestDataWrap";
-      break;
-    case tribeDaggerRankTable:
-      section = "tribedaggerrank";
-      tempSectionWrap = "tribeDaggerRankWrap";
-      break;
-    case dataConstantTable:
-      section = "dataconstant";
-      tempSectionWrap = "dataConstantWrap";
-      break;
-    case chestProbabilityTable:
-      section = "chestprobability";
-      tempSectionWrap = "chestProbabilityWrap";
-      break;
-    case loserDaggerModifierTable:
-      section = "loserdaggermodifier";
-      tempSectionWrap = "loserDaggerModifierWrap";
-      break;
-    case freeGemSequenceTable:
-      section = "freegemsequence";
-      tempSectionWrap = "freeGemSequenceWrap";
-      break;
-    case crownGemSequenceTable:
-      section = "crowngemsequence";
-      tempSectionWrap = "crownGemSequenceWrap";
-      break;
-    case tvRoyaleTable:
-      section = "tvroyale";
-      tempSectionWrap = "tvRoyaleWrap";
-      break;
-    case towerLevelTable:
-      section = "towerlevel";
-      tempSectionWrap = "towerLevelWrap";
-      break;
-    case shopCardPriceTable:
-      section = "shopcardprice";
-      tempSectionWrap = "shopCardPriceWrap";
-      break;
-    case unitEffectTable:
-      section = "uniteffect";
-      tempSectionWrap = "unitEffectWrap";
-      break;
-    case unitSoundFXTable:
-      section = "unitsoundfx";
-      tempSectionWrap = "unitSoundFXWrap";
-      break;
-	}
 	$.ajax({
-		url: "getdata/" + section,
+		url: "getdata/" + selectedSection.sectionName,
 		method: "GET"
 	})
 	.done(function(resData) {
 		var data = JSON.parse(resData).data;
-		AddDataToDBTable(table, data);
-		ShowSection(tempSectionWrap);
+		addDataToTable(selectedSection.dataTable, data);
+		showSection(selectedSection.wrap);
 	})
 	.fail(function(xhr, status, error) {
 		showLoadingBar(100);
@@ -1101,155 +989,22 @@ function GetTableData(table) {
 	})
 }
 
-function AddDataToDBTable(table, data) {
-  var dataArr = data.split("\n");
-  var tableData = [];
-  for (var i = 1; i < dataArr.length; i++){        //i = 0 -> headertext
-    var tdDataArr = dataArr[i].split("\t");
-    if (tdDataArr.length > 1){                         // prevent null array ([""])
-      tableData.push(tdDataArr);
-    }
-  }
-  table.fnClearTable();
-  table.fnAddData(tableData);
-}
-
-function ShowSection(sectionName) {
-  for (var i = 0; i < sections.length; i++) {
-  		if (sections[i] == sectionName) {
-  			$("#"+sections[i]).show();
+function showSection(sectionName) {
+  for (var i = 0; i < sectionWrap.length; i++) {
+  		if (sectionWrap[i] == sectionName) {
+  			$("#" + sectionWrap[i]).show();
   		} else {
-  			$("#"+sections[i]).hide();
+  			$("#" + sectionWrap[i]).hide();
   		} 
   }
 }
 
-function GetSpreadsheetData(sectionName, spreadsheetUrl) {
-  var table;
-  var ggssSection;
+function getSpreadsheetData(spreadsheetUrl) {
   var dataObj = {};
-  switch (sectionName) {
-    case "arenareference":
-      table = arenaReferenceGGSSTbl;
-      ggssSection = "arenaReferenceGGSS";
-      break;
-    case "cardbuilding":
-      table = cardBuildingGGSSTbl;
-      ggssSection = "cardBuildingGGSS";
-      break;
-    case "cardbuildinglevel":
-      table = cardBuildingLevelGGSSTbl;
-      ggssSection = "cardBuildingLevelGGSS";
-      break;
-    case "cardtroop":
-      table = cardTroopGGSSTbl;
-      ggssSection = "cardTroopGGSS";
-      break;
-    case "cardtrooplevel":
-      table = cardTroopLevelGGSSTbl;
-      ggssSection = "cardTroopLevelGGSS";
-      break;
-    case "cardspell":
-      table = cardSpellGGSSTbl;
-      ggssSection = "cardSpellGGSS";
-      break;
-    case "cardspelllevel":
-      table = cardSpellLevelGGSSTbl;
-      ggssSection = "cardSpellLevelGGSS";
-      break;
-    case "building":
-      table = buildingGGSSTbl;
-      ggssSection = "buildingGGSS";
-      break;
-    case "buildinglevel":
-      table = buildingLevelGGSSTbl;
-      ggssSection = "buildingLevelGGSS";
-      break;
-    case "troop":
-      table = troopGGSSTbl;
-      ggssSection = "troopGGSS";
-      break;
-    case "trooplevel":
-      table = troopLevelGGSSTbl;
-      ggssSection = "troopLevelGGSS";
-      break;
-    case "spell":
-      table = spellGGSSTbl;
-      ggssSection = "spellGGSS";
-      break;
-    case "spelllevel":
-      table = spellLevelGGSSTbl;
-      ggssSection = "spellLevelGGSS";
-      break;
-    case "chestsequence":
-      table = chestSequenceGGSSTbl;
-      ggssSection = "chestSequenceGGSS";
-      break;
-    case "achievement":
-      table = achievementGGSSTbl;
-      ggssSection = "achievementGGSS";
-      break;
-    case "donation":
-      table = donationGGSSTbl;
-      ggssSection = "donationGGSS";
-      break;
-    case "request":
-      table = requestGGSSTbl;
-      ggssSection = "requestGGSS";
-      break;
-    case "chestdata":
-      table = chestDataGGSSTbl;
-      ggssSection = "chestDataGGSS";
-      break;
-    case "tribedaggerrank":
-      table = tribeDaggerRankGGSSTbl;
-      ggssSection = "tribeDaggerRankGGSS";
-      break;
-    case "dataconstant":
-      table = dataConstantGGSSTbl;
-      ggssSection = "dataConstantGGSS";
-      break;
-    case "chestprobability":
-      table = chestProbabilityGGSSTbl;
-      ggssSection = "chestProbabilityGGSS";
-      break;
-    case "loserdaggermodifier":
-      table = loserDaggerModifierGGSSTbl;
-      ggssSection = "loserDaggerModifierGGSS";
-      break;
-    case "freegemsequence":
-      table = freeGemSequenceGGSSTbl;
-      ggssSection = "freeGemSequenceGGSS";
-      break;
-    case "crowngemsequence":
-      table = crownGemSequenceGGSSTbl;
-      ggssSection = "crownGemSequenceGGSS";
-      break;
-    case "tvroyale":
-      table = tvRoyaleGGSSTbl;
-      ggssSection = "tvRoyaleGGSS";
-      break;
-    case "towerlevel":
-      table = towerLevelGGSSTbl;
-      ggssSection = "towerLevelGGSS";
-      break;
-    case "shopcardprice":
-      table = shopCardPriceGGSSTbl;
-      ggssSection = "shopCardPriceGGSS";
-      break;
-    case "uniteffect":
-      table = unitEffectGGSSTbl;
-      ggssSection = "unitEffectGGSS";
-      break;
-    case "unitsoundfx":
-      table = unitSoundFXGGSSTbl;
-      ggssSection = "unitSoundFXGGSS";
-      break;
-  }
   dataObj["spreadsheetUrl"] = spreadsheetUrl;
   $.ajax({
-    url: 'viewspreadsheetdata/' + sectionName,
-    method: 'POST',
+    url: 'viewspreadsheetdata/' + selectedSection.sectionName,
+    method: 'GET',
     data: dataObj,
     beforeSend: function() {
       showLoadingBar(70);
@@ -1257,9 +1012,11 @@ function GetSpreadsheetData(sectionName, spreadsheetUrl) {
   }).
   done(function(resData){
     showLoadingBar(100);
-    AddDataToGGSSTable(table, resData);
-    console.log(resData);
-    $(document).scrollTop( $("#"+ggssSection).offset().top );
+    addDataToTable(selectedSection.ggssTable, resData);
+    $('html, body').animate({
+        scrollTop: $("#"+selectedSection.ggssSection).offset().top
+      }, 500);
+    addEventForPublishBtn(selectedSection);
   }).
   fail(function(xhr, status, error){
     toastr.error(status, "Error", opts);
@@ -1267,22 +1024,61 @@ function GetSpreadsheetData(sectionName, spreadsheetUrl) {
   })
 }
 
-function AddDataToGGSSTable(table, resData) {
-  console.log(resData);
+function addDataToTable(table, resData) {
   var dataArr = resData.split("\n");
   var tableData = [];
-  for(var i = 0; i <= dataArr.length -1; i++){
+  for (var i = 1; i <= dataArr.length -1; i++) {        //i = 0 -> headertext
     var tdDataArr = dataArr[i].split("\t");
-    if(tdDataArr.length > 1){                         // prevent null array ([""])
+    if (tdDataArr.length > 1){                         // prevent null array ([""])
+      for (var j = 0; j < tdDataArr.length; j++) {
+        if (tdDataArr[j] == null) {
+          tdDataArr[j] == "";
+        }
+      }
       tableData.push(tdDataArr);
     }
   }
   table.fnClearTable();
   table.fnAddData(tableData);
-  // $(".publishBtn").unbind('click');
-  // $(".publishBtn").click(function(event) {
-  //    var table = getTableFromPublishBtn(this.id);
-  //    var tableData = getDataFromGGSSTbl(table);
-  //    publishGGSSToServer(table, tableData);
-  // })
+}
+
+function addEventForPublishBtn(selectedSection) {
+  $("#" + selectedSection.publishBtn).click (function(e) {
+    $("#publishConfirmDialog").dialog("open");
+  }) 
+}
+
+function publishGGSSToServer() {
+  $.ajax({
+    url: 'publishspreadsheet/' + selectedSection.sectionName,
+    method: 'GET',
+    beforeSend: function() {
+      showLoadingBar(70);
+    }
+  }).
+  done(function(resData){
+    showLoadingBar(100);
+    if (resData == "0") {
+      getCurrentData();
+      $("#publishConfirmDialog").dialog("close");
+      toastr.success("Published successfully!!", "Publish to Server", opts);
+      $('html, body').animate({
+        scrollTop: $("#"+selectedSection.currentSection).offset().top
+      }, 500);
+    }
+  }).
+  fail(function(xhr, status, error){
+    toastr.error(status, "Error", opts);
+    showLoadingBar(100);
+  })
+}
+
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    // console.log(elHtml);
+    // var link = document.createElement('a');
+    // mimeType = mimeType || 'text/plain';
+    // link.setAttribute('download', filename);
+    // link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    // link.click(); 
 }

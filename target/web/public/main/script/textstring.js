@@ -2,7 +2,7 @@ jQuery(document).ready(function($)
 {
   $("#exportBtnWrap").hide();
   $("#resultWrap").hide();
-  if(gameVersionSelected()) {
+  // if(gameVersionSelected()) {
 
     /* init dataTable */
     textStringDBTbl = $("#textStringDBTbl").dataTable({
@@ -96,7 +96,7 @@ jQuery(document).ready(function($)
       var exportType = 1;
       textStringExport(tableData, exportType)
     });
-  }
+  // }
 });
 
 function textStringExport(tableData, exportType) {
