@@ -25,8 +25,8 @@ jQuery(document).ready(function($)
     rowData["username"] = username;
     rowData["email"] = email;
     // rowData["password"] = "<i class='jeditable-activate fa fa-pencil'></i> <span class='passwordEditAble'>"+password+"</span>";
-    rowData["role"] = GetRoleName(parseInt(role));
-    rowData["timezone"] = GetTimeZoneString(parseInt(timezone));
+    rowData["role"] = getRoleName(parseInt(role));
+    rowData["timezone"] = getTimeZoneString(parseInt(timezone));
     rowData["action"] = "<a href=''  class='sendEmailBtn btn btn-primary btn-single btn-sm' style='float:left;margin-right:1%'>Send Email</a><button class='editAccButton btn btn-orange'>Edit</button><button class='deleteAccBtn btn btn-red'>Delete</button>";
     tableData.push(rowData);
 

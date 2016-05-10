@@ -17,19 +17,21 @@ import java.util.Arrays;
 
 public class GoogleDrive {
 
+
+  // CODE TEST - EMAIL TEST
   /** Email of the Service Account */
-  private static final String SERVICE_ACCOUNT_EMAIL = "464306262395-97uhi3f0jnj3466pim99vmq8sudsnhs0@developer.gserviceaccount.com";
+  private static final String SERVICE_ACCOUNT_ID = "t5-380@com-sgs-lumba-t5.iam.gserviceaccount.com";
 
   /** Path to the Service Account's Private Key file */
-  private static final String SERVICE_ACCOUNT_PKCS12_FILE_PATH = "app/phuong12345.p12";
+  private static final String SERVICE_ACCOUNT_PKCS12_FILE_PATH = "app/t5.p12";
 
-  private static final String USER_EMAIL = "phuongdt.88@gmail.com";
+  private static final String USER_EMAIL = "phuongdt2711@gmail.com";
 
 
 //    public static void main(String[] args) {
 //
 //        try {
-//            Drive service = getDriveService(SERVICE_ACCOUNT_EMAIL);
+//            Drive service = getDriveService(SERVICE_ACCOUNT_ID);
 //
 //            //Insert a file
 //            File body = new File();
@@ -52,7 +54,7 @@ public class GoogleDrive {
 //    }
 
   /** Upload file to Google Drive */
-  private static String uploadCSVFile(Drive service, java.io.File file, String title, String mimeType){
+  private static String uploadCSVFile(Drive service, java.io.File file, String title, String mimeType) {
     try {
 
       File body = new File();
@@ -68,7 +70,7 @@ public class GoogleDrive {
     return null;
   }
   /** Share the documents to USER_EMAIL */
-  private static void sharePermission(Drive service, String fileId){
+  private static void sharePermission(Drive service, String fileId) {
     try {
       Permission newPermission1 = new Permission();
       newPermission1.setValue(USER_EMAIL);
@@ -80,7 +82,7 @@ public class GoogleDrive {
     }
   }
   /** Public upload file method */
-  public static String uploadFile(java.io.File file, String title, String mimeType){
+  public static String uploadFile(java.io.File file, String title, String mimeType) {
 
     try{
 
@@ -140,16 +142,16 @@ public class GoogleDrive {
       GoogleCredential credential = new GoogleCredential.Builder()
               .setTransport(httpTransport)
               .setJsonFactory(jsonFactory)
-              .setServiceAccountId(SERVICE_ACCOUNT_EMAIL)
+              .setServiceAccountId(SERVICE_ACCOUNT_ID)
               .setServiceAccountScopes(Arrays.asList(DriveScopes.DRIVE))
 //              .setServiceAccountUser(USER_EMAIL)
               .setServiceAccountPrivateKeyFromP12File(
                       new java.io.File(SERVICE_ACCOUNT_PKCS12_FILE_PATH))
               .build();
       Drive service = new Drive.Builder(httpTransport, jsonFactory, null)
-              .setHttpRequestInitializer(credential).setApplicationName("Lumba").build();
+              .setHttpRequestInitializer(credential).setApplicationName("t5").build();
       return service;
-    } catch (Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return null;

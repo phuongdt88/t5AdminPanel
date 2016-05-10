@@ -18,7 +18,7 @@ import org.apache.commons.mail.*;
 
 public class UsersManagementController extends Controller{
 
-  public Result GetAdminUserInfo() throws SQLException{
+  public Result getAdminUserInfo() throws SQLException{
     JSONObject resData = new JSONObject();
     ResultSet rs = Admin.GetUsersInfo();
 //    if (rs.first()) {
@@ -39,7 +39,7 @@ public class UsersManagementController extends Controller{
     return ok(usersmanagement.render(resData.toString()));
   }
 
-  public Result AddAdminAccount() throws SQLException {
+  public Result addAdminAccount() throws SQLException {
     DynamicForm data = Form.form().bindFromRequest();
     String username = data.get("username");
     String email = data.get("email");
@@ -66,7 +66,7 @@ public class UsersManagementController extends Controller{
     }
   }
 
-  public Result UpdateAdminAccount() throws SQLException{
+  public Result updateAdminAccount() throws SQLException{
     DynamicForm data = Form.form().bindFromRequest();
     int id = Integer.parseInt(data.get("id"));
     String username = data.get("username");

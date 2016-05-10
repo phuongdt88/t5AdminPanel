@@ -16,8 +16,8 @@ import java.util.*;
 
 public class CSVReaderClass {
 
-  public static String [][] ReadCSV(String filePath) throws IOException {
-    String [][] output = new String [GetRowCount(filePath)][GetColumnCount(filePath)];
+  public static String [][] readCSVToArray(String filePath) throws IOException {
+    String [][] output = new String [GetRowCount(filePath)+1][GetColumnCount(filePath)+1];
     CSVReader reader = null;
     try {
       reader = new CSVReader(new FileReader(filePath));
@@ -27,18 +27,18 @@ public class CSVReaderClass {
     }
     String [] nextLine;
 
-    int row = 0;
+    int row = 1;
     while ((nextLine = reader.readNext()) != null) {
       // nextLine[] is an array of values from the line
-      for(int column = 0; column < nextLine.length; column++) {
-        output[row][column] = nextLine[column] ;
+      for(int column = 1; column <= nextLine.length; column++) {
+        output[row][column] = nextLine[column-1] ;
       }
       row++;
     }
     return output;
   }
 
-  public static String ReadCSVToString(String filePath) throws IOException {
+  public static String readCSVToString(String filePath) throws IOException {
     String output = "";
     CSVReader reader = null;
     try {
@@ -72,6 +72,7 @@ public class CSVReaderClass {
       e.printStackTrace();
     }
     count = reader.readNext().length;
+    System.out.println("col count:" + count);
     return count;
   }
 
@@ -86,12 +87,13 @@ public class CSVReaderClass {
     while (reader.readNext() != null) {
       count++;
     }
+    System.out.println("row count: " + count);
     return count;
   }
 
   public static File WriteToCSVFile(String spreadsheetId, String worksheetName, String newFilePath)  throws IOException, GeneralSecurityException, ServiceException {
 
-    String[] header = GoogleSpreadsheetService.GetWorkSheetHeader(spreadsheetId, worksheetName);
+    String[] header = GoogleSpreadsheetService.getWorksheetHeader(spreadsheetId, worksheetName);
     List<String[]> spreadsheetData = GoogleSpreadsheetService.getWorksheetDataToList(spreadsheetId, worksheetName);
 
     CSVWriter writer = new CSVWriter(new FileWriter(newFilePath));

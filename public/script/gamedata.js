@@ -1,32 +1,32 @@
-var sectionWrap = ["arenaReferenceWrap",
-                "cardBuildingWrap",
-                "cardBuildingLevelWrap",
-                "cardTroopWrap",
-                "cardTroopLevelWrap",
-                "cardSpellWrap",
-                "cardSpellLevelWrap",
-                "buildingWrap",
-                "troopWrap",
-                "spellWrap",
-                "buildingLevelWrap",
-                "troopLevelWrap",
-                "spellLevelWrap",
-                "chestSequenceWrap",
-                "achievementWrap",
-                "donationWrap",
-                "requestWrap",
-                "chestDataWrap",
-                "tribeDaggerRankWrap",
-                "dataConstantWrap",
-                "chestProbabilityWrap",
-                "loserDaggerModifierWrap",
-                "freeGemSequenceWrap",
-                "crownGemSequenceWrap",
-                "tvRoyaleWrap",
-                "towerLevelWrap",
-                "shopCardPriceWrap",
-                "unitEffectWrap",
-                "unitSoundFXWrap"]
+var sectionWrap = [ "arenaReferenceWrap",
+                    "cardBuildingWrap",
+                    "cardBuildingLevelWrap",
+                    "cardTroopWrap",
+                    "cardTroopLevelWrap",
+                    "cardSpellWrap",
+                    "cardSpellLevelWrap",
+                    "buildingWrap",
+                    "troopWrap",
+                    "spellWrap",
+                    "buildingLevelWrap",
+                    "troopLevelWrap",
+                    "spellLevelWrap",
+                    "chestSequenceWrap",
+                    "achievementWrap",
+                    "donationWrap",
+                    "requestWrap",
+                    "chestDataWrap",
+                    "tribeDaggerRankWrap",
+                    "dataConstantWrap",
+                    "chestProbabilityWrap",
+                    "loserDaggerModifierWrap",
+                    "freeGemSequenceWrap",
+                    "crownGemSequenceWrap",
+                    "tvRoyaleWrap",
+                    "towerLevelWrap",
+                    "shopCardPriceWrap",
+                    "unitEffectWrap",
+                    "unitSoundFXWrap" ]
 
 var selectedSection;
 
@@ -38,7 +38,7 @@ jQuery(document).ready(function($)
     modal: true,
     buttons : {
       "Publish" : function() {
-        PublishGGSSToServer();
+        publishGGSSToServer();
       },
       "Cancel" : function() {
         $( this ).dialog( "close" );
@@ -241,7 +241,8 @@ jQuery(document).ready(function($)
         ],
         "columns" : [
         null,
-        null,{
+        null,
+        {
           defaultContent: ""
         }]
          
@@ -254,7 +255,8 @@ jQuery(document).ready(function($)
         ],
         "columns" : [
         null,
-        null,{
+        null,
+        {
           defaultContent: ""
         }]
       });
@@ -769,157 +771,157 @@ jQuery(document).ready(function($)
 
     $("#arenaReferenceLink").on('click', function() {
       selectedSection = section.ARENA_REFERENCE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardBuildingLink").on('click', function() {
       selectedSection = section.CARD_BUILDING;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardBuildingLevelLink").on('click', function() {
       selectedSection = section.CARD_BUILDING_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardTroopLink").on('click', function() {
       selectedSection = section.CARD_TROOP;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardTroopLevelLink").on('click', function() {
       selectedSection = section.CARD_TROOP_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardSpellLink").on('click', function() {
       selectedSection = section.CARD_SPELL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#cardSpellLevelLink").on('click', function() {
       selectedSection = section.CARD_SPELL_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#buildingLink").on('click', function() {
       selectedSection = section.BUILDING;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#buildingLevelLink").on('click', function() {
       selectedSection = section.BUILDING_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#troopLink").on('click', function() {
       selectedSection = section.TROOP;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#troopLevelLink").on('click', function() {
       selectedSection = section.TROOP_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#spellLink").on('click', function() {
       selectedSection = section.SPELL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#spellLevelLink").on('click', function() {
       selectedSection = section.SPELL_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#chestSequenceLink").on('click', function() {
       selectedSection = section.CHEST_SEQUENCE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#achievementLink").on('click', function() {
       selectedSection = section.ACHIEVEMENT;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#donationLink").on('click', function() {
       selectedSection = section.DONATION;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#requestLink").on('click', function() {
       selectedSection = section.REQUEST;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#chestDataLink").on('click', function() {
       selectedSection = section.CHEST_DATA;
-      GetCurrentData(section.CHEST_DATA);
+      getCurrentData(section.CHEST_DATA);
     });
 
     $("#tribeDaggerRankLink").on('click', function() {
       selectedSection = section.TRIBE_DAGGER_RANK;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#dataConstantLink").on('click', function() {
       selectedSection = section.DATA_CONSTANT;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#chestProbabilityLink").on('click', function() {
       selectedSection = section.CHEST_PROBABILITY;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#loserDaggerModifierLink").on('click', function() {
       selectedSection = section.LOSER_DAGGER_MODIFIER;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#freeGemSequenceLink").on('click', function() {
       selectedSection = section.FREE_GEM_SEQUENCE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#crownGemSequenceLink").on('click', function() {
       selectedSection = section.CROWN_GEM_SEQUENCE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#tvRoyaleLink").on('click', function() {
       selectedSection = section.TV_ROYALE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#towerLevelLink").on('click', function() {
       selectedSection = section.TOWER_LEVEL;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#shopCardPriceLink").on('click', function() {
       selectedSection = section.SHOP_CARD_PRICE;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#unitEffectLink").on('click', function() {
       selectedSection = section.UNIT_EFFECT;
-      GetCurrentData();
+      getCurrentData();
     });
 
     $("#unitSoundFXLink").on('click', function() {
       selectedSection = section.UNIT_SOUND_FX;
-      GetCurrentData();
+      getCurrentData();
     });
 
     selectedSection = section.ARENA_REFERENCE;
-		GetCurrentData();  //default - first visit page
+		getCurrentData();  //default - first visit page
 
     var exportBtnArr = $('[name="exportBtn"]');
     for (var i = 0; i < exportBtnArr.length; i ++ ) {
       $("#" + exportBtnArr[i].id).click(function(e) {
         e.preventDefault();
-        ExportFile();
+        exportFile();
       })
     }
 })
@@ -927,22 +929,39 @@ jQuery(document).ready(function($)
 // ggssForm
 $("#ggssForm").submit(function() {
   $("#ggssForm").validate();
-  if($("#ggssForm").valid()) {
+  if ($("#ggssForm").valid()) {
     var spreadsheetUrl = $("#ggssUrl").val();
-    GetSpreadsheetData(spreadsheetUrl);
+    getSpreadsheetData(spreadsheetUrl);
   }
 })
 
-function ExportFile() {
+function exportFile() {
   var dataObj = {};
-  dataObj["exportType"] = $("#" + selectedSection.exportTypeSelectID).val();
+  var exportType = $("#" + selectedSection.exportTypeSelectID).val();
+  dataObj["exportType"] = exportType;
   $.ajax({
     url: "exportgamedata/" + selectedSection.sectionName,
     method: "POST",
-    data: dataObj
+    data: dataObj,
+    beforeSend: function() {
+      showLoadingBar(70);
+    }
   })
-  .done(function(resData) { 
-    saveFile(resData, selectedSection.sectionName);  
+  .done(function(resData) {
+    showLoadingBar(100); 
+    if (exportType == 0) {
+      saveFile(resData, selectedSection.sectionName);
+    } else if (exportType == 1) {
+      window.open("https://docs.google.com/spreadsheets/d/" + resData, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=1600, height=900, top=10, left=10");
+    } else if (exportType == 2) {
+      var csvData = new Blob([resData], { type: 'text/csv' }); 
+      var uri = URL.createObjectURL(csvData);
+      $('#CSVTable').CSVToTable(uri);
+      $("#CSVTable").show();
+      $('html, body').animate({
+        scrollTop: $("#CSVTable").offset().top
+      }, 500);
+    }
   })
   .fail(function(xhr, status, error) {
     showLoadingBar(100);
@@ -950,7 +969,9 @@ function ExportFile() {
   })
 }
 
-function GetCurrentData() {
+function getCurrentData() {
+  $("#CSVTable").hide();
+
 	var section = "";
 	var tempSectionWrap;
 	$.ajax({
@@ -959,8 +980,8 @@ function GetCurrentData() {
 	})
 	.done(function(resData) {
 		var data = JSON.parse(resData).data;
-		AddDataToTable(selectedSection.dataTable, data);
-		ShowSection(selectedSection.wrap);
+		addDataToTable(selectedSection.dataTable, data);
+		showSection(selectedSection.wrap);
 	})
 	.fail(function(xhr, status, error) {
 		showLoadingBar(100);
@@ -968,17 +989,17 @@ function GetCurrentData() {
 	})
 }
 
-function ShowSection(sectionName) {
+function showSection(sectionName) {
   for (var i = 0; i < sectionWrap.length; i++) {
   		if (sectionWrap[i] == sectionName) {
-  			$("#"+sectionWrap[i]).show();
+  			$("#" + sectionWrap[i]).show();
   		} else {
-  			$("#"+sectionWrap[i]).hide();
+  			$("#" + sectionWrap[i]).hide();
   		} 
   }
 }
 
-function GetSpreadsheetData(spreadsheetUrl) {
+function getSpreadsheetData(spreadsheetUrl) {
   var dataObj = {};
   dataObj["spreadsheetUrl"] = spreadsheetUrl;
   $.ajax({
@@ -991,11 +1012,11 @@ function GetSpreadsheetData(spreadsheetUrl) {
   }).
   done(function(resData){
     showLoadingBar(100);
-    AddDataToTable(selectedSection.ggssTable, resData);
+    addDataToTable(selectedSection.ggssTable, resData);
     $('html, body').animate({
         scrollTop: $("#"+selectedSection.ggssSection).offset().top
       }, 500);
-    AddEventForPublishBtn(selectedSection);
+    addEventForPublishBtn(selectedSection);
   }).
   fail(function(xhr, status, error){
     toastr.error(status, "Error", opts);
@@ -1003,7 +1024,7 @@ function GetSpreadsheetData(spreadsheetUrl) {
   })
 }
 
-function AddDataToTable(table, resData) {
+function addDataToTable(table, resData) {
   var dataArr = resData.split("\n");
   var tableData = [];
   for (var i = 1; i <= dataArr.length -1; i++) {        //i = 0 -> headertext
@@ -1021,13 +1042,13 @@ function AddDataToTable(table, resData) {
   table.fnAddData(tableData);
 }
 
-function AddEventForPublishBtn(selectedSection) {
+function addEventForPublishBtn(selectedSection) {
   $("#" + selectedSection.publishBtn).click (function(e) {
     $("#publishConfirmDialog").dialog("open");
   }) 
 }
 
-function PublishGGSSToServer() {
+function publishGGSSToServer() {
   $.ajax({
     url: 'publishspreadsheet/' + selectedSection.sectionName,
     method: 'GET',
@@ -1037,9 +1058,10 @@ function PublishGGSSToServer() {
   }).
   done(function(resData){
     showLoadingBar(100);
-    if(resData == "0") {
-      GetCurrentData();
+    if (resData == "0") {
+      getCurrentData();
       $("#publishConfirmDialog").dialog("close");
+      toastr.success("Published successfully!!", "Publish to Server", opts);
       $('html, body').animate({
         scrollTop: $("#"+selectedSection.currentSection).offset().top
       }, 500);
@@ -1049,4 +1071,14 @@ function PublishGGSSToServer() {
     toastr.error(status, "Error", opts);
     showLoadingBar(100);
   })
+}
+
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    // console.log(elHtml);
+    // var link = document.createElement('a');
+    // mimeType = mimeType || 'text/plain';
+    // link.setAttribute('download', filename);
+    // link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    // link.click(); 
 }

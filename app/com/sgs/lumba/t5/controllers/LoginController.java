@@ -1,8 +1,8 @@
 package com.sgs.lumba.t5.controllers;
 
+import com.google.gdata.util.ServiceException;
 import com.sgs.lumba.t5.models.Admin;
-import com.sgs.lumba.t5.models.CSVReaderClass;
-import models.GoogleSpreadsheetService;
+import models.GoogleDrive;
 import org.json.JSONObject;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -17,7 +17,11 @@ import java.sql.SQLException;
 
 public class LoginController extends Controller{
 
-  public Result Login() throws IOException, GeneralSecurityException{
+  public Result Login() throws IOException, GeneralSecurityException, ServiceException{
+//    GoogleSpreadsheetService.createNewWorksheet("1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g", "thisisatest");
+//    GoogleSpreadsheetService.writeSheetTest("1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g");
+//    BatchCellUpdater.chayThu("1Gw0Z3L6rQ8qohUmkauHMmFxCmwfqgekJw6vFzqbpM8g");
+
     return ok(login.render());
   }
 

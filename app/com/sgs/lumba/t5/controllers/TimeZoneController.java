@@ -11,12 +11,12 @@ import java.sql.SQLException;
 
 public class TimeZoneController extends Controller{
 
-  public Result TimeZone()
+  public Result timeZone()
   {
     return ok(timezone.render());
   }
 
-  public Result UpdateTimeZone() throws SQLException{
+  public Result updateTimeZone() throws SQLException{
     DynamicForm data = Form.form().bindFromRequest();
     String username = data.get("username");
     JSONObject resData = new JSONObject();

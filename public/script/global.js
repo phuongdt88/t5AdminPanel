@@ -221,7 +221,6 @@ function getTableFromPublishBtn(buttonId) {
         break;
        default:
     }
-
     return table;
   }
   return null;
@@ -351,6 +350,7 @@ function gameVersionSelected() {
 /* Save File */
 function saveFile(resData, fileName) {
   csvData = new Blob([resData], { type: 'text/csv' }); //new way
+  console.log(csvData);
   var uri = URL.createObjectURL(csvData);
   console.log("begin save file");
   var downloadLink = document.createElement("a");
@@ -359,6 +359,13 @@ function saveFile(resData, fileName) {
    document.body.appendChild(downloadLink);
    downloadLink.click();
    document.body.removeChild(downloadLink);
+}
+
+function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
 }
 
 /*
@@ -425,7 +432,7 @@ function checkValidDate(startDate, endDate) {
   return true;
 }
 
-function GetRoleName(roleIndex) {
+function getRoleName(roleIndex) {
   switch (roleIndex) {
     case 0:
       return "Admin";
@@ -446,7 +453,7 @@ function GetRoleName(roleIndex) {
 }
 
 
-function GetTimeZoneString(timezone) {
+function getTimeZoneString(timezone) {
   if (timezone < 0) {
     return "GMT" + timezone;
   } else {

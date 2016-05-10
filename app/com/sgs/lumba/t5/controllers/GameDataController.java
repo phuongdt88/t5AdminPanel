@@ -2,6 +2,8 @@ package com.sgs.lumba.t5.controllers;
 
 import com.google.gdata.util.ServiceException;
 import com.sgs.lumba.t5.models.CSVReaderClass;
+import models.GoogleDrive;
+import models.GoogleSpreadsheetService;
 import org.json.JSONObject;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -22,47 +24,46 @@ public class GameDataController extends Controller{
   private String DATA_FILE_PATH = "DataFiles/";
   private String TEMP_DATA_FILE_PATH = "NewDataFiles/";
 
-  public Result GameData() {
+  public Result gameData() {
     return ok(gamedata.render());
   }
 
-  public Result GetData(String section) throws IOException{
-    String fileName = GetCSVFileName(section);
-    String output = CSVReaderClass.ReadCSVToString(DATA_FILE_PATH + fileName);
+  public Result getData(String section) throws IOException{
+    String fileName = getCSVFileName(section);
+    String output = CSVReaderClass.readCSVToString(DATA_FILE_PATH + fileName);
     JSONObject resData = new JSONObject();
     resData.put("data", output);
     return  ok(resData.toString());
   }
 
-  public Result ExportGameData(String section) {
+  public Result exportGameData(String section) throws IOException, ServiceException {
     DynamicForm data = Form.form().bindFromRequest();
     int exportType = Integer.parseInt(data.get("exportType"));
-    String fileName = GetCSVFileName(section);
-    System.out.println("export");
-    if(exportType == 0) {
-      System.out.println("export type = 0");
+    String fileName = getCSVFileName(section);
+    if (exportType == 0 || exportType == 2) {
       File file = new File(DATA_FILE_PATH + fileName);
       return ok(file).as("text/csv");
+    } else if (exportType == 1) {
+      return ok(exportToGoogleSpreadsheet(section));
     }
-    System.out.println(exportType);
     return  ok("1");
   }
 
-  public Result GetSpreadsheetData(String section) throws IOException, ServiceException, GeneralSecurityException{
+  public Result getSpreadsheetData(String section) throws IOException, ServiceException, GeneralSecurityException {
     DynamicForm data = Form.form().bindFromRequest();
 
     String url = data.get("spreadsheetUrl");
-    String worksheetName = GetWorkSheetName(section);
+    String worksheetName = getWorkSheetName(section);
 
     String spreadsheetId = url.split("/edit")[0].split("https://docs.google.com/spreadsheets/d/")[1];
 //    String content = GoogleSpreadsheetService.getWorksheetData(spreadsheetId, worksheetName);
     String filePath = TEMP_DATA_FILE_PATH + worksheetName + ".csv";
     CSVReaderClass.WriteToCSVFile(spreadsheetId, worksheetName, filePath);
-    String output = CSVReaderClass.ReadCSVToString(filePath);
+    String output = CSVReaderClass.readCSVToString(filePath);
     return ok(output);
   }
 
-  private String GetCSVFileName (String section) {
+  private String getCSVFileName (String section) {
     String fileName = "";
     switch (section) {
       case "arenareference":
@@ -156,7 +157,7 @@ public class GameDataController extends Controller{
     return fileName;
   }
 
-  private String GetWorkSheetName (String section) {
+  private String getWorkSheetName (String section) {
     String worksheetName = "";
 
     switch (section) {
@@ -251,12 +252,26 @@ public class GameDataController extends Controller{
 
     return worksheetName;
   }
-  public Result PublishSpreadsheet(String section) throws IOException{
-    String fileName = GetCSVFileName(section);
+  public Result publishSpreadsheet(String section) throws IOException{
+    String fileName = getCSVFileName(section);
     File spreadsheetFile = new File(TEMP_DATA_FILE_PATH + fileName);
     Path from = spreadsheetFile.toPath(); //convert from File to Path
     Path to = Paths.get(DATA_FILE_PATH + fileName); //convert from String to Path
     Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
     return ok("0");
+  }
+
+  private String exportToGoogleSpreadsheet(String section) throws IOException, ServiceException {
+    String fileName = getCSVFileName(section);
+    String worksheetName = getWorkSheetName(section);
+
+    File file = new File("DataFiles/" + fileName);
+    String fileId = GoogleDrive.uploadFile(file, worksheetName, "text/csv");
+/*    if (fileId != null) {
+      System.out.println(fileId);
+    } else {
+      System.out.println("error");
+    }*/
+    return fileId;
   }
 }
